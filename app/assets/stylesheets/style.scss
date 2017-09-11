@@ -4,3 +4,121 @@ font-family: 'Raleway', sans-serif;
 font-family: 'Ubuntu', sans-serif;
 font-family: 'Work Sans', sans-serif;
 font-family: 'Rubik', sans-serif; */
+
+/* Hack section */
+
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3685d6 !important;
+    border-color: #2978c9 !important;
+}
+.navbar-brand > img {
+    display: block;
+    width: 130px;
+}
+
+.hero-button .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 39px;
+}
+
+
+.hero-wrapper{
+	background-image: url("hero/hero.jpg");
+	padding: 51px 0;
+    background-size: cover;
+      padding: 127px 0 102px;
+    background-position-x: 0;
+    background-position-y: -150px;
+}
+.hero-content h1.hero-title{
+	    font-size: 35px;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 0;
+}
+.hero-content .hero-subtitle{
+	font-size: 25px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 32.5px;
+}
+.hero-content .hero-button{
+	margin: 30px;
+}
+.navbar-fixed-top{
+	background-color: #fff;
+    z-index: 3000;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+
+.steps-section {
+    border-bottom: 1px solid #f2f2f2;
+    padding: 70px 0 50px;
+}
+.step-box{
+	padding: 6px;
+	margin-bottom: 15px;
+}
+
+.step-body{
+	    font-size: 18px;
+    font-weight: 400;
+    color: #43484d;
+    /*float: left;*/
+    width: -webkit-calc(100% - 40px);
+    width: calc(100% - 40px);
+    padding-left: 10px;
+    text-align: left;
+}
+
+.step-icon-box .fa-stack {
+
+    color: #3685d6;
+}
+
+.footer {
+
+    text-align: left;
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+.footer a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #525252;
+}
+
+@media (min-width: 768px){
+	.footer-item {
+	    margin: 0 21px 0 0;
+	    text-align: left;
+	}
+}
+
+.footer-item {
+    font-size: 14px;
+    font-weight: 400;
+    color: #525252;
+    margin: 20px 10px 0 0;
+    text-align: center;
+    color: #94a2b3;
+}
+.footer-social-wrapper{
+	float: right;
+    margin-top: 0;
+    text-align: left;
+}
