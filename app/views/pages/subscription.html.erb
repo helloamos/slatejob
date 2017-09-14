@@ -1,0 +1,37 @@
+ <div class="container">
+    <!-- Automatic element centering -->
+    <div class="lockscreen-wrapper">
+   
+        <div class="col-md-12">
+            <div class="lockscreen-logo">
+                <%= render('./shared/logo') %>
+            </div>
+
+            <div class="help-block text-center">
+                <p>Pour être informer lors du lancement officiel du service, veuillez vous abonner!</p>
+            </div>
+
+            <div class="lockscreen-item">
+
+                <%= form_for(@subscription, class: "lockscreen-credentials") do |f| %>
+
+                    <div class="input-group">
+                        <%= f.email_field :email,  class: "form-control",  placeholder: "Votre adresse email ici!", required: true %>
+                        <div class="input-group-btn">
+                            <%= f.button "Envoyer", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="lockscreen-footer text-center">
+                Copyright &copy; 2017 <b><a href="http://slatejob.com" class="text-black">Slatejob.</a></b>
+                All rights reserved
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- /.center -->
+

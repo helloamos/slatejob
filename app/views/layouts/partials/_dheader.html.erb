@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- <a class="navbar-brand" href="#">Imofy</a> -->
+      <%= link_to root_url, class: "navbar-brand" do %>
+        <%= image_tag "logo/logo.png" %> 
+      <% end %>
+   
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+        
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <% if !user_signed_in? %>
+        <li>
+          <p class="navbar-btn">
+          <%= link_to "Se connecter" , new_user_session_path, class: "btn bg-purple" %>
+          </p>
+        </li>
+        <li>
+          <p class="navbar-btn">
+            <%= link_to "S'inscrire" , new_user_registration_path , class: "btn btn-primary" %>
+          </p>
+        </li>
+
+        <% else %>
+
+
+
+
+        <li class="dropdown user user-menu">
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+          
+              <!-- The user image in the navbar-->
+              <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
+              <%= image_tag current_user.avatar.url(:medium) , class: "user-image",  alt: "User Image"%>
+
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><%= current_user.login %></span>
+        
+
+           <span class="caret"></span>
+           </a>
+              <ul class="dropdown-menu">
+                <li>
+                    <%= link_to raw('<i class="fa fa-info-circle" aria-hidden="true"> </i>  Tableau de bord'), root_path %>
+                </li>
+
+                <li>
+
+                 <%= link_to raw('<i class="fa fa-user" aria-hidden="true"> </i> Mon profil'), edit_user_registration_path %>
+
+                 </li>
+
+
+                <li role="separator" class="divider"></li>
+                <li>
+                
+                 <%= link_to raw('<i class="fa fa-sign-out icon-sign-out"> </i>  Déconnexion'), destroy_user_session_path, method: :delete %>
+                 </li>
+                 </ul>
+        </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

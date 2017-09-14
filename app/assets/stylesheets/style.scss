@@ -12,26 +12,71 @@ font-family: 'Rubik', sans-serif; */
     display: table;
 }
 
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
 .btn-primary {
     color: #fff;
     background-color: #3685d6 !important;
     border-color: #2978c9 !important;
+}*/
+label {
+
+    font-weight: normal !important;
+}
+
+
+.navbar-default {
+    background-color: #fff !important;
+    border-color: #e7e7e7 !important;
+  
+    border-radius: 0px !important;
+}
+.btn-primary {
+    color: #fff;
+    background: -webkit-linear-gradient(top,#4387fd,#4683ea) !important;
+    border: 1px solid #4285f4 !important;
+}
+.account-content{
+	margin-top: 30px;
 }
 .navbar-brand > img {
     display: block;
     width: 130px;
 }
-
+.page-wrapper{
+	height: auto;
+    min-height: 100%;
+    background-color: #f5f5f5;
+}
+.login-box img {
+    vertical-align: middle;
+    width: 200px;
+}
+.register-box img {
+    vertical-align: middle;
+    width: 200px;
+}
 .hero-button .btn-primary {
     color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
+    /*background-color: #337ab7;*/
+    /*border-color: #2e6da4;*/
     font-size: 18px;
     font-weight: 600;
     color: #fff;
     padding: 10px 39px;
+    background: -webkit-linear-gradient(top,#4387fd,#4683ea) !important;
+    border: 1px solid #4285f4 !important;
 }
-
+.box {
+  
+    border-top: 0px !important;
+    
+}
 
 .hero-wrapper{
 	background-image: url("hero/hero.jpg");
@@ -121,4 +166,68 @@ font-family: 'Rubik', sans-serif; */
 	float: right;
     margin-top: 0;
     text-align: left;
+}
+.lockscreen-item {
+   
+    background: transparent !important;
+  
+}
+.lockscreen-wrapper {
+    max-width: 100% !important; 
+    margin: 0 auto;
+    margin-top: 10%;
+}
+#flash_wrappers {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.alert-danger {
+    background-color: #d84e4e;
+    border-color: #ebccd1;
+    color: #efeded;
+    text-align: center;
+}
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    text-align: center;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+#error_explanation h2{
+    color: red !important;
+
+}
+#error_explanation li{
+    color: red !important;
+
+}
+.alert-success , .alert-danger{
+    border-radius: 0px !important;
+}
+.user-thumb img{
+	
+	width: 100%;
+}
+.user-info .user-login{
+	font-size: 19px;
+}
+.user-info .user-email{
+	
+}
+.widget-button{
+	margin-top: 10px;
+}
+.account-content {
+    max-width: 830px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

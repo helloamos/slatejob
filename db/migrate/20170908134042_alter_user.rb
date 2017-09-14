@@ -6,16 +6,14 @@ class AlterUser < ActiveRecord::Migration[5.1]
   		t.string :login, uniqueness: true
   		t.string :profile_type
   		t.string :company_name
-  		t.string :specialization
-  		t.text :presentation
-  		t.string :availability
-  		t.string :visibility
-  		t.string :country
-  		t.string :city
-  		t.string :address
-  		t.string :phone
-  		t.string :slug, uniqueness: true
-
+        t.string :slug, unique: true
+        t.attachment      :avatar
+        
+        # Roles
+        t.boolean :superadmin_role, default: false
+        t.boolean :supervisor_role,  default: false
+        t.boolean :user_role,  default: true
+     
   	end
   end
 end

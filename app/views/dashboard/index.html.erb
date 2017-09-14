@@ -1,0 +1,41 @@
+<div class="dashboard-wrapper">
+	<div class="container">
+		<div class="col-md-8">
+			<div class="box box-primary">
+				<div class="box-body">
+					<h4>Dash</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="box box-primary">
+				<div class="box-body">
+					<div class="side-widget">
+						<div class="col-xs-5">
+						<div class="user-thumb">
+							<%= image_tag current_user.avatar.url(:medium) %>
+						</div>
+						</div>
+						<div class="col-xs-7">
+							<div class="user-info">
+								<span class="user-login"><%= current_user.login %></span>
+								<span class="user-email"><%= current_user.email %></span>
+			
+							</div>
+							<div class="widget-button">
+								<%= link_to "MON COMPTE", account_path, class: "btn btn-primary" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="box box-primary">
+				<div class="box-body">
+					<h4>Dash</h4>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

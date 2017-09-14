@@ -1,0 +1,218 @@
+<div class="account-wrapper">
+
+	<div class="container">
+		<!--<h1>Mon compte</h1>-->
+		
+		<div class="account-content">
+			<div class="row">
+				
+
+		        <div class="col-md-3">
+		            <!-- required for floating -->
+		            <!-- Nav tabs -->
+		            <ul class="nav nav-tabs tabs-left">
+		                <li class="active"><a href="#user-general-info" data-toggle="tab">Général</a></li>
+		                <li><a href="#user-details" data-toggle="tab">Détails</a></li>
+		                <li><a href="#user-contacts" data-toggle="tab">Coordonnées</a></li>
+		                <li><a href="#user-cancel-account" data-toggle="tab">Supprimer mon compte</a></li>
+
+
+		            </ul>
+		        </div>
+		        <div class="col-md-9">
+		            <!-- Tab panes -->
+					<div class="box box-primary">
+		            <div class="tab-content">
+		                <div class="tab-pane active" id="user-general-info">
+							<div class="box-header with-border">
+		              		<h1>Infos générales </h1>
+		              		</div>
+
+		              		<div class="box-body"> 
+
+							<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+							  <%= devise_error_messages! %>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									    <%= f.label :user_name %><br />
+									    <%= f.text_field :user_name, autofocus: true, class: "form-control", placeholder: "Nom complet" , required: true %>
+								  </div>	
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									    <%= f.label :login %><br />
+									    <%= f.text_field :login, autofocus: true, class: "form-control" , placeholder: "Login" , required: true %>
+									 </div>
+								</div>
+							</div>
+
+
+							  <div class="form-group">
+							    <%= f.label :email %><br />
+							    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" , required: true %>
+							  </div>
+
+							  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+							    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+							  <% end %>
+
+							  <div class="form-group">
+							    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+							    <%= f.password_field :password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe" , required: true %>
+							    <% if @minimum_password_length %>
+							      <br />
+							      <em><%= @minimum_password_length %> characters minimum</em>
+							    <% end %>
+							  </div>
+
+							  <div class="form-group">
+							    <%= f.label :password_confirmation %><br />
+							    <%= f.password_field :password_confirmation, autocomplete: "off",  class: "form-control", placeholder: "Confirmation du mot de passe" , required: true %>
+							  </div>
+
+							  <div class="form-group">
+							    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+							    <%= f.password_field :current_password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe actuel" , required: true %>
+							  </div>
+
+							  <div class="actions">
+							    <%= f.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+							  </div>
+
+
+							  </div>
+							<% end %>
+
+							
+
+							
+
+		                </div>
+
+		                <div class="tab-pane" id="user-details">
+		                	<div class="box-header with-border">
+		              			<h2>Détails</h2>
+		              		</div>
+
+		                	<div class="box-body"> 
+		                	
+			                	<%= form_for(@user_detail) do |form| %>
+			                		<div class="row">
+										<div class="col-sm-4">
+					                		<div class="form-group">
+					                			<%= form.label :specialization %>
+					                			<%= form.text_field :specialization,  class: "form-control", placeholder: "Spécialisation" %>
+					                		</div>
+				                		</div>
+
+				                		<div class="col-sm-4">
+
+					                		<div class="form-group">
+					                			<%= form.label :availability %>
+					                			<%= form.text_field :availability,  class: "form-control", placeholder: "Disponibilité" %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-4">
+					                		<div class="form-group">
+					                			<%= form.label :visibility %>
+					                			<%= form.text_field :visibility,  class: "form-control", placeholder: "Visibilité" %>
+					                		</div>
+				                		</div>
+			                		</div>
+									
+									<div class="row">
+										<div class="col-sm-12">
+					                		<div class="form-group">
+					                			<%= form.label :presentation %>
+					                			<%= form.bootsy_area :presentation, rows: 12, class: "form-control", placeholder: "Présentation" %>
+					                		</div>
+				                		</div>
+			                		</div>
+									<div class="row">
+										<div class="form-group">
+										    <%= form.button "Enregistrer les modifications", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+										</div>
+									</div>
+
+			                	<% end %>
+		                	</div>
+		                </div>
+		                <div class="tab-pane" id="user-contacts">
+		                	<div class="box-header with-border">
+		              			<h2>Coordonnées</h2>
+		              		</div>
+
+		                	<div class="box-body"> 
+		                	<%= form_for(@user_contact) do |form| %>
+		                		<!-- Row -->
+		                		<div class="row">
+		                			<div class="col-sm-6">
+		                				<div class="form-group">
+					                		<%= form.label :country %>
+					                		<%= form.text_field :country, class: "form-control" %>
+				                		</div>
+			                			
+			                		</div>
+			                		<div class="col-sm-6">
+			                			<div class="form-group">
+					                		<%= form.label :country %>
+					                		<%= form.text_field :country, class: "form-control" %>
+				                		</div>
+			                			
+			                		</div>
+		                		</div>
+		                		<!-- end row -->
+
+		                			<!-- Row -->
+		                		<div class="row">
+		                			<div class="col-sm-6">
+		                				<div class="form-group">
+					                		<%= form.label :country %>
+					                		<%= form.text_field :country, class: "form-control" %>
+				                		</div>
+			                			
+			                		</div>
+			                		<div class="col-sm-6">
+			                			<div class="form-group">
+					                		<%= form.label :country %>
+					                		<%= form.text_field :country, class: "form-control" %>
+				                		</div>
+			                			
+			                		</div>
+		                		</div>
+		                		<!-- end row -->
+		                		<div class="row">
+		                			<div class="col-md-12">
+			                			<div class="form-group">
+			                				<%= form.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+			                			</div>
+		                			</div>
+		                		</div>
+
+
+		                	<% end %>
+		                	</div>
+		                </div>
+		          
+		          		<!-- Cancel my account -->
+		                <div class="tab-pane" id="user-cancel-account">
+		                	
+		                	<div class="box-header with-border">
+	              				<h2>Supprimer mon compte</h2>
+	              			</div>
+
+		                	<div class="box-body"> 
+
+								<p>Êtes-vous vraiment sûr de supprimer votre compte? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger " , data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Suppression..."}%></p>
+							</div>
+		                </div>
+						<!-- end -->
+
+		            </div>
+</div>
+		        </div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slatejob</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+
+  <body class="hold-transition login-page">
+  	
+<% if notice %>
+      <div id="notice_wrapper">
+
+        <p class="alert alert-success"><%= notice %></p>
+      </div>
+    <% elsif alert %>
+      <div id="alert_wrapper">
+        <p class="alert alert-danger"><%= alert %></p>
+      </div>
+  <% end %>
+    <%= yield %>
+
+     
+  </body>
+</html>
