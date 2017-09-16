@@ -29,7 +29,9 @@ label {
     font-weight: normal !important;
 }
 
-
+.navbar {
+	margin-bottom: 0px !important;
+}
 .navbar-default {
     background-color: #fff !important;
     border-color: #e7e7e7 !important;
@@ -227,6 +229,23 @@ label {
 }
 .account-content {
     max-width: 830px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box-body, .box-header {
+    
+    padding: 20px !important;
+}
+.dashboard-wrapper{
+	margin: 20px;
+}
+.project-wrapper{
+	margin: 20px;
+}
+.project-wrapper {
+    margin: 20px;
+    max-width: 800px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
