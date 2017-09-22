@@ -1,0 +1,78 @@
+=== puma startup: 2017-08-25 16:50:55 +0200 ===
+[5329] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[5297] - Worker 0 (pid: 5329) booted, phase: 0
+[5297] - Gracefully shutting down workers...
+[5297] === puma shutdown: 2017-08-25 16:53:20 +0200 ===
+[5297] - Goodbye!
+=== puma startup: 2017-08-25 16:53:54 +0200 ===
+[5498] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[5466] - Worker 0 (pid: 5498) booted, phase: 0
+[5466] - Gracefully shutting down workers...
+[5466] === puma shutdown: 2017-08-25 16:55:19 +0200 ===
+[5466] - Goodbye!
+=== puma startup: 2017-08-25 17:05:58 +0200 ===
+[6054] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[6023] - Worker 0 (pid: 6054) booted, phase: 0
+=== puma startup: 2017-08-25 18:44:37 +0200 ===
+=== puma startup: 2017-08-25 18:44:37 +0200 ===
+=== puma startup: 2017-08-25 18:44:37 +0200 ===
+=== puma startup: 2017-08-25 19:17:19 +0200 ===
+=== puma startup: 2017-08-25 19:17:19 +0200 ===
+=== puma startup: 2017-08-25 19:17:19 +0200 ===
+=== puma startup: 2017-08-25 19:45:22 +0200 ===
+[11957] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[11925] - Worker 0 (pid: 11957) booted, phase: 0
+=== puma startup: 2017-08-25 21:56:41 +0200 ===
+=== puma startup: 2017-08-25 21:56:41 +0200 ===
+=== puma startup: 2017-08-25 21:56:41 +0200 ===
+=== puma startup: 2017-09-02 13:57:42 +0200 ===
+[31294] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[31263] - Worker 0 (pid: 31294) booted, phase: 0
+I, [2017-09-02T14:15:26.051581 #31294]  INFO -- omniauth: (google_oauth2) Request phase initiated.
+I, [2017-09-02T14:15:30.966965 #31294]  INFO -- omniauth: (google_oauth2) Request phase initiated.
+I, [2017-09-02T14:17:32.124893 #31294]  INFO -- omniauth: (google_oauth2) Request phase initiated.
+I, [2017-09-02T14:17:32.776490 #31294]  INFO -- omniauth: (google_oauth2) Request phase initiated.
+[31263] - Gracefully shutting down workers...
+[31263] === puma shutdown: 2017-09-02 14:33:06 +0200 ===
+[31263] - Goodbye!
+=== puma startup: 2017-09-02 14:33:40 +0200 ===
+[32532] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[32498] - Worker 0 (pid: 32532) booted, phase: 0
+[32498] - Gracefully shutting down workers...
+[32498] === puma shutdown: 2017-09-02 16:36:39 +0200 ===
+[32498] - Goodbye!
+=== puma startup: 2017-09-02 16:37:49 +0200 ===
+[4363] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[4332] - Worker 0 (pid: 4363) booted, phase: 0
+[4332] - Gracefully shutting down workers...
+[4332] === puma shutdown: 2017-09-02 17:00:37 +0200 ===
+[4332] - Goodbye!
+=== puma startup: 2017-09-02 17:00:55 +0200 ===
+[5234] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[5203] - Worker 0 (pid: 5234) booted, phase: 0
+[5203] - Gracefully shutting down workers...
+[5203] === puma shutdown: 2017-09-02 20:35:30 +0200 ===
+[5203] - Goodbye!
+=== puma startup: 2017-09-02 20:36:01 +0200 ===
+[12656] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[12616] - Worker 0 (pid: 12656) booted, phase: 0
+[12616] - Gracefully shutting down workers...
+[12616] === puma shutdown: 2017-09-02 20:46:04 +0200 ===
+[12616] - Goodbye!
+=== puma startup: 2017-09-02 20:46:22 +0200 ===
+[13182] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[13151] - Worker 0 (pid: 13182) booted, phase: 0
+=== puma startup: 2017-09-02 23:55:22 +0200 ===
+=== puma startup: 2017-09-02 23:55:22 +0200 ===
+=== puma startup: 2017-09-02 23:55:22 +0200 ===
+=== puma startup: 2017-09-02 23:55:22 +0200 ===
+=== puma startup: 2017-09-02 23:55:22 +0200 ===
+=== puma startup: 2017-09-03 18:19:20 +0200 ===
+[14958] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[14927] - Worker 0 (pid: 14958) booted, phase: 0
+=== puma startup: 2017-09-03 19:05:34 +0200 ===
+[27787] + Gemfile in context: /home/deploy/rails_apps/imofy/Gemfile
+[27755] - Worker 0 (pid: 27787) booted, phase: 0
+[27755] - Gracefully shutting down workers...
+[27755] === puma shutdown: 2017-09-03 19:08:35 +0200 ===
+[27755] - Goodbye!

@@ -1,14 +1,121 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="project-how">
+		<div class="col-md-8">
+			<div class="box box-primary">
+		
+				<div class="box-body">
+					<div class="project-title">
+					  <h2><%= @project.title %></h2>
+					</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+			
+					<div class="project-content">
+					  <%= @project.content %>
+					</div> 
 
-<p>
-  <strong>Content:</strong>
-  <%= @project.content %>
-</p>
+					<div class="project-skills">
+						
+					</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+				</div>
+			</div>
+
+			<!-- Bids -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h1 class="box-title">Offres pour ce projet</h1>
+				</div>
+
+
+					<div class="box-body">
+						<% if @project_bids.empty? %>
+							<p>Il n'y a auccune offre pour ce projet</p>
+
+						<% else %>
+				
+							<table class="table">
+							  
+
+							  	<tbody>
+								    <% @project_bids.each do |bid| %>
+								      <tr>
+								        <td>
+								        	<div class="offer-user-thumbnail">
+								        		
+								        		
+								        	</div>
+								        	<div class="offer-user-name">
+								        		
+								        	</div>
+								        	
+								        </td>
+								        <td>
+								        	<h5>
+									        	<%= number_with_precision(bid.budget, delimiter: " ", separator: "", precision: 0) %> 
+									        	
+								        	</h5>
+								        </td>
+								        <td>
+								        	<h5>
+								        		<%= bid.time_limit %> 	
+								        	</h5>
+								        </td>
+								       
+								        
+								      </tr>
+								    <% end %>
+								 </tbody>
+							</table>
+						<% end %>
+
+				</div>
+			</div><!-- end box -->
+		</div><!-- end col -->
+
+
+
+		<!-- Start col -->
+		<div class="col-md-4">
+			<div class="box box-primary">
+				
+				<div class="box-body">
+					
+					<%= button_to "Faire une offre", root_path, class: "btn btn-primary btn-block" %>
+					
+				</div>
+			</div>
+
+
+			<!-- Bids -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h1 class="box-title">Détails</h1>
+				</div>
+				<div class="box-body">
+					<div class="meta project-user">
+						
+						<span><i class="fa fa-user" aria-hidden="true"></i></span>
+						<span><%= project_user(@project.user_id) %></span>
+					</div>
+					<div class="meta project-published">
+						<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+						<span><%= @project.created_at.strftime("%d/%m/%Y") %></span>
+					</div>
+					<div class="meta project-published">
+						<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+						<span><%= @project.created_at.strftime("%d/%m/%Y") %></span>
+					</div>
+
+					<div class="meta project-budget">
+						<span><i class="fa fa-money" aria-hidden="true"></i></span>
+						<span>
+							
+						<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
+						</span>
+					</div>	
+				</div>
+			</div><!-- end box -->	
+		</div><!-- end col -->
+	</div>
+</div>

@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916164217) do
+ActiveRecord::Schema.define(version: 20170919145823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bids", force: :cascade do |t|
+    t.text "content"
+    t.decimal "amount"
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "currency_id"
+    t.index ["project_id"], name: "index_bids_on_project_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -23,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170916164217) do
     t.string "status"
     t.string "priority_id"
     t.boolean "published"
-    t.string "time_limit"
     t.bigint "user_id"
     t.string "slug"
     t.datetime "created_at", null: false

@@ -20,6 +20,8 @@ class User < ApplicationRecord
 	# Relationships
 	has_one :user_detail
 	has_one :user_contact
+	has_many :projects
+	has_many :bids
 
 	# Paperclip usage
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/avatar/:style/missing.png",  validate_media_type: false

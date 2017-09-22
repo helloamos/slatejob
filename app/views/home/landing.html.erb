@@ -1,0 +1,57 @@
+<!-- Hero section -->
+<section class="hero-wrapper">
+
+	<div class="hero-content">
+		<div class="container text-center">
+			<h1 class="hero-title">
+				Get job offers from Europe’s best tech companies
+			</h1>
+			<div class="hero-subtitle">
+				We help programmers find great jobs at great companies.<br />
+				No applications, just one profile and your code.
+			</div>
+			<div class="hero-button">
+				<%= link_to "Sign UP", root_path, class: "btn btn-primary" %>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End hero section -->
+
+<!-- Steps section -->
+<section class="steps-section">
+	<div class="container">
+
+
+		<div class="col-md-12">
+            <div class="lockscreen-logo">
+               
+            </div>
+
+            <div class="help-block text-center">
+                <p>Pour être informer lors du lancement officiel du service, veuillez vous abonner!</p>
+            </div>
+
+            <div class="lockscreen-item">
+
+                <%= form_for(@subscription, class: "lockscreen-credentials") do |f| %>
+
+                    <div class="input-group">
+                        <%= f.email_field :email,  class: "form-control",  placeholder: "Votre adresse email ici!", required: true %>
+                        <div class="input-group-btn">
+                            <%= f.button "Envoyer", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="lockscreen-footer text-center">
+            
+            </div>
+
+        </div>
+
+	</div>
+</section>
+
+

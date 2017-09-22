@@ -13,15 +13,34 @@
 
   <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :project_title, class: "form-control", placeholder: "Titre" %>
+    <%= form.text_field :title, id: :project_title, class: "form-control", placeholder: "Titre", required: true %>
   </div>
 
   <div class="form-group">
     <%= form.label :content %>
-    <%= form.text_area :content, id: :project_content, rows: "6", class: "form-control", placeholder: "Description" %>
+    <%= form.bootsy_area :content, id: :project_content, rows: "6", class: "form-control", placeholder: "Description", required: true %>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :budget %>
+      <%= form.number_field :budget, id: :project_budjet,  class: "form-control", placeholder: "Budget", required: true %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :currency_id %>
+      <%= form.text_field :currency_id, id: :project_currency_id,  class: "form-control", placeholder: "Devise", required: true %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :time_limit %>
+      <%= form.text_field :time_limit, id: :project_time_limit,  class: "form-control", placeholder: "Délai", required: true %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= form.submit class: "btn btn-primary pull-right" %>
+    <%= form.button "PUBLIER", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> PUBLIGATION..."} %>
   </div>
 <% end %>
