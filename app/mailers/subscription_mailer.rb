@@ -1,5 +1,5 @@
 class SubscriptionMailer < ApplicationMailer
-	default from: 'imofy.official@gmail.com'
+	default from: 'slatejob.official@gmail.com'
 
 	def subscription_mail(email)
 		@url  = "http://slatejob.com" #ENV['HOST']
