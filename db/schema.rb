@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919145823) do
+ActiveRecord::Schema.define(version: 20171002104830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,18 @@ ActiveRecord::Schema.define(version: 20170919145823) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "time_limit"
     t.integer "currency_id"
+    t.integer "time_unity_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "currency_symbol"
+    t.string "iso_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -39,12 +48,21 @@ ActiveRecord::Schema.define(version: 20170919145823) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "time_limit"
+    t.integer "time_unity_id"
+    t.datetime "expire_at"
     t.index ["currency_id"], name: "index_projects_on_currency_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "time_unities", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170919145823) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "fame"
     t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 

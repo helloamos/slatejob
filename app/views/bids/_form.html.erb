@@ -1,32 +1,75 @@
-<%= form_with(model: bid, local: true) do |form| %>
-  <% if bid.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
-
-      <ul>
-      <% bid.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: bid, local: true, remote: true) do |form| %>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Offre</h4>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :bid_content %>
-  </div>
+    <div class="modal-body">
+      
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount, id: :bid_amount %>
-  </div>
+            <% if bid.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :time_limit %>
-    <%= form.text_field :time_limit, id: :bid_time_limit %>
-  </div>
+                    <ul>
+                    <% bid.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="form-group">
+                <%= form.hidden_field :project_id, value: params[:project] %>
+            </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+        <div class="form-group">
+            <%= form.label t("content") %>
+            <%= form.bootsy_area :content, id: :bid_content, rows: "6", class: "form-control", placeholder: "Details de l'offre", required: true %>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <%= form.label t("amount") %>
+                    <%= form.number_field :amount, id: :bid_amount, class: "form-control", required: true %>
+                        
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <%= form.label t("currency_id") %>
+                    <%= form.collection_select :currency_id, @currency, :id, :iso_code, {prompt: t("currency_id")}, class: "form-control" %>
+                                
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <%= form.label t("time_limit") %>
+                    <%= form.text_field :time_limit, id: :bid_time_limit, class: "form-control", required: true %>
+                        
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <%= form.label t("time_unity_id") %>
+                    <%= form.collection_select :time_unity_id, @time_unity, :id, :title, {prompt: t("time_unity_id")}, class: "form-control" %>
+                                
+                </div>
+            </div>
+        </div>
+        
+      
+
+
+    </div>
+
+    <div class="modal-footer">
+        <%= form.button "SOUMETTRE", class: "btn btn-primary",  data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Soumission..."} %>
+        <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+        </div>
+       
+    </div>
+ <% end %>
+

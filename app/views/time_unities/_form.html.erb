@@ -1,0 +1,22 @@
+<%= form_with(model: time_unity, local: true) do |form| %>
+  <% if time_unity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(time_unity.errors.count, "error") %> prohibited this time_unity from being saved:</h2>
+
+      <ul>
+      <% time_unity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :time_unity_title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

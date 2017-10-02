@@ -3,7 +3,7 @@ class CreateBids < ActiveRecord::Migration[5.1]
     create_table :bids do |t|
       t.text :content
       t.decimal :amount
-      t.string :time_limit
+      t.datetime :time_limit
 
       t.references :project
       t.references :user

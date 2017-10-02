@@ -5,6 +5,7 @@ class BidsController < ApplicationController
   # GET /bids.json
   def index
     @bids = Bid.all
+   
   end
 
   # GET /bids/1
@@ -15,6 +16,9 @@ class BidsController < ApplicationController
   # GET /bids/new
   def new
     @bid = Bid.new
+    @currency = Currency.all
+    @time_unity = TimeUnity.all
+    render layout: "dashboard"
   end
 
   # GET /bids/1/edit
@@ -24,12 +28,14 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
-    @bid = Bid.new(bid_params)
+    @bid = current_user.bids.build(bid_params)
 
+    project = Project.friendly.find(@bid.project_id)
     respond_to do |format|
       if @bid.save
-        format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
+        format.html { redirect_to project_show_path(project), notice: t(:bid_create_successfully) }
         format.json { render :show, status: :created, location: @bid }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @bid.errors, status: :unprocessable_entity }
@@ -69,6 +75,6 @@ class BidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params
-      params.require(:bid).permit(:content, :amount, :time_limit)
+      params.require(:bid).permit(:content, :amount, :time_limit, :project_id, :currency_id, :time_unity_id)
     end
 end

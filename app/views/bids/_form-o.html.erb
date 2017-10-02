@@ -1,0 +1,40 @@
+<%= form_with(model: bid, local: true, remote: true) do |form| %>
+
+      
+
+            <% if bid.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
+
+                    <ul>
+                    <% bid.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+        <div class="form-group">
+            <%= form.label :content %>
+            <%= form.bootsy_area :content, id: :bid_content, rows: "6", class: "form-control", placeholder: "Details de l'offre", required: true %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :amount %>
+            <%= form.number_field :amount, id: :bid_amount, class: "form-control", required: true %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :time_limit %>
+            <%= form.date_field :time_limit, id: :bid_time_limit, class: "form-control", required: true %>
+        </div>
+
+
+    <div class="form-group">
+        <%= form.button "SOUMETTRE", class: "btn btn-primary",  data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Soumission..."} %>
+        <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+
+       
+    </div>
+ <% end %>
+

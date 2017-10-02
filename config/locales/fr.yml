@@ -33,3 +33,12 @@ fr:
   hello: "Hello world"
   subscription_successfull: "Vous êtes abonné avec succès!"
   subscription_exist: "Cette adresse email existe déjà dans nos base donées!"
+  time_limit: "Délai"
+  currency_id: "Devise"
+  time_unity_id: "Unité"
+  amount: "Montant"
+  content: "Description"
+  submit: "SOUMETTRE"
+  bid_create_successfully: 'Offre postée avec succès!'
+  posted_ago: "Il y'a"
+  posted: "Posté(e): "

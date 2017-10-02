@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+
 <div class="container">
-	<div class="project-how">
+	<div class="project_show">
 		<div class="col-md-8">
 			<div class="box box-primary">
 		
@@ -20,11 +20,12 @@
 
 				</div>
 			</div>
+			
 
-			<!-- Bids -->
+			<!-- Bids list -->
 			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h1 class="box-title">Offres pour ce projet</h1>
+				<div class="box-header">
+					<h1 class="box-title"><%= @total_bids %> offre(s) pour ce projet</h1>
 				</div>
 
 
@@ -34,31 +35,53 @@
 
 						<% else %>
 				
-							<table class="table">
+							<table class="table table-hover">
 							  
 
 							  	<tbody>
 								    <% @project_bids.each do |bid| %>
 								      <tr>
 								        <td>
-								        	<div class="offer-user-thumbnail">
+								        	<div class="bid_user_thumb">
 								        		
-								        		
+								        		<%= image_tag user(bid.user_id).avatar.url(:thumb) %>
 								        	</div>
-								        	<div class="offer-user-name">
-								        		
+								        	<div class="bid_user_meta">
+									        	<div class="bid_username">
+									        		<h5><%= user(bid.user_id).login %></h5>
+									        	</div>
+									        	<div class="flag">
+									        		<%= flag_icon(:ml) %>
+									        		
+									        	</div>
+									        	
+									        	<div class="bid_created_at">
+									        		<%= t(:posted ) %>
+									        		<%= t(:posted_ago) %>
+									        		<%= time_ago_in_words(bid.created_at) %>
+									        	</div>
 								        	</div>
 								        	
 								        </td>
 								        <td>
 								        	<h5>
-									        	<%= number_with_precision(bid.budget, delimiter: " ", separator: "", precision: 0) %> 
-									        	
+								        		<span class="bid_amount">
+								        			<%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
+								        		</span>
+								        		<span class="bid_amount_currency">
+								        			<%= currency_symbol(bid.currency_id) %> 
+								        		</span>
 								        	</h5>
 								        </td>
 								        <td>
+								        	
 								        	<h5>
-								        		<%= bid.time_limit %> 	
+									        	<span class="bid_time_limit">
+									        		En <%= bid.time_limit %> 
+									        	</span>
+									        	<span class="bid_time_limit_unity">
+									        		<%= time_unity(bid.time_unity_id) %> 
+									        	</span>
 								        	</h5>
 								        </td>
 								       
@@ -69,6 +92,10 @@
 							</table>
 						<% end %>
 
+					<div class="row page_navi">
+					<%= will_paginate @project_bids, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+						
+					</div>
 				</div>
 			</div><!-- end box -->
 		</div><!-- end col -->
@@ -77,14 +104,16 @@
 
 		<!-- Start col -->
 		<div class="col-md-4">
-			<div class="box box-primary">
-				
-				<div class="box-body">
+			<% if can_post_bid?(current_user.id, @project.id) %>
+				<div class="box box-primary">
 					
-					<%= button_to "Faire une offre", root_path, class: "btn btn-primary btn-block" %>
-					
+					<div class="box-body">
+						
+						<%= link_to "Faire une offre", new_bid_path(project: @project.id), :remote => true, class: "btn btn-primary btn-block post_bid", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+						
+					</div>
 				</div>
-			</div>
+			<% end %>
 
 
 			<!-- Bids -->
@@ -93,29 +122,69 @@
 					<h1 class="box-title">Détails</h1>
 				</div>
 				<div class="box-body">
-					<div class="meta project-user">
+					<div class="meta project_user">
 						
 						<span><i class="fa fa-user" aria-hidden="true"></i></span>
 						<span><%= project_user(@project.user_id) %></span>
 					</div>
-					<div class="meta project-published">
-						<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
-						<span><%= @project.created_at.strftime("%d/%m/%Y") %></span>
+					<div class="meta project_published">
+						<span>
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+						</span>
+						<span>
+							<%= @project.created_at.strftime("%d/%m/%Y") %>
+						</span>
 					</div>
-					<div class="meta project-published">
-						<span><i class="fa fa-calendar" aria-hidden="true"></i></span>
-						<span><%= @project.created_at.strftime("%d/%m/%Y") %></span>
+					<div class="meta project_published">
+						<span>
+							<i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+						</span>
+						<span>
+							<%= @project.expire_at.strftime("%d/%m/%Y") %>
+						</span>
 					</div>
 
-					<div class="meta project-budget">
-						<span><i class="fa fa-money" aria-hidden="true"></i></span>
+					<div class="meta project_budget">
 						<span>
-							
-						<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
+							<i class="fa fa-money" aria-hidden="true"></i>
 						</span>
-					</div>	
+						<span>	
+							<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
+						</span>
+						<span>
+							<%= currency_symbol(@project.currency_id) %>
+						</span>
+					</div>
+
+					<div class="meta project_view">
+						<span>
+							<i class="fa fa-eye" aria-hidden="true"></i>
+						</span>
+						<span>	
+							<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
+						</span>
+						<span>
+							vue(s)
+						</span>
+					</div>
+
 				</div>
 			</div><!-- end box -->	
+
+			<!-- Social share -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h1 class="box-title">
+						Partager
+					</h1>
+				</div>
+				<div class="box-body">
+					<%= social_share_button_tag(@project.title) %>
+				</div>
+				
+			</div>
 		</div><!-- end col -->
 	</div>
 </div>
+
+<div id="bid-modal" class="modal fade"></div>

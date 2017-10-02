@@ -1,0 +1,2 @@
+class TimeUnity < ApplicationRecord
+end
