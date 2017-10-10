@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002104830) do
+ActiveRecord::Schema.define(version: 20171010120500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,26 @@ ActiveRecord::Schema.define(version: 20171002104830) do
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string "currency_symbol"
     t.string "iso_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "project_skills", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_skills_on_project_id"
+    t.index ["skill_id"], name: "index_project_skills_on_skill_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -51,8 +66,19 @@ ActiveRecord::Schema.define(version: 20171002104830) do
     t.string "time_limit"
     t.integer "time_unity_id"
     t.datetime "expire_at"
+    t.integer "view_number"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["currency_id"], name: "index_projects_on_currency_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_skills_on_category_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|

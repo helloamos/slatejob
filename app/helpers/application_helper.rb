@@ -10,7 +10,7 @@ module ApplicationHelper
 	def devise_mapping
 	    @devise_mapping ||= Devise.mappings[:user]
 	end
-
+	
 	def project_user(id)
 		user = User.find(id)
 		user.login
@@ -58,4 +58,16 @@ module ApplicationHelper
 		end
 
 	end
+
+	def skill_title(skill_id)
+		skill = Skill.find(skill_id)
+		skill.title
+	end
+
+	def project_skills(project_id)
+		project = Project.find(project_id)
+		@project_skills = project.project_skills
+	end
+
+	
 end

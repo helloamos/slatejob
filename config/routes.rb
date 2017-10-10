@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
   
+  resources :categories
+  resources :skills
   post '/rate' => 'rater#create', :as => 'rate'
   resources :currencies
   resources :time_unities

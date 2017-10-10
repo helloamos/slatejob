@@ -37,6 +37,7 @@ class SubscriptionsController < ApplicationController
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { redirect_to subscription_path, alert: t(:subscription_exist) }
+        #format.html { redirect_to subscription_path, error: t(:subscription_exist) }
         format.json { render json: @subscription.errors, status: :unprocessable_entity }
       end
     end

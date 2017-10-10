@@ -5,17 +5,22 @@
 			<div class="box box-primary">
 		
 				<div class="box-body">
-					<div class="project-title">
+					<div class="project_title">
 					  <h2><%= @project.title %></h2>
 					</div>
 
 			
-					<div class="project-content">
+					<div class="project_content">
 					  <%= @project.content %>
 					</div> 
 
-					<div class="project-skills">
-						
+					<div class="project_skills">
+						<div class="project_skills_title">
+							<%= t("skills") %>:
+						</div>
+						<% @project_skills.each do |ps| %>
+							<span class="btn btn-primary"><%= skill_title(ps.skill_id) %></span>
+						<% end %>
 					</div>
 
 				</div>
@@ -124,12 +129,14 @@
 				<div class="box-body">
 					<div class="meta project_user">
 						
-						<span><i class="fa fa-user" aria-hidden="true"></i></span>
+						<span>
+							<i>Auteur:</i>
+						</span>
 						<span><%= project_user(@project.user_id) %></span>
 					</div>
 					<div class="meta project_published">
 						<span>
-							<i class="fa fa-calendar" aria-hidden="true"></i>
+							<i>Publigation:</i>
 						</span>
 						<span>
 							<%= @project.created_at.strftime("%d/%m/%Y") %>
@@ -137,7 +144,7 @@
 					</div>
 					<div class="meta project_published">
 						<span>
-							<i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+							<i>Expiration:</i>
 						</span>
 						<span>
 							<%= @project.expire_at.strftime("%d/%m/%Y") %>
@@ -146,7 +153,7 @@
 
 					<div class="meta project_budget">
 						<span>
-							<i class="fa fa-money" aria-hidden="true"></i>
+							<i>Budjet:</i>
 						</span>
 						<span>	
 							<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
@@ -158,10 +165,10 @@
 
 					<div class="meta project_view">
 						<span>
-							<i class="fa fa-eye" aria-hidden="true"></i>
+							<i>Vue(s):</i>
 						</span>
 						<span>	
-							<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
+							<%= @project.view_number %>	
 						</span>
 						<span>
 							vue(s)
@@ -179,7 +186,7 @@
 					</h1>
 				</div>
 				<div class="box-body">
-					<%= social_share_button_tag(@project.title) %>
+					<%= social_share_button_tag(@project.title,  :image => "public/images/social/slatejob.png") %>
 				</div>
 				
 			</div>

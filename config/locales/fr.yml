@@ -42,3 +42,9 @@ fr:
   bid_create_successfully: 'Offre postée avec succès!'
   posted_ago: "Il y'a"
   posted: "Posté(e): "
+  expire_at: "Expiration"
+  budget: "Budget"
+  open: "Ouvert"
+  closed: "Fermé"
+  category_id: "Catégorie"
+  skills: "Compétences"

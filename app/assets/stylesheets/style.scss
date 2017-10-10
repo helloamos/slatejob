@@ -77,6 +77,7 @@ label {
 .box {
   
     border-top: 0px !important;
+    box-shadow: 0 2px 4px rgba(50,50,93,0.11) !important;
     
 }
 
@@ -261,7 +262,7 @@ label {
     /*margin-right: auto;*/
 }
 .project_title{
-	font-size: 1.7em;
+	font-size: 1.5em;
 }
 .project_content{
 	margin: 15px;
@@ -270,6 +271,7 @@ label {
 	margin-bottom: 5px;
 	font-weight: bold;
     color: rgba(66, 65, 65, 0.81);
+    margin: 15px;
 }
 .project_meta .meta_date, .meta_budget, .meta_user {
 	margin-right: 5px;
@@ -337,4 +339,42 @@ a.post_bid{
     margin-left: 10px;
     margin-right: 10px;
     height: 10px !important;
+}
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors .message {
+  color: #D00;
+  padding-left: 5px;
+  font-size: 12px;
+}
+.skill_tag{
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 50%;
+}
+.project_skills{
+    margin: 15px;
+}
+.project_skills_title{
+    font-size: 15pt;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+.project_title{
+    margin: 15px;
+}
+.project_description{
+    margin: 15px;
+}
+.last_projects_wrapper .box{
+    margin-bottom: 10px;
+}
+.project_by_category{
+    font-size: 1.6em;
+}
+.sidebar_project_filter ul{
+    list-style-type: none;
+    padding-left: 0px;
 }

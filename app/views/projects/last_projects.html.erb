@@ -1,9 +1,10 @@
 <div class="last_projects_wrapper">
 	<div class="container">
 		<div class="col-md-9">
+			<% @last_projects.each do |project|  %>
 			<div class="box box-primary">
 				<div class="box-body">
-					<% @last_projects.each do |project|  %>
+					
 
 						<div class="project_content">
 							<!-- Title -->
@@ -51,7 +52,7 @@
 								<span class="separator"></span>
 								<span class="meta_status">
 									<span class="project_status_<%= project.status.parameterize %>">
-										<%= project.status %>
+										<%= t(project.status) %>
 									</span>
 								</span>
 
@@ -66,22 +67,45 @@
 								<%= project.content.truncate_words(50, omission: '...').html_safe %>
 							</div>
 							<div class="project_skills">
-								
+								<% project_skills(project.id) %>
+								<% @project_skills.each do |ps| %>
+									<span class="btn btn-primary"><%= skill_title(ps.skill_id) %></span>
+								<% end %>
 							</div>
-							<div>
-								<%= do_separator(project, @last_projects) %>
-							</div>
+							
 
 						</div>
-					<% end %>
+					
 
-					<div class="row page_navi">
-						<%= will_paginate @last_projects, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
-							
-					</div>
+					
 					
 				</div><!-- end box-body -->
 			</div><!-- end box-primary -->
+			<% end %>
+
+			<div class="row page_navi">
+						<%= will_paginate @last_projects, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+							
+					</div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="sidebar_project_filter">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<div class="box-title">
+							Projet par catégorie
+						</div>
+					</div>
+					<div class="box-body">
+					<ul>
+					<% @categories.each do |category| %>
+						<li><%= category.title %></li>
+					<% end %>
+					</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

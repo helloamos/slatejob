@@ -15,8 +15,11 @@
 //= require bootsy
 //= require rails-ujs
 //= require turbolinks
+//= require rails.validations
 //= require bootstrap
 //= require social-share-button
+//= require toastr
+//= require chosen-jquery
 //= require_tree .
 
 $(function() {
@@ -69,3 +72,4 @@ $(document).on("ajax:success", "#new_programmation", function() {
     //$("#programmation-modal").hide();
     $("#programmation-modal").modal("hide");
 });
+

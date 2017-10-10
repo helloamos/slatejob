@@ -1,4 +1,4 @@
-<%= form_with(model: currency, local: true) do |form| %>
+<%= form_with(model: currency, local: true, validate: true) do |form| %>
   <% if currency.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(currency.errors.count, "error") %> prohibited this currency from being saved:</h2>
@@ -13,12 +13,13 @@
 
   <div class="field">
     <%= form.label :currency_symbol %>
-    <%= form.text_field :currency_symbol, id: :currency_currency_symbol %>
+    <%= form.text_field :currency_symbol, id: :currency_currency_symbol, :data => {'error-on' => true} %>
+     
   </div>
 
   <div class="field">
     <%= form.label :iso_code %>
-    <%= form.text_field :iso_code, id: :currency_iso_code %>
+    <%= form.text_field :iso_code, id: :currency_iso_code, :data => {'error-on' => true} %>
   </div>
 
   <div class="actions">
