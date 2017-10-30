@@ -5,8 +5,8 @@ class AttributeProjectsController < ApplicationController
 		bid = Bid.find(params[:bid])
 		sender = project.user_id
 
-		attribution = AttributeProject.create(sender_id: sender, receiver_id: receiver, project_id: project, accepted: false)
-		respond_to do |format|
+		attribution = AttributeProject.new(sender_id: sender, receiver_id: receiver, project_id: project.id, accepted: false)
+	
 			if attribution.save
 
 				# Update project status
@@ -21,14 +21,18 @@ class AttributeProjectsController < ApplicationController
 		        # Send notification
 		        content = "vient de vous attribuer son projet"
 		        Notification.create(:content => content, :sender_id => sender, :receiver_id => receiver_id)
-
-				format.html { redirect_to project_show_path(project), notice: 'Le projet a été attrubé avec succès.' }
-	        	format.json { render :show, status: :created, location: @category }
+				
+				AttributedMailer.bid_email(project.user_id, current_user.id, project.id).deliver_now
+				
+				flash[:notice] = 'Le projet a été attrubé avec succès.' 
+				redirect_to project_show_path(project) 
+	        	
 	        	
 			else
-				format.html { render :new }
-	        	format.json { render json: @category.errors, status: :unprocessable_entity }
+				 flash[:alert] = 'Error.'
+				 redirect_to project_show_path(project)
 			end
-		end
+		
 	end
+	
 end

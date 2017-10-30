@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = current_user.projects.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+    @bids = current_user.bids.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
     render layout: 'dashboard'
   end
 

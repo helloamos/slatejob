@@ -54,7 +54,7 @@
 								        	<div class="bid_user_meta">
 									        	<div class="bid_username">
 									        		
-									        		<h5><%= link_to "#{user(bid.user_id).login }" , resume_path(user(bid.user_id)) %></h5>
+									        		<h5><%= link_to "#{user(bid.user_id).login }" , show_profile_path(user(bid.user_id)) %></h5>
 									        	</div>
 									        	<div class="flag">
 									        		<%= flag_icon(:ml) %>
@@ -94,7 +94,9 @@
 								        <td>
 								        	
 								        	<span>
+								        	<% if attribute_button?(@project.user_id, @project.id) %>
 								        		<%= link_to "LUI ATTRIBUER", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => false, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+								        	<% end %>
 								        	</span>
 								        </td>
 								       

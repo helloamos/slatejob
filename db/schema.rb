@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20171029175333) do
   enable_extension "plpgsql"
 
   create_table "attribute_projects", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "receiver_id", null: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
     t.bigint "project_id"
     t.boolean "accepted"
     t.datetime "created_at", null: false

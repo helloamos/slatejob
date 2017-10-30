@@ -104,5 +104,34 @@ module ApplicationHelper
 		country= user_contact.country
 	end
 
+	def attribute_button?(project_user_id, project_id)
+		attributed = AttributeProject.find_by_project(project_id)
+
+		if current_user.id == project_user_id && attributed.blank?
+			return true
+		else 
+			return false
+		end
+
+	end
+
+	def bid_project_title(bid_id)
+		bid = Bid.find(bid_id)
+		project = Project.find(bid.project_id)
+		project.title
+	end
+
+	def project_instead(project_id)
+		
+		project = Project.find(project_id)
+		
+	end
+	def user_instead(user_id)
+		
+		user = User.find(user_id)
+		
+	end
+
+
 	
 end
