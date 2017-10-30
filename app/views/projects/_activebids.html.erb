@@ -1,0 +1,72 @@
+<!-- Content here -->
+ <!-- <table id="example2" class="table table-bordered table-striped">-->
+ <table  class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nom du projet</th>
+          <th>Publication</th>
+          <th>Mon offre</th>
+        
+          
+          
+          <th>Gérer</th>
+          
+        </tr>
+      </thead>
+      <tbody class="myprojects-index">
+        <% @bids.each do |bid| %>
+      <tr>
+     
+      <td>
+        <h5><%= link_to "#{bid_project_title(bid.id)}" , project_show_path(project_instead(bid.project_id))  %></h5>
+      </td>
+      
+      
+      <td>
+        <%= time_ago_in_words(bid.created_at) %>
+        
+      </td>
+ 
+
+       
+       
+        <td>
+            <span>  
+                <%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
+              </span>
+              <span>
+                   <%= currency_symbol(project_instead(bid.project_id).currency_id)    %>    
+              </span>
+        </td>
+                              
+     
+     
+
+  <td>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">GERER
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        
+        <li>
+            <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"> Modifier</i>'),edit_bid_path(bid), remote: false , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+        <li>
+
+          <li>
+            <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"> Supprimer</i>'), bid_delete_path(bid),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </td>
+    </tr>
+<% end %>
+      </tbody>
+  </table>
+
+  <div class="row page-navi">
+    <div class="col-md-12">
+      <%= will_paginate @projects, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+        </div>
+    </div>

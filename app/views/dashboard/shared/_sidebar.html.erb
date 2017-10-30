@@ -1,0 +1,30 @@
+<div class="box box-primary">
+	<div class="box-body">
+		<div class="side-widget">
+			<div class="widget-button text-center">
+				<%= link_to "POSTER UN PROJET", new_project_path, class: "btn btn-warning btn-block" %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="box box-primary">
+	<div class="box-body">
+		<div class="side-widget">
+			<div class="col-xs-5">
+			<div class="user-thumb">
+				<%= image_tag current_user.avatar.url(:medium) %>
+			</div>
+			</div>
+			<div class="col-xs-7">
+				<div class="user-info">
+					<span class="user-login"><%= current_user.login %></span>
+					<span class="user-email"><%= current_user.email %></span>
+
+				</div>
+				<div class="widget-button">
+					<%= link_to "MON PROFIL", edit_profile_path(current_user), class: "btn btn-primary" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
