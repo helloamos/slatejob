@@ -13,6 +13,12 @@ class SkillsController < ApplicationController
   def show
   end
 
+   def update_skill
+
+        @all_skills = Skill.find(params[:skills])
+
+    end
+
   # GET /skills/new
   def new
     @skill = Skill.new

@@ -4,8 +4,16 @@ class ProjectsController < ApplicationController
 
 
 
-  def last_projects
-    @last_projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+  def recent_projects
+    
+        @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+        @categories = Category.all
+   
+    render layout: 'dashboard'
+  end
+
+  def projects_by_category
+    @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
     @categories = Category.all
 
     render layout: 'dashboard'
@@ -13,9 +21,18 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
     render layout: 'dashboard'
   end
+
+
+
+    def update_skills
+      # updates songs based on artist selected
+      category = Category.find(params[:category_id])
+      @all_skills = category.skills.map{|s| [s.title, s.id]}.insert(0, "Select a Song")
+    end
+
 
   # GET /projects/1
   # GET /projects/1.json
@@ -116,6 +133,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :content, :category_id, :budget, :currency_id, :time_limit,:time_unity_id, :expire_at)
+      params.require(:project).permit(:title, :content, :category_id, :budget, :currency_id,  :expire_at)
     end
 end

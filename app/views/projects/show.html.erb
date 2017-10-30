@@ -11,7 +11,7 @@
 
 			
 					<div class="project_content">
-					  <%= @project.content %>
+					  <%= @project.content.html_safe %>
 					</div> 
 
 					<div class="project_skills">
@@ -53,7 +53,8 @@
 								        	</div>
 								        	<div class="bid_user_meta">
 									        	<div class="bid_username">
-									        		<h5><%= user(bid.user_id).login %></h5>
+									        		
+									        		<h5><%= link_to "#{user(bid.user_id).login }" , resume_path(user(bid.user_id)) %></h5>
 									        	</div>
 									        	<div class="flag">
 									        		<%= flag_icon(:ml) %>
@@ -88,6 +89,13 @@
 									        		<%= time_unity(bid.time_unity_id) %> 
 									        	</span>
 								        	</h5>
+								        </td>
+
+								        <td>
+								        	
+								        	<span>
+								        		<%= link_to "LUI ATTRIBUER", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => false, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+								        	</span>
 								        </td>
 								       
 								        

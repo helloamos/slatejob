@@ -90,8 +90,8 @@ label {
     background-position-y: -150px;
 }
 .hero-content h1.hero-title{
-	    font-size: 35px;
-    font-weight: 800;
+	font-size: 3.5em;
+    font-weight: 700;
     color: #fff;
     margin-top: 0;
 }
@@ -120,16 +120,15 @@ label {
 	padding: 6px;
 	margin-bottom: 15px;
 }
-
+.step-title-box{
+     font-size: 18px;
+     font-weight: 700;
+     margin-top: 15px;
+}
 .step-body{
-	    font-size: 18px;
-    font-weight: 400;
+	font-size: 12pt;
     color: #43484d;
-    /*float: left;*/
-    width: -webkit-calc(100% - 40px);
-    width: calc(100% - 40px);
-    padding-left: 10px;
-    text-align: left;
+
 }
 
 .step-icon-box .fa-stack {
@@ -170,6 +169,16 @@ label {
     margin-top: 0;
     text-align: left;
 }
+footer ul {
+    margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+footer ul li{
+    display: inline;
+}
+
 .lockscreen-item {
    
     background: transparent !important;
@@ -229,7 +238,7 @@ label {
 	margin-top: 10px;
 }
 .account-content {
-    max-width: 830px;
+    max-width: 960px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -377,4 +386,99 @@ a.post_bid{
 .sidebar_project_filter ul{
     list-style-type: none;
     padding-left: 0px;
+}
+.login_has_account{
+    margin-top: 15px;
+}
+.thumbnail-preview {
+    text-align: center;
+    min-height: 120px;
+    margin-bottom: 10px;
+}
+.thumbnail-preview img{
+    width: 100%;
+    border-radius: 5px;
+}
+#pictureInput {
+    /*display: none;*/
+}
+.insert_image_link {
+    text-align: center;
+    font-size: 14px;
+}
+.ProjectUpsell-icon {
+    color: #4285f4;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+   
+    
+}
+.Icon {
+    display: inline-block;
+    vertical-align: middle;
+    fill: #75787d;
+}
+.ProjectUpsell-list {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+}
+.ProjectUpsell-item {
+    position: relative;
+    margin-bottom: 12px;
+}
+.project-wrapper .panel-title {
+
+    text-align: center;
+    text-transform: uppercase;
+}
+.project-wrapper .panel-primary > .panel-heading {
+    color: #fff;
+   background: -webkit-linear-gradient(top, #4387fd, #4683ea) !important;
+    border-color:  #4285f4 !important;
+}
+.project-wrapper .panel-primary {
+    border-color:  #4285f4 !important;
+}
+.table > thead > tr > th {
+   
+    text-transform: uppercase !important;
+}
+ul.nav.nav-tabs li a {
+   text-transform: uppercase; 
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    
+    background-color: #4285f4 !important;
+    border-color: #4285f4 !important;
+    
+}
+.freelance_thumbnail img{
+    width: 100%;
+}
+.freelance_name{
+    color: #3863a0;
+    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: .2px;
+    line-height: 42px;
+}
+.freelance_short_presentation {
+    color: #a9a9a9;
+    font-size: 14px;
+   
+}
+.freelance_meta{
+    color: #a9a9a9;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 10px 10px 0;
+}
+.project_status_attributed {
+    background-color: orange;
+    padding: 3px;
+    border-radius: 3px;
+    color: white;
 }

@@ -1,0 +1,251 @@
+<!-- Profile  header -->
+<div class="profile_header">
+	<!-- Profile cover -->
+	<div class="profile_cover">
+		<div class="container">
+			<div class="profile_wrapper">
+				<div class="row">	
+					<div class="col-md-12">
+
+						<div class="row">
+							<!-- User thumb -->
+							<div class="col-md-4">
+								<div class="user_thumb clearfix">
+									<%= image_tag @freelance.avatar.url(:medium) %>
+									<div class="change_thumb">
+										<span><i class="fa fa-camera" aria-hidden="true"></i></span>
+										<span><%= link_to "Modifier votre photo", root_path %></span>
+									</div>
+								</div><!-- end thumb -->	
+							</div><!-- end col -->
+
+							<!-- User description -->
+							<div class="col-md-5">
+								
+									<div class="user_details">
+										<div class="full_name">
+											<h4><%= current_user.user_name %></h4>
+										</div>
+										<div class="title">
+											<h4><%= current_user.email %></h4>
+										</div>
+										
+										<div class="location">
+											<span class="member_details_icon">
+												<i class="fa fa-map-marker" aria-hidden="true"></i>
+											</span>
+											<span>
+												, 
+											</span>
+											<span>
+												
+											</span>
+										</div>
+
+										<div class="member_since">
+											<span class="member_details_icon">
+												<i class="fa fa-calendar" aria-hidden="true"></i>
+											</span>
+											<span> 
+												Membre depuis:  %> 
+											</span>
+										</div>
+										<div class="member_recommandations">
+											<span class="member_details_icon">
+												<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+											</span>
+											<span>
+												Recommadations 
+											</span>
+											<div class="member_recommandations_text">
+												0
+											</div>
+										</div>
+										<div class="member_reputations">
+											<span class="member_details_icon">
+												<!-- <i class="fa fa-bullhorn" aria-hidden="true"></i> -->
+											</span>
+											<span>
+												<!-- Reputations  -->
+											</span>
+										</div>
+
+										<div class="member_disponibility">
+											<span class="member_details_icon">
+												<i class="fa fa-clock-o" aria-hidden="true"></i> 
+											</span>
+											<span class="member_disponibility_label">
+												Disponibilité
+											</span>
+											<div class="member_disponibility_text">
+												
+											</div>
+										</div>
+										
+										<div class="hire_buttons">
+											<span class="hire">
+												<%= link_to "Contacter", root_path, class: "btn btn-success" %>
+											</span>
+											<span class="hire">
+												<%= link_to "Recommander", root_path, class: "btn btn-warning" %>
+											</span>
+											<span class="hire">
+												<%= link_to "Ajouter aux favoris", root_path, class: "btn btn-warning" %>
+											</span>
+										</div>
+											
+									</div>
+								
+							</div><!-- end -->
+						
+							<!-- User description -->
+							<div class="col-md-3">
+								
+									<div class="user_details">
+										
+										
+										
+											
+									</div>
+								
+							</div><!-- end -->
+
+						</div><!-- end row -->
+
+					</div><!-- end profile_cover -->
+				</div>
+			</div>
+		</div><!-- end col -->
+	</div><!-- end row-->
+</div><!-- end header -->
+
+
+		
+<div class="profile_content">
+	<div class="container">
+		<!-- Profile content -->
+		<div class="row">
+			<!-- Sidebar -->
+			<div class="side_barre">
+				
+				<div class="col-md-4">
+
+					<!-- PORTFOLIO -->
+					<section class="social_share">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4>Suivez-moi sur:</h4>
+							</div>
+							<div class="panel-body">
+								<ul class="profile-social-share__wrapper">
+						            <li>
+						            	<%= link_to raw('<i class="fa fa-facebook"></i>'), root_path, class: "profile-social-share__btn addthis_button_facebook facebook at300b", title: "Facebook", target: "_blank" %>
+						            	
+						            </li>
+						            <li>
+						            	<%= link_to raw('<i class="fa fa-twitter"></i>'), root_path, class: "profile-social-share__btn addthis_button_twitter twitter at300b", title: "Twitter" %>
+						            	
+						            	
+						            </li>
+						            <li>
+						            	<%= link_to raw('<i class="fa fa-linkedin"></i>'), root_path, class: "profile-social-share__btn addthis_button_linkedin linkedin at300b", title: "Linkedin" %>
+						            	
+						            	
+						            	</li>
+						            <!-- <li>
+						            	<a class="profile-social-share__btn addthis_button_email mail at300b" target="_blank" title="Email" href="#"><i class="fa fa-envelope"></i></a>
+						            </li>
+						            -->
+						            
+						        </ul>
+							</div>
+						</div>
+
+					</section>
+
+					<!-- PORTFOLIO -->
+					<section class="skills">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4>Compétences</h4>
+							</div>
+							<div class="panel-body">
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+
+								<!-- Twitter -->
+								<i class="fa fa-twitter" aria-hidden="true"></i>
+
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+							</div>
+						</div>
+						
+					</section>
+
+					<!-- PORTFOLIO -->
+					<section class="languages">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4>Langues</h4>
+							</div>
+							<div class="panel-body">
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+
+								<!-- Twitter -->
+								<i class="fa fa-twitter" aria-hidden="true"></i>
+
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+
+								<!-- Facebook -->
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+							</div>
+						</div>
+					</section>
+
+					<!-- PORTFOLIO -->
+					<section class="description">
+						
+					</section>
+					
+				</div>
+			</div><!-- end sidebar -->
+
+			<!-- content -->
+			<div class="col-md-8">
+
+				<div class="content">
+					
+				</div>
+			</div>
+
+
+
+			
+		</div><!-- end profile content -->
+
+		<!-- Profile footer -->
+		<div class="profile_footer">
+			
+		</div><!-- end -->
+
+	</div><!-- end -->
+
+	
+</div>
+</div>
+
+<!-- Modal dialog section -->
+<div id="experiences-modal"  class="modal fade"></div>
+<div id="educations-modal"  class="modal fade"></div>
+<div id="portfolios-modal"  class="modal fade" ></div>
+<div id="certifications-modal"  class="modal fade"></div>
+<div id="publigations-modal"  class="modal fade"></div>
+<div id="awards-modal"  class="modal fade"></div>
+<div id="presentation-modal"  class="modal fade"></div>
+	

@@ -1,16 +1,49 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+
+
+
+<body class="hold-transition lockscreen">
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+  <div class="lockscreen-logo">
+    <%= render('./shared/logo') %>
+  </div>
+  <!-- User name -->
+<div class="help-block text-center">
+	Entrer votre adresse E-mail pour recuperer votre mot de passe!
+  </div>
+  <!-- START LOCK SCREEN ITEM -->
+  <div class="lockscreen-item">
+    <!-- lockscreen image -->
+   
+    <!-- /.lockscreen-image -->
+      <!-- /.lockscreen-item -->
+  
+
+
+    <!-- lockscreen credentials (contains the form) -->
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: "lockscreen-credentials") do |f| %>
   <%= devise_error_messages! %>
+      <div class="input-group">
+        <!-- <input type="password" class="form-control" placeholder="password"> -->
+		<%= f.email_field :email, autofocus: true, class: "form-control",  placeholder: "Email", required: true %>
+        <div class="input-group-btn">
+        
+         <%= f.submit "Envoyer", class: "btn btn-primary" %>
+         <!--  <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button> -->
+        </div>
+      </div>
+    <% end %>
+    <!-- /.lockscreen credentials -->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="text-center">
+   <div>Ou se connecter avec un autre compte?</div>
+    <%= render('devise/shared/login') %>
   </div>
-<% end %>
+  
+</div>
+<!-- /.center -->
 
-<%= render "devise/shared/links" %>
+

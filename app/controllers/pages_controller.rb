@@ -10,8 +10,10 @@ class PagesController < ApplicationController
 
 		@resource ||= current_user
 
-		@user_detail = UserDetail.all
-		@user_contact = UserContact.all
+		#@user_detail = UserDetail.all
+		@user_detail = current_user.user_detail
+		@user_contact = current_user.user_contact
+		#@user_contact = UserContact.all
 		
 		if @user_detail.nil?
 			@user_detail = UserDetail.new

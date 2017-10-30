@@ -1,29 +1,100 @@
-<p id="notice"><%= notice %></p>
+<div class="container"><div class="project-wrapper">
 
-<h1>Projects</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
-        <td><%= project.content %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+         <div class="pull-left">
+             <h1>Mes projets et offres</h1>
+        <!-- <small>Liste des propriétés</small> -->
+         </div> 
 
-<%= link_to 'New Project', new_project_path %>
+          <h1>
+       
+      </h1>
+           
+            <div class="pull-right">
+              <%= link_to "POSTER UN NOUVEAU PROJET",  new_project_path , class: "btn btn-warning" %>
+            </div>
+          
+
+
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-sm-12">
+    
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="box">
+
+
+
+          <div class="box-body">
+              <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#my_projects" aria-controls="home" role="tab" data-toggle="tab">Mes projets</a></li>
+    <li role="presentation"><a href="#active_bids" aria-controls="profile" role="tab" data-toggle="tab">Offres actives</a></li>
+    <li role="presentation"><a href="#current_works" aria-controls="messages" role="tab" data-toggle="tab">Travaux encours</a></li>
+    <li role="presentation"><a href="#older_works" aria-controls="settings" role="tab" data-toggle="tab">Travaux passés</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="my_projects">
+        <%= render('myprojects') %>
+    </div>
+
+
+    <div role="tabpanel" class="tab-pane" id="active_bids">
+      
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="current_works">
+    </div>
+    <div role="tabpanel" class="tab-pane" id="older_works">
+      
+    </div>
+  </div>
+
+</div>
+          </div>
+
+          
+          
+        
+        </div>
+    </div>
+
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

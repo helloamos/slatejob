@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010120500) do
+ActiveRecord::Schema.define(version: 20171029175333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attribute_projects", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "project_id"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_attribute_projects_on_project_id"
+    t.index ["receiver_id"], name: "index_attribute_projects_on_receiver_id"
+    t.index ["sender_id"], name: "index_attribute_projects_on_sender_id"
+  end
 
   create_table "bids", force: :cascade do |t|
     t.text "content"
@@ -35,11 +47,73 @@ ActiveRecord::Schema.define(version: 20171010120500) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comment_users", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.boolean "read", default: false
+    t.date "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_comment_users_on_receiver_id"
+    t.index ["sender_id"], name: "index_comment_users_on_sender_id"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string "currency_symbol"
     t.string "iso_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favoris_users", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_favoris_users_on_receiver_id"
+    t.index ["sender_id"], name: "index_favoris_users_on_sender_id"
+  end
+
+  create_table "like_users", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_like_users_on_receiver_id"
+    t.index ["sender_id"], name: "index_like_users_on_sender_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "conversation_id"
+    t.boolean "read", default: false
+    t.bigint "user_id", null: false
+    t.date "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.boolean "read", default: false
+    t.date "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "project_skills", force: :cascade do |t|
@@ -54,22 +128,23 @@ ActiveRecord::Schema.define(version: 20171010120500) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.decimal "budget"
+    t.bigint "category_id"
+    t.string "budget"
     t.bigint "currency_id"
     t.string "status"
     t.string "priority_id"
     t.boolean "published"
+    t.string "time_limit"
+    t.bigint "time_unity_id_id"
+    t.datetime "expire_at"
+    t.integer "view_number"
     t.bigint "user_id"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "time_limit"
-    t.integer "time_unity_id"
-    t.datetime "expire_at"
-    t.integer "view_number"
-    t.bigint "category_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["currency_id"], name: "index_projects_on_currency_id"
+    t.index ["time_unity_id_id"], name: "index_projects_on_time_unity_id_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -114,6 +189,15 @@ ActiveRecord::Schema.define(version: 20171010120500) do
     t.datetime "updated_at", null: false
     t.float "fame"
     t.index ["user_id"], name: "index_user_details_on_user_id"
+  end
+
+  create_table "user_friends", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_user_friends_on_receiver_id"
+    t.index ["sender_id"], name: "index_user_friends_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|

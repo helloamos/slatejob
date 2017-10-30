@@ -1,0 +1,2 @@
+$('.chosen-select').val('').trigger('chosen:updated');
+$('.chosen-select').html("<%= escape_javascript(options_for_select(@all_skills)) %>");

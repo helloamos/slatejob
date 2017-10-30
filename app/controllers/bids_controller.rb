@@ -33,9 +33,25 @@ class BidsController < ApplicationController
     project = Project.friendly.find(@bid.project_id)
     respond_to do |format|
       if @bid.save
+        
+
+        #Retrieve params
+        sender_id = current_user.id
+        receiver_id = project.user_id
+        #@project_url = Project.friendly.find(project.id)
+        #@project_url = project_show_path(project.id)
+
+        # Send notification
+        content = "vient de faire une offre pour votre projet"
+        Notification.create(:content => content, :sender_id => current_user.id, :receiver_id => receiver_id)
+
+        BidMailer.bid_email(project.user_id, current_user.id, project.id).deliver_now
+        #flash['notice'] = "Aimé avec success!"
+
         format.html { redirect_to project_show_path(project), notice: t(:bid_create_successfully) }
         format.json { render :show, status: :created, location: @bid }
         format.js
+
       else
         format.html { render :new }
         format.json { render json: @bid.errors, status: :unprocessable_entity }

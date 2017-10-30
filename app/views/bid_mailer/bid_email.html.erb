@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <p>
+      Salut <%= @user.login %>,<br>
+      Vous avez réçu une proposition de devis de: #<%= @bid_user.login %> pour le projet suivant:<br>
+      <br>
+      Projet: <%= @project.title %><br> 
+      
+      <br>
+    </p>
+    <p>
+      Pour se connecter au site, suivez juste ce lien: <%= @url %>.<br>
+    </p>
+    <p>
+    Cordialement <br>
+    L'équipe de Slatejob
+    </p>
+  </body>
+</html>

@@ -75,6 +75,7 @@ gem 'flag-icons-rails'
 gem 'chosen-rails'
 gem 'client_side_validations'
 gem 'toastr-rails'
+gem 'bootstrap-filestyle-rails'
 gem 'ratyrate'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store', '~> 1.0'

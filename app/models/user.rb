@@ -9,10 +9,12 @@ class User < ApplicationRecord
 
 	# User profile type
 	PROFILE_TYPE = [["Freelance"],["Employeur"]]
+	VISIBILITY = [["Oui"],["Non"]]
+	AVAILABILITY = [["Plein temps"],["Temps partiel"]]
 
 	# Date validation
 	validates :login, presence: true, uniqueness: true
-	validates :profile_type, presence: true, uniqueness: true
+	validates :profile_type, presence: true
 	validates :company_name, uniqueness: true, if: 'company_name.present?'
 	validates :slug,  uniqueness: true
 	validates :email, uniqueness: true

@@ -28,20 +28,16 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? %>
         <li>
-          <p class="navbar-btn">
+          
           <%= link_to "Se connecter" , new_user_session_path, class: "" %>
-          </p>
+        
         </li>
         <li>
           <p class="navbar-btn">
-            <%= link_to "S'inscrire" , new_user_registration_path , class: "" %>
+            <%= link_to "S'inscrire" , new_user_registration_path , class: "btn btn-primary" %>
           </p>
         </li>
-        <li>
-          <p class="navbar-btn">
-            <%= link_to "Publier un projet" , new_project_path , class: "btn btn-primary" %>
-          </p>
-        </li>
+       
 
         <% else %>
 

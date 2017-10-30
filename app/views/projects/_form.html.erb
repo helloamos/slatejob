@@ -13,66 +13,53 @@
 	<% end %>
 
 	<div class="form-group">
-		<%= form.label :title %>
+		<%= form.label "Titre de votre projet" %>
 		<%= form.text_field :title, id: :project_title, class: "form-control", placeholder: "Titre", required: true %>
 	</div>
 
 	<div class="form-group">
-		<%= form.label :content %>
+		<%= form.label "Décrivez votre projet" %>
 		<%= form.text_area :content, id: :project_content, rows: "6", class: "form-control", placeholder: "Description", required: true %>
 	</div>
 
 
 	<div class="form-group">
 		<%= form.label t(:category_id) %>
-		<%= form.collection_select :category_id, @all_categories,  :id, :title , {prompt: "select"} , class: "form-control" %>
+		<%= form.collection_select(:category_id, @all_categories,  :id, :title , {prompt: "Catégorie de projet"}, class: "form-control") %>
+		
 	</div>
  
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div class="form-group">
 				<%= form.label t("budget") %>
-				<%= form.number_field :budget, id: :project_budget, class: "form-control", required: true %>
+				<%= form.select :budget,  Project::BUDGET, {prompt: "Votre budget"}, class: "form-control", required: true %>
 										
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<div class="form-group">
-					<%= form.label t("currency_id") %>
-					<%= form.collection_select :currency_id, @currency, :id, :iso_code, {prompt: t("currency_id")}, class: "form-control", required: true %>
-											
+				<%= form.label t("currency_id") %>
+				<%= form.collection_select :currency_id, @currency, :id, :iso_code, {prompt: t("currency_id")}, class: "form-control", required: true %>							
 			</div>
 		</div>
 	</div>
-
-	<!-- Start row -->
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<div class="form-group">
-					<%= form.label t("time_limit") %>
-					<%= form.text_field :time_limit, id: :project_time_limit, class: "form-control", required: true %>
-							
+				<%= form.label t(:expire_at) %>
+				<%= form.date_field :expire_at, id: :project_expire_at, class: "form-control", required: true %>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="form-group">
-					<%= form.label t("time_unity_id") %>
-					<%= form.collection_select :time_unity_id, @time_unity, :id, :title, {prompt: t("time_unity_id")}, class: "form-control" , required: true %>
-											
-			</div>
-		</div>
-	</div><!-- end row -->
-
-	<div class="form-group">
-			<%= form.label t(:expire_at) %>
-			<%= form.date_field :expire_at, id: :project_expire_at, class: "form-control", required: true %>
 	</div>
+
+
 	
 	<!-- Nested field -->
 	<div class="form-group">
 		<%= fields_for(@project_skill) do |ps| %>
-				<%= ps.label "All skills" %>
-				<%= collection_select(:skills, :id,  @all_skills, :id, :title, {selected: @selected_skills.map(&:skill_id) }, {multiple: true, class: "chosen-select"}) %>
+			<%= ps.label "Compétences recherchées" %>
+			<%= collection_select(:skills, :id,  @all_skills, :id, :title, {selected: (@selected_skills.map(&:skill_id) unless @selected_skills.nil?)}, {:id => "skills_update", class: "chosen-select", multiple: true}) %>
 		<% end %>
 	</div><!-- end nested -->
 
@@ -80,3 +67,18 @@
 		<%= form.button "PUBLIER", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> PUBLIGATION..."} %>
 	</div>
 <% end %>
+<script>
+  $(document).ready(function() {
+    $('#category_select').change(function() {
+      $.ajax({
+        url: "<%= update_skills_path %>",
+        data: {
+          category_id: $('#category_select').val(),
+
+        },
+        dataType: "script",
+        cache:true
+      });
+    });
+  });
+</script>

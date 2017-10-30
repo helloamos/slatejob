@@ -9,12 +9,12 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group has-feedback">
 
-        <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder: "Email"%>
+        <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder: "Email", required: true %>
 
       </div>
       <div class="form-group has-feedback">
         <!-- <input type="password" class="form-control" placeholder="Password"> -->
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mot de passe", required: true %>
 
       </div>
       <div class="row">
@@ -39,10 +39,11 @@
 
 
     <%= render "devise/shared/forgotpassword" %>
-
-    Vous n'avez pas de compte ?
+    
+    <p class="login_has_account">
+        Vous n'avez pas de compte ?
       <%= render "devise/shared/register" %>
-
+    </p>
       
   </div>
   <!-- /.login-box-body -->

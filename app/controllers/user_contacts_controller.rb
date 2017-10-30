@@ -45,8 +45,8 @@ class UserContactsController < ApplicationController
   def update
     respond_to do |format|
       if @user_contact.update(user_contact_params)
-        format.html { redirect_to @user_contact, notice: 'Subscription was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_contact }
+        format.html { redirect_to account_path, notice: 'Subscription was successfully updated.' }
+        format.json { render :show, status: :ok, location: account_path }
       else
         format.html { redirect_to account_path }
         format.json { render json: @user_contact.errors, status: :unprocessable_entity }

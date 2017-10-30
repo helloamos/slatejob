@@ -32,7 +32,7 @@ class UserDetailsController < ApplicationController
        
         ## Redirection
         format.html { redirect_to account_path, notice: t(:user_detail_successfull) }
-        format.json { render :show, status: :created, location: @user_detail }
+        format.json { render :show, status: :created, location: account_path }
       else
         format.html { redirect_to account_path, alert: t(:user_detail_error) }
         format.json { render json: @user_detail.errors, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class UserDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @user_detail.update(user_detail_params)
-        format.html { redirect_to @user_detail, notice: 'Subscription was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_detail }
+        format.html { redirect_to account_path, notice: 'Subscription was successfully updated.' }
+        format.json { render :show, status: :ok, location: account_path }
       else
         format.html { redirect_to account_path }
         format.json { render json: @user_detail.errors, status: :unprocessable_entity }

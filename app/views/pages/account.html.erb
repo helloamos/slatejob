@@ -32,33 +32,49 @@
 
 							<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 							  <%= devise_error_messages! %>
+
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-sm-8">
 									<div class="form-group">
-									    <%= f.label :user_name %><br />
+									    <%= f.label t(:user_name) %><br />
 									    <%= f.text_field :user_name, autofocus: true, class: "form-control", placeholder: "Nom complet" , required: true %>
 								  </div>	
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-									    <%= f.label :login %><br />
+
+								  <div class="form-group">
+									    <%= f.label t(:login) %><br />
 									    <%= f.text_field :login, autofocus: true, class: "form-control" , placeholder: "Login" , required: true %>
 									 </div>
-								</div>
-							</div>
-
-
-							  <div class="form-group">
+							<div class="form-group">
 							    <%= f.label :email %><br />
 							    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" , required: true %>
 							  </div>
+								</div>
+
+								<div class="col-sm-4">
+									<div class="form-group">
+						                <div class="thumbnail-preview">
+						                    <%= image_tag current_user.avatar.url(:medium) %>
+						                </div>
+						               
+						                    
+						                    <%= f.file_field :avatar, class: "filestyle","data-input" => false, "data-icon"=>false,
+						                     "data-buttonText" =>"Insérer une image", "data-buttonName" => "btn-primary" %>
+
+						               
+						            </div>
+								</div>
+								
+							</div>
+
+
+
 
 							  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 							    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 							  <% end %>
 
 							  <div class="form-group">
-							    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+							    <%= f.label :password %> <i>(<%= t(:leave_blank_password) %>)</i><br />
 							    <%= f.password_field :password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe"  %>
 							    <% if @minimum_password_length %>
 							      <br />
@@ -72,7 +88,7 @@
 							  </div>
 
 							  <div class="form-group">
-							    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+							    <%= f.label :current_password %> <i>(<%= t(:type_current_password) %>)</i><br />
 							    <%= f.password_field :current_password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe actuel" , required: true %>
 							  </div>
 
@@ -101,7 +117,7 @@
 			                		<div class="row">
 										<div class="col-sm-4">
 					                		<div class="form-group">
-					                			<%= form.label :specialization %>
+					                			<%= form.label t(:specialization) %>
 					                			<%= form.text_field :specialization,  class: "form-control", placeholder: "Spécialisation", required: true %>
 					                		</div>
 				                		</div>
@@ -109,14 +125,14 @@
 				                		<div class="col-sm-4">
 
 					                		<div class="form-group">
-					                			<%= form.label :availability %>
-					                			<%= form.text_field :availability,  class: "form-control", placeholder: "Disponibilité", required: true %>
+					                			<%= form.label t(:availability) %>
+					                			<%= form.select :availability,  User::AVAILABILITY, {prompt: t(:visibility)}, class: "form-control", placeholder: "Disponibilité", required: true %>
 					                		</div>
 				                		</div>
 				                		<div class="col-sm-4">
 					                		<div class="form-group">
-					                			<%= form.label :visibility %>
-					                			<%= form.text_field :visibility,  class: "form-control", placeholder: "Visibilité" , required: true%>
+					                			<%= form.label t(:visibility) %>
+					                			<%= form.select :visibility, User::VISIBILITY, {prompt: t(:visibility)}, class: "form-control", placeholder: "Visibilité" , required: true%>
 					                		</div>
 				                		</div>
 			                		</div>
@@ -124,14 +140,16 @@
 									<div class="row">
 										<div class="col-sm-12">
 					                		<div class="form-group">
-					                			<%= form.label :presentation %>
-					                			<%= form.bootsy_area :presentation, rows: 12, class: "form-control", placeholder: "Présentation", required: true %>
+					                			<%= form.label t(:presentation) %>
+					                			<%= form.text_area :presentation, rows: 12, class: "form-control", placeholder: "Présentation", required: true %>
 					                		</div>
 				                		</div>
 			                		</div>
 									<div class="row">
+										<div class="col-sm-12">
 										<div class="form-group">
 										    <%= form.button "Enregistrer les modifications", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+										</div>
 										</div>
 									</div>
 
@@ -149,14 +167,14 @@
 		                		<div class="row">
 		                			<div class="col-sm-6">
 		                				<div class="form-group">
-					                		<%= form.label :country %>
+					                		<%= form.label t(:country) %>
 					                		<%= form.text_field :country, class: "form-control", placeholder: "Pays",  required: true %>
 				                		</div>
 			                			
 			                		</div>
 			                		<div class="col-sm-6">
 			                			<div class="form-group">
-					                		<%= form.label :city %>
+					                		<%= form.label t(:city) %>
 					                		<%= form.text_field :city, class: "form-control" , placeholder: "Ville", required: true %>
 				                		</div>
 			                			
@@ -168,14 +186,14 @@
 		                		<div class="row">
 		                			<div class="col-sm-6">
 		                				<div class="form-group">
-					                		<%= form.label :address %>
+					                		<%= form.label t(:address) %>
 					                		<%= form.text_field :address, class: "form-control", placeholder: "Adresse", required: true %>
 				                		</div>
 			                			
 			                		</div>
 			                		<div class="col-sm-6">
 			                			<div class="form-group">
-					                		<%= form.label :phone %>
+					                		<%= form.label t(:phone) %>
 					                		<%= form.text_field :phone, class: "form-control", placeholder: "Téléphone", required: true %>
 				                		</div>
 			                			

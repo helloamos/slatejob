@@ -1,6 +1,6 @@
 class ProjectSkill < ApplicationRecord
 	belongs_to :skill
-	belongs_to :project
+	belongs_to :project, dependent: :destroy
 
 	
 end

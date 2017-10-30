@@ -2,25 +2,30 @@ Rails.application.routes.draw do
 
 
   
-  resources :categories
-  resources :skills
-  post '/rate' => 'rater#create', :as => 'rate'
-  resources :currencies
-  resources :time_unities
+    resources :categories
+    resources :skills
+    resources :currencies
+    resources :time_unities
     #devise_for :users
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     # Homepage.
-    #root to: "home#index"
-    root to: "pages#subscription"
-     #root to: "home#landing"
-
+    root to: "home#index"
+    #root to: "pages#subscription"
+    #root to: "home#landing"
+    #get "/home" => "home#index"
     get "/subscription" => "pages#subscription", as: :subscription
-    get "/home" => "home#index"
     get "/dashboard" => "dashboard#index" , as: :dashboard
-    get "/account" => "pages#account" , as: :account
-    get "/last-projects" => "projects#last_projects", as: :last_projects
-    get "/project/:id" => "projects#show", as: :project_show
+    get "/settings/account" => "pages#account" , as: :account
+    get "/projects/recent" => "projects#recent_projects", as: :recent_projects
+    get "/projects/show/:id" => "projects#show", as: :project_show
+    get "/projects/show/:category/" => "projects#projects_by_category", as: :project_by_category
+    
+    get 'projects/update_skills', :as => 'update_skills'
+    get 'read_notification' => 'notifications#show'
+    get "/freelances" => "freelances#index", as: :freelances
+    get "/freelances/resume/:slug" => "freelances#resume", as: :resume
+    get "/attibute-project" => "attribute_projects#attribute", as: :attribute
    
     
     # Example Devise routes
@@ -30,7 +35,10 @@ Rails.application.routes.draw do
     resources :subscriptions
     resources :user_details
     resources :user_contacts
-    resources :projects
+    #resources :projects
+      resources :projects do
+          get 'delete'
+     end
     resources :bids
 
     devise_for :users, path: 'user', path_names: { 
@@ -41,9 +49,10 @@ Rails.application.routes.draw do
         unlock: 'unblock', 
         registration: 'register', 
         sign_up: 'cmon_let_me_in' 
+
     }
 
 
     # Bootsy edito routes.
-    mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+    #mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 end

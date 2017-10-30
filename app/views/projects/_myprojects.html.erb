@@ -1,0 +1,83 @@
+<!-- Content here -->
+ <!-- <table id="example2" class="table table-bordered table-striped">-->
+ <table  class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nom du projet</th>
+          <th>Publication</th>
+          <th>Offres</th>
+          <th>Vue(s)</th>
+          <th>Statut</th>
+          <th>Date limite</th>
+          <th>Budget</th>
+          
+          
+          <th>Gérer</th>
+          
+        </tr>
+      </thead>
+      <tbody class="myprojects-index">
+        <% @projects.each do |project| %>
+      <tr>
+     
+      <td>
+        <h5><%= link_to "#{project.title}" , project_show_path(project)  %></h5>
+      </td>
+      
+      
+      <td>
+        <%= time_ago_in_words(project.created_at) %>
+        
+      </td>
+      <td>
+      <span>
+            <%= project_total_bids(project.id) %>
+        </span>
+        </td>
+        <td><%= project.view_number %> </td>
+        <td>
+            <span class="project_status_<%= project.status.parameterize %>">
+                        <%= t(project.status) %>
+                      </span>
+        </td>
+        <td><%= project.expire_at.strftime("%d/%m/%Y") %></td>
+        <td>
+            <span>  
+                            <%= project.budget %>  
+                        </span>
+                        <span>
+                            <%= currency_symbol(project.currency_id) %>
+                        </span>
+        </td>
+                              
+     
+     
+
+  <td>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">GERER
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        
+        <li>
+            <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"> Modifier</i>'),edit_project_path(project), remote: false , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+        <li>
+
+          <li>
+            <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"> Supprimer</i>'), project_delete_path(project),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </td>
+    </tr>
+<% end %>
+      </tbody>
+  </table>
+
+  <div class="row page-navi">
+    <div class="col-md-12">
+      <%= will_paginate @projects, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+        </div>
+    </div>

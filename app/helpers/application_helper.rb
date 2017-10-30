@@ -69,5 +69,40 @@ module ApplicationHelper
 		@project_skills = project.project_skills
 	end
 
+	# Count current user unread notification
+	def unread_notification
+	  @notification = Notification.unread_notification(current_user).order(:created_at => "DESC")
+	  notification = Notification.unread_notification(current_user).count
+	end
+
+
+
+	#User unread message
+	def unread_messages
+	  conversation = Conversation.get_conversation(current_user)
+	  if conversation.present?
+	      message = Message.where(:conversation_id => conversation).count
+	    
+	    else
+	      message = 0
+	  end
+	end
+
+	def user_details_presentation(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		presentation = user_detail.presentation
+	end
+	def user_contacts_city(user_id)
+		user = User.find(user_id)
+		user_contact = user.user_contact
+		city = user_contact.city
+	end
+	def user_contacts_country(user_id)
+		user = User.find(user_id)
+		user_contact = user.user_contact
+		country= user_contact.country
+	end
+
 	
 end

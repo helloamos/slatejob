@@ -1,0 +1,2 @@
+class AttributeProject < ApplicationRecord
+end
