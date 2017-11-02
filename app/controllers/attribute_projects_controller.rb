@@ -1,4 +1,5 @@
 class AttributeProjectsController < ApplicationController
+	before_action :authenticate_user!
 	def attribute
 		receiver = params[:freelance]
 		project = Project.find(params[:project])

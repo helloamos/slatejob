@@ -1,4 +1,5 @@
 class UserDetailsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_detail, only: [:show, :edit, :update, :destroy]
 
   # GET /subscriptions

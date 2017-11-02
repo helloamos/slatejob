@@ -18,18 +18,23 @@
 
       </div>
       <div class="row">
-        <div class="col-xs-7">
-          <div>
-            <label>
-              <!-- <input type="checkbox"> Remember Me -->
-              <%= f.check_box :remember_me %>
-            <%= f.label "Session active" %>
-            </label>
-
-          </div>
+        <div class="col-xs-6">
+         
+            <div class="form-group">
+                <%= f.check_box :remember_me %>
+                <%= f.label "Session active" %>
+            </div>
         </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <%= render "devise/shared/forgotpassword" %>
+            </div>
+        </div>
+
         <!-- /.col -->
-        <div class="col-xs-5">
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
           <%= f.button "Se connecter", class: "btn btn-primary btn-block" , data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Connexion..."} %>
           <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>-->
         </div>
@@ -38,7 +43,7 @@
    <% end %>
 
 
-    <%= render "devise/shared/forgotpassword" %>
+    
     
     <p class="login_has_account">
         Vous n'avez pas de compte ?

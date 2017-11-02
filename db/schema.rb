@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029175333) do
+ActiveRecord::Schema.define(version: 20171031153049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20171029175333) do
     t.index ["project_id"], name: "index_attribute_projects_on_project_id"
     t.index ["receiver_id"], name: "index_attribute_projects_on_receiver_id"
     t.index ["sender_id"], name: "index_attribute_projects_on_sender_id"
+  end
+
+  create_table "awards", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "conferring_organization"
+    t.string "date_of_obtaining", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_awards_on_user_id"
   end
 
   create_table "bids", force: :cascade do |t|
@@ -45,6 +56,17 @@ ActiveRecord::Schema.define(version: 20171029175333) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "certifications", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "date_of_obtaining", null: false
+    t.string "country", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_certifications_on_user_id"
   end
 
   create_table "comment_users", force: :cascade do |t|
@@ -73,6 +95,32 @@ ActiveRecord::Schema.define(version: 20171029175333) do
     t.string "iso_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "degree"
+    t.string "school"
+    t.string "start_date", null: false
+    t.string "end_date", null: false
+    t.string "country", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "company"
+    t.string "position"
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.string "country", null: false
+    t.boolean "currently_working", default: false, null: false
+    t.text "task", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "favoris_users", force: :cascade do |t|

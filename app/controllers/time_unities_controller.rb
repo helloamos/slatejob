@@ -1,4 +1,5 @@
 class TimeUnitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_time_unity, only: [:show, :edit, :update, :destroy]
 
   # GET /time_unities

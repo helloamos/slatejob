@@ -62,3 +62,12 @@ fr:
   phone: "Téléphone"
   new_project: "Nouveau projet"
   attributed: "Attribué"
+  start_date: "Date début"
+  end_date: "Date fin"
+  position: "Poste"
+  tasks: "Tâches"
+  currently_working: "J'y travail toujours"
+  company: "Entreprise ou Organisation"
+  professional_experience: "Expérience professionnelle"
+  
+  

@@ -1,23 +1,220 @@
 	<!-- PRESENTATION -->
 	<section class="presentation">
-
-
-
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h4 class=box-title>
-					<span><i class="fa fa-info-circle" aria-hidden="true"></i></span>
-					A propos de moi
-				</h4>
+				<span>
+						<h4 class="box-title">A propos de moi</h4>
+					</span>
+					<span class="add_button pull-right">
+						<% if is_current_user?(@freelance) %>
+									<%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+					</span>
+
+				
 			</div>
 			<div class="box-body">
 				<div class="freelance_short_presentation">
-											<%= user_details_presentation(@freelance.id).html_safe %>
-										</div>
+					<%= user_details_presentation(@freelance.id).html_safe %>
+				</div>
 			</div>
 		</div>
 		
 	</section>
+
+	<!-- VOUS EN QUELQUES MOTS -->
+				<section class="experiences">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span>
+								
+								<h4 class="box-title pull-left">Expériences </h4>
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@freelance) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+
+							<div class="experiences-index">
+								<%= render ("./experiences/index") %>
+							</div>
+
+
+							
+
+						</div>
+					</div>
+					
+				</section>
+
+				<!-- EXPÉRIENCES -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+
+							<span class="section_title">
+							
+							<h4 class="box-title pull-left">Educations</h4>
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@freelance) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							
+							<div class="resume_section-content">
+
+								<% if @educations.nil? %>
+									<h5><i>Rien à afficher pour cette section!</i></h5>
+								<% else %>
+
+								<% @educations.each do |education| %>
+									<ul>
+										<li class="resume_section-content_item" id="education-1448">
+											<div class="resume_section-content_title is-blue">
+													<%= education.title %>
+											</div>
+											<div class="resume_section-content_subtitle">
+												<%= education.school %> -  <%= education.country %>
+											</div>
+											<div class="resume_section-content_range">
+												<span class=period>
+													<span><%= education.start_year %> - </span>
+													<span><%= education.end_year %>  </span>
+												</span>
+											</div>
+										</li>
+
+										<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_education_path(education), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+										<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), education_delete_path(education),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+
+										</ul>
+								<% end %>
+								<% end %>
+							</div>
+							
+						</div>
+					</div>
+
+				</section>
+
+				<!-- FORMATIONS & CERTIFICATIONS -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span class="section_title">
+							
+								<h4 class="box-title pull-left">Formations & Certifications </h4>
+						
+								
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@freelance) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+
+							<% if @certifications.nil? %>
+								<h5><i>Rien à afficher pour cette section!</i></h5>
+							<% else %>
+							<% @certifications.each do |certification| %>
+
+									<ul>
+										<li class="resume_section-content_item" data-role="item" id="employment-4741">
+											<div class="resume_section-content_title">
+												<%= certification.name %>
+											</div>
+											<div class="resume_section-content_range">
+												<span class=start_period>
+													<span><%= certification.offer_year %></span>
+													
+												</span>
+							
+												
+
+											</div>
+											<div class="muted">
+												
+												<%= certification.description %>
+											</div>
+										</li>
+										
+										
+										<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_certification_path(certification), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+										<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), certification_delete_path(certification),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+
+									
+									</ul>
+								<% end %>
+								<% end %>
+						</div>
+					</div>
+
+				</section>
+				<!-- Trophés -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span class="section_title">
+								<h4 class="box-title pull-left">Prix & Distinctions </h4>
+								
+								
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@freelance) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							<% if @awards.blank? %>
+								<h5><i>Rien à afficher pour cette section!</i></h5>
+							<% else %>
+							<% @awards.each do |award| %>
+
+									<ul>
+										<li class="resume_section-content_item" data-role="item" id="employment-4741">
+											<div class="resume_section-content_title">
+												<%= award.name %>
+											</div>
+											<div class="resume_section-content_range">
+												<span class=period>
+													<span><%= award.offer_year %></span>
+													
+												</span>
+											</div>
+
+											<!-- -->
+											<div class="muted">
+												
+												<%= award.description %>
+											</div>
+											<div class="conferring_organization">
+												
+												<%= award.conferring_organization %>
+											</div>
+										</li>
+										
+										<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'), edit_award_path(award), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+										<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), award_delete_path(award),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+									
+									</ul>
+								<% end %>
+								<% end %>
+						</div>
+					</div>
+
+				</section>
 
 
 

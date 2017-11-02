@@ -103,20 +103,27 @@
            </a>
               <ul class="dropdown-menu">
                 <li>
-                    <%= link_to raw('<i class="fa fa-info-circle" aria-hidden="true"> </i>  Tableau de bord'), dashboard_path %>
+                    <%= link_to 'Tableau de bord', dashboard_path %>
                 </li>
 
                 <li>
 
-                 <%= link_to raw('<i class="fa fa-user" aria-hidden="true"> </i> Mon profil'), edit_profile_path(current_user) %>
+                 <%= link_to 'Mon profil', edit_profile_path(current_user) %>
 
                  </li>
+
+                 <li>
+
+                 <%= link_to 'Paramètres', edit_profile_path(current_user) %>
+
+                 </li>
+
 
 
                 <li role="separator" class="divider"></li>
                 <li>
                 
-                 <%= link_to raw('<i class="fa fa-sign-out icon-sign-out"> </i>  Déconnexion'), destroy_user_session_path, method: :delete %>
+                 <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %>
                  </li>
                  </ul>
         </li>

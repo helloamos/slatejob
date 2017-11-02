@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   
+  resources :awards
+  resources :certifications
+  resources :educations
+  #resources :experiences
     resources :categories
     resources :skills
     resources :currencies
@@ -41,6 +45,10 @@ Rails.application.routes.draw do
           get 'delete'
      end
     resources :bids do 
+
+        get 'delete'
+    end
+     resources :experiences do 
 
         get 'delete'
     end

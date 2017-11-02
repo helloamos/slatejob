@@ -24,6 +24,7 @@ class User < ApplicationRecord
 	has_one :user_contact
 	has_many :projects
 	has_many :bids
+	has_many :experiences
 	
 
 	# Paperclip usage

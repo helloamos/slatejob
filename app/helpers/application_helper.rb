@@ -103,6 +103,16 @@ module ApplicationHelper
 		user_contact = user.user_contact
 		country= user_contact.country
 	end
+	def user_details_occupation(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		occupation = user_detail.specialization
+	end
+	def user_details_availability(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		availability = user_detail.availability
+	end
 
 	def attribute_button?(project_user_id, project_id)
 		attributed = AttributeProject.find_by_project(project_id)
@@ -130,6 +140,14 @@ module ApplicationHelper
 		
 		user = User.find(user_id)
 		
+	end
+
+	def is_current_user?(user_id)
+		if user_id == current_user
+			return true
+		else
+			return false
+		end
 	end
 
 

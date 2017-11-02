@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-	
+	before_action :authenticate_user!
 	def edit
 
 		# Initialize.
@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def show
+		@experiences = current_user.experiences
 		@freelance = User.friendly.find(params[:slug])
 		render layout: 'dashboard'
 	end
