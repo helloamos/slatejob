@@ -1,0 +1,27 @@
+<% if @educations.nil? %>
+      <h5><i>Rien à afficher pour cette section!</i></h5>
+    <% else %>
+
+    <% @educations.each do |education| %>
+      <ul>
+        <li class="resume_section-content_item" id="education-1448">
+          <div class="resume_section-content_title is-blue">
+              <%= education.degree %>
+          </div>
+          <div class="resume_section-content_subtitle">
+            <%= education.school %> 
+          </div>
+          <div class="resume_section-content_range">
+            <span class=period>
+              <span><%= l(education.start_date, format: '%Y') %></span> -
+               <span><%= l(education.end_date, format: '%Y') %></span>
+            </span>
+          </div>
+        </li>
+
+        <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_education_path(education), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+        <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), education_delete_path(education),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+
+        </ul>
+    <% end %>
+    <% end %>

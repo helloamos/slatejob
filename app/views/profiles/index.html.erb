@@ -16,31 +16,31 @@
 						<div class="box-body">
 							
 
-								<div class="freelances_content">
+								<div class="user_content">
 									
 									<div class="col-md-4">
-										<div class="freelance_thumbnail">
+										<div class="user_thumbnail">
 											<%= image_tag freelance.avatar.url(:medium) %>
 										</div>
 									</div>
 									<div class="col-md-8">
-										<div class="freelance_name">
+										<div class="user_name">
 											<%= link_to "#{freelance.user_name}" , show_profile_path(freelance) %>
 										</div>
-										<div class="freelance_meta">
-											<span class="freelance_location">
+										<div class="user_meta">
+											<span class="user_location">
 												<%= user_contacts_city(freelance.id) %>, 
 												<%= user_contacts_country(freelance.id) %>
 											</span>
-											<span class="freelance_member_since">
+											<span class="user_member_since">
 												- Membre depuis: <%= freelance.created_at.strftime("%d/%m/%Y") %>
 											</span>
 										</div>
 
-										<div class="freelance_short_presentation">
+										<div class="user_short_presentation">
 											<%= user_details_presentation(freelance.id).truncate_words(30, omission: '...').html_safe %>
 										</div>
-										<div class="freelance_skills">
+										<div class="user_skills">
 											
 										</div>
 

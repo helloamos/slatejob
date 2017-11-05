@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-
 //= require rails-ujs
+//= require geocomplete
 // In rails 5 jquery don't work "disabled require turbolinks"
 //= require rails.validations
 //= require bootstrap
@@ -20,7 +20,12 @@
 //= require social-share-button
 //= require toastr
 //= require chosen-jquery
+
 //= require_tree .
+$(function(){
+	$("#geocomplete").geocomplete();  // Option 1: Call on element.
+})
+
 
 
 

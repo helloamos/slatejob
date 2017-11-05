@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031153049) do
+ActiveRecord::Schema.define(version: 20171105024713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171031153049) do
     t.string "title"
     t.text "description"
     t.string "conferring_organization"
-    t.string "date_of_obtaining", null: false
+    t.date "date_of_obtaining", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20171031153049) do
   create_table "certifications", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "date_of_obtaining", null: false
+    t.date "date_of_obtaining", null: false
     t.string "country", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -97,11 +97,17 @@ ActiveRecord::Schema.define(version: 20171031153049) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "domains", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string "degree"
     t.string "school"
-    t.string "start_date", null: false
-    t.string "end_date", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.string "country", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -164,6 +170,14 @@ ActiveRecord::Schema.define(version: 20171031153049) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
+  create_table "professions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "domain_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_professions_on_domain_id"
+  end
+
   create_table "project_skills", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
@@ -198,10 +212,10 @@ ActiveRecord::Schema.define(version: 20171031153049) do
 
   create_table "skills", force: :cascade do |t|
     t.string "title"
+    t.bigint "profession_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_skills_on_category_id"
+    t.index ["profession_id"], name: "index_skills_on_profession_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -224,6 +238,8 @@ ActiveRecord::Schema.define(version: 20171031153049) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_user_contacts_on_user_id"
   end
 
@@ -246,6 +262,25 @@ ActiveRecord::Schema.define(version: 20171031153049) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_user_friends_on_receiver_id"
     t.index ["sender_id"], name: "index_user_friends_on_sender_id"
+  end
+
+  create_table "user_languages", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_languages_on_user_id"
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.bigint "profession_skill_id", null: false
+    t.string "grade", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profession_skill_id"], name: "index_user_skills_on_profession_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

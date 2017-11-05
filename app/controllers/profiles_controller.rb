@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
 	before_action :authenticate_user!
+
 	def edit
 
 		# Initialize.
@@ -29,9 +30,29 @@ class ProfilesController < ApplicationController
 		render layout: "dashboard"
 	end
 
-	def show
-		@experiences = current_user.experiences
-		@freelance = User.friendly.find(params[:slug])
+	def show	
+		@user = User.friendly.find(params[:slug])
+		@experiences = @user.experiences
+
+		#Load education section
+		@educations = @user.educations
+		@certifications = @user.certifications
+		@awards = @user.awards
+
+
+		# User all experiences
+		#@user_all_experiences = user.experiences
+		# User all experiences
+		#@user_all_publigations = user.publigations
+
+		# User all experiences
+		#@user_all_distinctions = user.awards
+
+		# User all experiences
+		#@user_all_portfolios = user.portfolios
+
+	
+
 		render layout: 'dashboard'
 	end
 
@@ -42,6 +63,10 @@ class ProfilesController < ApplicationController
 		@freelances = User.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
 		render layout: 'dashboard'
 	end
+
+	private
+
+	
 
 	
 

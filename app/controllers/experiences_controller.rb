@@ -1,5 +1,7 @@
 class ExperiencesController < ApplicationController
+    #before_action :set_user
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /experiences
   # GET /experiences.json
@@ -49,11 +51,14 @@ class ExperiencesController < ApplicationController
       if @experience.update(experience_params)
         format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
         format.json { render :show, status: :ok, location: @experience }
-         format.js
+        format.js
+         flash.now[:notice] = 'Experience was successfully updated.'  
+         
       else
         format.html { render :edit }
         format.json { render json: @experience.errors, status: :unprocessable_entity }
-         format.js
+        format.js
+        flash[:alert] = 'Error.' 
       end
     end
   end
@@ -72,9 +77,15 @@ class ExperiencesController < ApplicationController
 
   def delete
       @experience = Experience.find(params[:experience_id])
-    end
+    
+  end
 
   private
+
+    def set_user
+       @user = User.find(params[:user_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_experience
       @experience = Experience.find(params[:id])

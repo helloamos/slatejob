@@ -1,22 +1,36 @@
-<%= form_with(model: certification, local: true) do |form| %>
-  <% if certification.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(certification.errors.count, "error") %> prohibited this certification from being saved:</h2>
+<%= form_with(model: certification, local: false, remote: true) do |form| %>
+<div class="modal-body">
 
-      <ul>
-      <% certification.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :certification_title %>
+  <div class="form-group">
+    <%= form.label t(:title) %>
+    <%= form.text_field :title, id: :certification_title, class: "form-control" %>
+  </div>
+<div class="row">
+<div class="col-xs-2">
+  <div class="form-group">
+    <%= form.label t(:date_of_obtaining) %><br />
+    <%= form.date_select :date_of_obtaining,{:discard_day => true, :discard_month => true, :start_year => 1900}, class: "date_select" %>
+  </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-xs-10">
+  <div class="form-group">
+    <%= form.label t(:country) %>
+    <%= form.text_field :country, id: :certification_country, class: "form-control" %>
+  </div>
+  </div>
+</div>
+
+  <div class="form-group">
+    <%= form.label t(:description) %>
+    <%= form.text_area :description, id: :certification_description, class: "form-control" %>
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <%= form.button cu_action_label(form) , class: "btn btn-primary",data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+  </div>
   </div>
 <% end %>

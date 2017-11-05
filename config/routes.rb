@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
 
   
-  resources :awards
-  resources :certifications
-  resources :educations
+  
+  
+
+  resources :domains
+  resources :user_skills
+  resources :profession_skills
+  resources :professions
   #resources :experiences
     resources :categories
     resources :skills
@@ -50,6 +54,19 @@ Rails.application.routes.draw do
     end
      resources :experiences do 
 
+        get 'delete'
+    end
+    resources :awards do 
+        get 'delete'
+    end
+    resources :certifications do 
+        get 'delete'
+    end
+  resources :educations do 
+    get 'delete'
+    end
+
+      resources :user_languages do 
         get 'delete'
     end
 

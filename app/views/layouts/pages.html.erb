@@ -11,16 +11,7 @@
 
   <body class="hold-transition login-page">
   	
-<% if notice %>
-      <div id="notice_wrapper">
-
-        <p class="alert alert-success"><%= notice %></p>
-      </div>
-    <% elsif alert %>
-      <div id="alert_wrapper">
-        <p class="alert alert-danger"><%= alert %></p>
-      </div>
-  <% end %>
+<%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
     <%= yield %>
 
      

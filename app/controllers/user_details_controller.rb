@@ -32,10 +32,10 @@ class UserDetailsController < ApplicationController
 
        
         ## Redirection
-        format.html { redirect_to account_path, notice: t(:user_detail_successfull) }
-        format.json { render :show, status: :created, location: account_path }
+        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_detail_successfull) }
+        format.json { render :show, status: :created, location: edit_profile_path(current_user) }
       else
-        format.html { redirect_to account_path, alert: t(:user_detail_error) }
+        format.html { redirect_to edit_profile_path(current_user), alert: t(:user_detail_error) }
         format.json { render json: @user_detail.errors, status: :unprocessable_entity }
       end
     end
@@ -46,10 +46,10 @@ class UserDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @user_detail.update(user_detail_params)
-        format.html { redirect_to account_path, notice: 'Subscription was successfully updated.' }
-        format.json { render :show, status: :ok, location: account_path }
+        format.html { redirect_to edit_profile_path(current_user), notice: 'Subscription was successfully updated.' }
+        format.json { render :show, status: :ok, location: edit_profile_path }
       else
-        format.html { redirect_to account_path }
+        format.html { redirect_to edit_profile_path(current_user) }
         format.json { render json: @user_detail.errors, status: :unprocessable_entity }
       end
     end

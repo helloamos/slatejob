@@ -23,7 +23,7 @@ class AttributeProjectsController < ApplicationController
 		        content = "vient de vous attribuer son projet"
 		        Notification.create(:content => content, :sender_id => sender, :receiver_id => receiver_id)
 				
-				AttributedMailer.bid_email(project.user_id, current_user.id, project.id).deliver_now
+				AttributedMailer.attributed_email(project.user_id, current_user.id, project.id).deliver_now
 				
 				flash[:notice] = 'Le projet a été attrubé avec succès.' 
 				redirect_to project_show_path(project) 

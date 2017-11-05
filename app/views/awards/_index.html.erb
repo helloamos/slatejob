@@ -1,0 +1,35 @@
+<% if @awards.blank? %>
+      <h5><i>Rien à afficher pour cette section!</i></h5>
+    <% else %>
+    <% @awards.each do |award| %>
+
+        <ul>
+          <li class="resume_section-content_item" data-role="item" id="employment-4741">
+            <div class="resume_section-content_title">
+              <%= award.title %>
+            </div>
+            <div class="resume_section-content_range">
+              <span class=period>
+            
+                <span><%= l(award.date_of_obtaining, format: '%Y') %></span>
+                
+              </span>
+            </div>
+
+            <!-- -->
+            <div class="muted">
+              
+              <%= award.description %>
+            </div>
+            <div class="conferring_organization">
+              
+              <%= award.conferring_organization %>
+            </div>
+          </li>
+          
+          <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'), edit_award_path(award), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+          <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), award_delete_path(award),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+        
+        </ul>
+      <% end %>
+      <% end %>

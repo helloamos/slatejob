@@ -6,20 +6,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDRxpYSfeVzq75bkQQYdxGUhhAREUgFcaw&libraries=places"></script>
+
   </head>
 
   <body class="page-wrapper">
   	<%= render('layouts/partials/dheader') %>
-      <% if notice %>
-      <div id="notice_wrapper">
-
-        <p class="alert alert-success"><%= notice %></p>
-      </div>
-    <% elsif alert %>
-      <div id="alert_wrapper">
-        <p class="alert alert-danger"><%= alert %></p>
-      </div>
-  <% end %>
+     
+    <%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
 
     <%= yield %>
 

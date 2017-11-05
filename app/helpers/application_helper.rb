@@ -21,6 +21,14 @@ module ApplicationHelper
 		#user.avatar.url
 	end
 
+	def cu_action_label(obj)
+		if obj.object.new_record?
+			return t(:new_record)
+		else
+			return t(:update_record)
+		end
+	end
+
 	def do_separator(item, content)
 
 		if item != content.last 

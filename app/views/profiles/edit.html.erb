@@ -165,20 +165,7 @@
 		                	<%= form_for(@user_contact) do |form| %>
 		                		<!-- Row -->
 		                		<div class="row">
-		                			<div class="col-sm-6">
-		                				<div class="form-group">
-					                		<%= form.label t(:country) %>
-					                		<%= form.text_field :country, class: "form-control", placeholder: "Pays",  required: true %>
-				                		</div>
-			                			
-			                		</div>
-			                		<div class="col-sm-6">
-			                			<div class="form-group">
-					                		<%= form.label t(:city) %>
-					                		<%= form.text_field :city, class: "form-control" , placeholder: "Ville", required: true %>
-				                		</div>
-			                			
-			                		</div>
+		                			
 		                		</div>
 		                		<!-- end row -->
 
@@ -186,8 +173,9 @@
 		                		<div class="row">
 		                			<div class="col-sm-6">
 		                				<div class="form-group">
-					                		<%= form.label t(:address) %>
-					                		<%= form.text_field :address, class: "form-control", placeholder: "Adresse", required: true %>
+					                		<%= form.label t(:city) %>
+					                		<%= form.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
+
 				                		</div>
 			                			
 			                		</div>

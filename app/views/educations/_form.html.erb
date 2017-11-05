@@ -1,27 +1,43 @@
-<%= form_with(model: education, local: true) do |form| %>
-  <% if education.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(education.errors.count, "error") %> prohibited this education from being saved:</h2>
-
-      <ul>
-      <% education.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: education, local: false, remote: true) do |form| %>
+  <div class="modal-body">
+  
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="form-group">
+                <%= form.label t(:start_date) %><br />
+                <%= form.date_select(:start_date, {:discard_day => true, :discard_month => true, :start_year => 1900}, class: "date_select") %>
+              </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                   <%= form.label t(:end_date) %><br />
+                <%= form.date_select(:end_date, {:discard_day => true, :discard_month => true, :start_year => 1900}, class: "date_select") %>
+              </div>
+          </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :degree %>
-    <%= form.text_field :degree, id: :education_degree %>
+ 
+  <div class="form-group">
+    <%= form.label t(:degree) %>
+    <%= form.text_field :degree, id: :education_degree, class: "form-control", placeholder: t(:degree) %>
   </div>
 
-  <div class="field">
-    <%= form.label :school %>
-    <%= form.text_field :school, id: :education_school %>
+  <div class="form-group">
+    <%= form.label t(:school) %>
+    <%= form.text_field :school, id: :education_school, class: "form-control", placeholder: t(:school) %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.label t(:country) %>
+    <%= form.text_field :country, id: :education_school, class: "form-control", placeholder: t(:country) %>
+  </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+    <div class="form-group">
+      <%= form.button cu_action_label(form), data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."}, class: "btn btn-primary pull-right" %>
+    </div>
   </div>
 <% end %>

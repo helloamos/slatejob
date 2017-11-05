@@ -1,4 +1,6 @@
 class UserContactsController < ApplicationController
+   require 'openssl'
+   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   before_action :authenticate_user!
   before_action :set_user_contact, only: [:show, :edit, :update, :destroy]
 
@@ -32,11 +34,12 @@ class UserContactsController < ApplicationController
 
        
         ## Redirection
-        format.html { redirect_to account_path, notice: t(:user_contact_successfull) }
+        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_contact_create_successfull) }
         format.json { render :show, status: :created, location: @user_detail }
+        format.js
       else
-        format.html { redirect_to account_path, alert: t(:user_contact_error) }
-        format.json { render json: @user_contact.errors, status: :unprocessable_entity }
+        format.html { redirect_to edit_profile_path(current_user), alert: t(:user_contact_create_error) }
+        format.json { render json: @user_contact.errors, danger: :unprocessable_entity }
       end
     end
   end
@@ -46,10 +49,11 @@ class UserContactsController < ApplicationController
   def update
     respond_to do |format|
       if @user_contact.update(user_contact_params)
-        format.html { redirect_to account_path, notice: 'Subscription was successfully updated.' }
-        format.json { render :show, status: :ok, location: account_path }
+        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_contact_update_successfull) }
+        format.json { render :show, status: :ok, location: profile_path }
+        
       else
-        format.html { redirect_to account_path }
+        format.html { redirect_to edit_profile_path(current_user) }
         format.json { render json: @user_contact.errors, status: :unprocessable_entity }
       end
     end
@@ -73,7 +77,7 @@ class UserContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_contact_params
-      params.require(:user_contact).permit(:country, :city, :address, :phone)
+      params.require(:user_contact).permit(:address, :phone)
     end
 end
 
