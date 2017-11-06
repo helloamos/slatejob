@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   
   
-
+ resources :projects
   resources :domains
   resources :user_skills
   resources :profession_skills
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'read_notification' => 'notifications#show'
     get "/freelances" => "profiles#index", as: :freelances
     get "/attribute-project/" => "attribute_projects#attribute", as: :attribute
-    get "/dashboard/projects" => "projects#index", as: :projects
+    #get "/dashboard/projects" => "projects#index", as: :projects
    
     
     # Example Devise routes
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :subscriptions
     resources :user_details
     resources :user_contacts
-    #resources :projects
+   
       resources :projects do
           get 'delete'
      end

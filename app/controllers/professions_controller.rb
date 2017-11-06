@@ -15,6 +15,7 @@ class ProfessionsController < ApplicationController
   # GET /professions/new
   def new
     @profession = Profession.new
+    @domains = Domain.all
   end
 
   # GET /professions/1/edit
@@ -69,6 +70,6 @@ class ProfessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profession_params
-      params.require(:profession).permit(:title)
+      params.require(:profession).permit(:title, :domain_id)
     end
 end

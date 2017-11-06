@@ -15,6 +15,7 @@ class UserSkillsController < ApplicationController
   # GET /user_skills/new
   def new
     @user_skill = UserSkill.new
+    @skills = Skill.all
   end
 
   # GET /user_skills/1/edit
@@ -24,12 +25,13 @@ class UserSkillsController < ApplicationController
   # POST /user_skills
   # POST /user_skills.json
   def create
-    @user_skill = UserSkill.new(user_skill_params)
+    @user_skill = current_user.user_skills.build(user_skill_params)
 
     respond_to do |format|
       if @user_skill.save
         format.html { redirect_to @user_skill, notice: 'User skill was successfully created.' }
         format.json { render :show, status: :created, location: @user_skill }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @user_skill.errors, status: :unprocessable_entity }
@@ -44,6 +46,7 @@ class UserSkillsController < ApplicationController
       if @user_skill.update(user_skill_params)
         format.html { redirect_to @user_skill, notice: 'User skill was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_skill }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @user_skill.errors, status: :unprocessable_entity }
@@ -69,6 +72,6 @@ class UserSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_skill_params
-      params.require(:user_skill).permit(:title)
+      params.require(:user_skill).permit(:title, :skill_id, :grade)
     end
 end

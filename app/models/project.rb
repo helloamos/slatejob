@@ -6,13 +6,13 @@ class Project < ApplicationRecord
   	belongs_to :user
   	has_many :bids
   	belongs_to :currency
-  	belongs_to :category
+  	belongs_to :profession
 
   	has_many :project_skills
   	has_many :skills, :through => :project_skills
 
   	# Date validation
-	validates_presence_of :title, :content, :category_id, :budget, :currency_id, :status
+	validates_presence_of :title, :content, :profession_id, :budget, :currency_id, :status
 
 	validates :slug, uniqueness: true 
 

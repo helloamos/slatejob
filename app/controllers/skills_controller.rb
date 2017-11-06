@@ -23,7 +23,7 @@ class SkillsController < ApplicationController
   # GET /skills/new
   def new
     @skill = Skill.new
-    @all_categories = Category.all
+   
      render layout: 'dashboard'
   end
 
@@ -79,6 +79,6 @@ class SkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
-      params.require(:skill).permit(:title, :category_id)
+      params.require(:skill).permit(:title)
     end
 end

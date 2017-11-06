@@ -5,12 +5,17 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Work Sans', sans-serif;
 font-family: 'Rubik', sans-serif; */
 
+body{
+    font-family: 'Open sans' !important;
+}
+
 /* Hack section */
 
 .clearfix:after, .clearfix:before {
     content: " ";
     display: table;
 }
+
 
 *:before, *:after {
     -webkit-box-sizing: border-box;

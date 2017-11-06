@@ -1,33 +1,23 @@
 <%= form_with(model: project, local: true) do |form| %>
 
-	<% if project.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-			<ul>
-				<% project.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-
+	
 	<div class="form-group">
-		<%= form.label "Titre de votre projet" %>
-		<%= form.text_field :title, id: :project_title, class: "form-control", placeholder: "Titre", required: true %>
-	</div>
-
-	<div class="form-group">
-		<%= form.label "Décrivez votre projet" %>
-		<%= form.text_area :content, id: :project_content, rows: "6", class: "form-control", placeholder: "Description", required: true %>
-	</div>
-
-
-	<div class="form-group">
-		<%= form.label t(:category_id) %>
-		<%= form.collection_select(:category_id, @all_categories,  :id, :title , {prompt: "Catégorie de projet"}, class: "form-control") %>
+		<%= form.label t(:looking_for_profession) %>*
+		<%= form.collection_select(:profession_id, @professions,  :id, :title , {prompt: "Catégorie de projet"}, class: "form-control") %>
 		
 	</div>
+
+	<div class="form-group">
+		<%= form.label "Choisissez un nom pour votre projet" %>
+		<%= form.text_field :title, id: :project_title, class: "form-control", placeholder: "Exemple: Créer un site web pour mon entreprise", required: true %>
+	</div>
+
+	<div class="form-group">
+		<%= form.label "Dites-nous en plus sur votre projet" %>
+		<%= form.text_area :content, id: :project_content, rows: "6", class: "form-control", placeholder: "Decrivez ce qu'il aura à faire", required: true %>
+	</div>
+
+
  
 	<div class="row">
 		<div class="col-md-9">
@@ -58,8 +48,8 @@
 	<!-- Nested field -->
 	<div class="form-group">
 		<%= fields_for(@project_skill) do |ps| %>
-			<%= ps.label "Compétences recherchées" %>
-			<%= collection_select(:skills, :id,  @all_skills, :id, :title, {selected: (@selected_skills.map(&:skill_id) unless @selected_skills.nil?)}, {:id => "skills_update", class: "chosen-select", multiple: true}) %>
+			<%= ps.label "Quelles compétences sont requises?" %>
+			<%= collection_select(:skills, :id,  @all_skills, :id, :title, {selected: (@selected_skills.map(&:skill_id) unless @selected_skills.nil?)}, {class: "form-control chosen-select", multiple: true}) %>
 		<% end %>
 	</div><!-- end nested -->
 
@@ -67,18 +57,3 @@
 		<%= form.button "PUBLIER", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> PUBLIGATION..."} %>
 	</div>
 <% end %>
-<script>
-  $(document).ready(function() {
-    $('#category_select').change(function() {
-      $.ajax({
-        url: "<%= update_skills_path %>",
-        data: {
-          category_id: $('#category_select').val(),
-
-        },
-        dataType: "script",
-        cache:true
-      });
-    });
-  });
-</script>

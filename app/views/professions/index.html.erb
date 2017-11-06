@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Domaine</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @professions.each do |profession| %>
       <tr>
         <td><%= profession.title %></td>
+        <td><%= profession.domain_id %></td>
         <td><%= link_to 'Show', profession %></td>
         <td><%= link_to 'Edit', edit_profession_path(profession) %></td>
         <td><%= link_to 'Destroy', profession, method: :delete, data: { confirm: 'Are you sure?' } %></td>

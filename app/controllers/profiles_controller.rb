@@ -38,6 +38,7 @@ class ProfilesController < ApplicationController
 		@educations = @user.educations
 		@certifications = @user.certifications
 		@awards = @user.awards
+		@user_skills = @user.user_skills
 
 
 		# User all experiences

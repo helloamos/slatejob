@@ -7,14 +7,14 @@ class ProjectsController < ApplicationController
   def recent_projects
     
         @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
-        @categories = Category.all
+        @domains = Domain.all
    
     render layout: 'dashboard'
   end
 
   def projects_by_category
     @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
-    @categories = Category.all
+    @domains = Domain.all
 
     render layout: 'dashboard'
   end
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
     @currency = Currency.all
     @time_unity = TimeUnity.all
     @all_skills = Skill.all
-    @all_categories = Category.all
+    @professions = Profession.all
 
     render layout: 'dashboard'
   end
@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
     @currency = Currency.all
     @time_unity = TimeUnity.all
     @all_skills = Skill.all
-    @all_categories = Category.all
+    @professions = Profession.all
     @selected_skills = @project.project_skills if !@project.project_skills.empty?
     render layout: 'dashboard'
   end
@@ -93,10 +93,10 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
+        format.html { redirect_to project_show_path(@project), notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: project_show_path(@project)}
       else
-        format.html { render :new }
+        format.html { render :new, alert: 'Error.' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -107,8 +107,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { render :show, status: :ok, location: @project }
+        format.html { redirect_to project_show_path(@project), notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :ok, location: project_show_path(@project)}
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -134,6 +134,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :content, :category_id, :budget, :currency_id,  :expire_at)
+      params.require(:project).permit(:title, :content, :profession_id, :budget, :currency_id,  :expire_at)
     end
 end

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
 	setTimeout(function(){
 		$('#notice_wrapper').fadeOut("slow",function(){
 			$(this).remove();
@@ -12,11 +12,3 @@ $(document).ready(function(){
 	},4500)
 })
 
-/*$(window).load(function() {
-  $('#slider').nivoSlider();
-});*/
-
-// Or if you are using Turbolinks
-$(document).on('page:change', function () {
-  $('#slider').nivoSlider();
-});

@@ -10,11 +10,16 @@
       </ul>
     </div>
   <% end %>
+ <div class="field">
+    <%= form.label :domain_id %>
+    <%= form.collection_select :domain_id,   @domains,  :id, :title , {prompt: "select"}, class: "form-control" %>
+  </div>
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :profession_title %>
+    <%= form.text_field :title, id: :profession_title, class: "form-control" %>
   </div>
+ 
 
   <div class="actions">
     <%= form.submit %>

@@ -3,7 +3,7 @@ class CreateProjects < ActiveRecord::Migration[5.1]
     create_table :projects do |t|
       t.string :title
       t.text :content
-      t.references :category
+      t.references :profession
       t.string :budget
       t.references :currency
       t.string :status

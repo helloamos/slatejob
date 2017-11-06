@@ -1,2 +1,0 @@
-class ProfessionSkill < ApplicationRecord
-end

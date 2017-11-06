@@ -13,21 +13,28 @@
 //= require jquery
 //= require rails-ujs
 //= require geocomplete
-// In rails 5 jquery don't work "disabled require turbolinks"
+//= require turbolinks
 //= require rails.validations
 //= require bootstrap
 //= require bootstrap-filestyle
 //= require social-share-button
 //= require toastr
 //= require chosen-jquery
+// require select2
 
 //= require_tree .
-$(function(){
+
+$(document).on('turbolinks:load', function(){
 	$("#geocomplete").geocomplete();  // Option 1: Call on element.
 })
 
 
+// Enable chosen js for turbolinks
+$(document).on('turbolinks:load', function() {
+	$('.chosen-select').chosen({
+	allow_single_deselect: true,
+	max_selected_options: 10,
+	no_results_text: 'No results matched'
 
-
-
-
+	});
+});

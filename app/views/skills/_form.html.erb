@@ -10,10 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, @all_categories,  :id, :title , {prompt: "select", class: "form-control"} %>
-  </div>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :skill_ %>

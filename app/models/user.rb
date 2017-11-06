@@ -28,6 +28,9 @@ class User < ApplicationRecord
 	has_many :educations
 	has_many :certifications
 	has_many :awards
+
+	has_many :user_skills
+  	has_many :skills, :through => :user_skills
 	
 
 	# Paperclip usage

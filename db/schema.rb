@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "category_id"
+    t.bigint "profession_id"
     t.string "budget"
     t.bigint "currency_id"
     t.string "status"
@@ -204,18 +204,16 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["currency_id"], name: "index_projects_on_currency_id"
+    t.index ["profession_id"], name: "index_projects_on_profession_id"
     t.index ["time_unity_id_id"], name: "index_projects_on_time_unity_id_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string "title"
-    t.bigint "profession_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profession_id"], name: "index_skills_on_profession_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -275,11 +273,11 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   create_table "user_skills", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
-    t.bigint "profession_skill_id", null: false
+    t.bigint "skill_id", null: false
     t.string "grade", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profession_skill_id"], name: "index_user_skills_on_profession_skill_id"
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
     t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 

@@ -23,8 +23,7 @@
             <%= form.label t(:description) %>
             <%= form.text_area :description, id: :award_description, class: "form-control", placeholder: t(:description) %>
         </div>
-        <%= select_tag "Language", options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name") %>
-
+       
        
 
     </div><!-- end modal-body -->
