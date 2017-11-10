@@ -1,0 +1,36 @@
+		                	<%= form_for(@user_contact) do |form| %>
+		                		<!-- Row -->
+		                		<div class="row">
+		                			
+		                		</div>
+		                		<!-- end row -->
+
+		                			<!-- Row -->
+		                		<div class="row">
+		                			<div class="col-sm-6">
+		                				<div class="form-group">
+					                		<%= form.label t(:address) %>
+					                		<%= form.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
+
+				                		</div>
+			                			
+			                		</div>
+			                		<div class="col-sm-6">
+			                			<div class="form-group">
+					                		<%= form.label t(:phone) %> <br />
+					                		<%= form.text_field :phone, class: "form-control", :id => "phone",  required: true %>
+				                		</div>
+			                			
+			                		</div>
+		                		</div>
+		                		<!-- end row -->
+		                		<div class="row">
+		                			<div class="col-md-12">
+			                			<div class="form-group">
+			                				<%= form.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+			                			</div>
+		                			</div>
+		                		</div>
+
+
+		                	<% end %>

@@ -1,10 +1,11 @@
 class UserSkillsController < ApplicationController
+   before_action :authenticate_user!
   before_action :set_user_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /user_skills
   # GET /user_skills.json
   def index
-    @user_skills = UserSkill.all
+    @user_skills = current_user.user_skills
   end
 
   # GET /user_skills/1
@@ -20,13 +21,15 @@ class UserSkillsController < ApplicationController
 
   # GET /user_skills/1/edit
   def edit
+     @skills = Skill.all
   end
 
   # POST /user_skills
   # POST /user_skills.json
   def create
+    @user_skills = current_user.user_skills
     @user_skill = current_user.user_skills.build(user_skill_params)
-
+   
     respond_to do |format|
       if @user_skill.save
         format.html { redirect_to @user_skill, notice: 'User skill was successfully created.' }
@@ -35,6 +38,7 @@ class UserSkillsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @user_skill.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -42,6 +46,7 @@ class UserSkillsController < ApplicationController
   # PATCH/PUT /user_skills/1
   # PATCH/PUT /user_skills/1.json
   def update
+     @user_skills = current_user.user_skills
     respond_to do |format|
       if @user_skill.update(user_skill_params)
         format.html { redirect_to @user_skill, notice: 'User skill was successfully updated.' }
@@ -50,6 +55,7 @@ class UserSkillsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @user_skill.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -57,11 +63,18 @@ class UserSkillsController < ApplicationController
   # DELETE /user_skills/1
   # DELETE /user_skills/1.json
   def destroy
+     @user_skills = current_user.user_skills
     @user_skill.destroy
     respond_to do |format|
       format.html { redirect_to user_skills_url, notice: 'User skill was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+    def delete
+      @user_skill = UserSkill.find(params[:user_skill_id])
+
   end
 
   private
@@ -72,6 +85,6 @@ class UserSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_skill_params
-      params.require(:user_skill).permit(:title, :skill_id, :grade)
+      params.require(:user_skill).permit(:skill_id, :grade)
     end
 end

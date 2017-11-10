@@ -1,12 +1,12 @@
-<%= form_with(model: user_skill, local: true) do |form| %>
+<%= form_with(model: user_skill, local: false) do |form| %>
 <div class="modal-body">
   <div class="form-group">
-      <%= form.label :skill_id %>
-      <%= form.collection_select :skill_id,   @skills,  :id, :title , {prompt: "select"}, class: "form-control " %>
+      <%= form.label t(:skill) %>
+      <%= form.collection_select :skill_id,   @skills,  :id, :title , {prompt: "Compétence"}, class: "form-control " %>
     </div>
     <div class="form-group">
-      <%= form.label :grade %>
-      <%= form.text_field :grade, id: :user_skill_grade , class: "form-control" %>
+      <%= form.label t(:grade) %>
+      <%= form.select :grade, Skill::GRADE , {prompt: "Niveau"} , class: "form-control" %>
     </div>
 </div>
 <div class="modal-footer">

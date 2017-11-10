@@ -1,3 +1,3 @@
 class Domain < ApplicationRecord
-	has_many :professions
+	has_many :professions, dependent: :destroy
 end

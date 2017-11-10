@@ -4,7 +4,7 @@ $("ul.errors").html("");
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
   <% end %>
 <% else %>
-  $(".bids-list").html("<%= escape_javascript(render 'bids') %>");
-  $("#bid-modal").modal("hide");
+  $(".bids_index").html("<%= escape_javascript(render 'index') %>");
+  $("#bid_modal").modal("hide");
  
 <% end %>

@@ -242,14 +242,19 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   end
 
   create_table "user_details", force: :cascade do |t|
-    t.string "specialization"
+    t.bigint "profession_id"
     t.text "presentation"
-    t.string "availability"
-    t.string "visibility"
+    t.boolean "availability"
+    t.boolean "visibility"
+    t.string "employment_type"
+    t.string "facebook_link"
+    t.string "twitter_link"
+    t.string "linkedin_link"
+    t.string "gplus_link"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "fame"
+    t.index ["profession_id"], name: "index_user_details_on_profession_id"
     t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 

@@ -15,11 +15,13 @@ class UserDetailsController < ApplicationController
 
   # GET /subscriptions/new
   def new
+    @profession = Profession.all
     @user_detail = UserDetail.new
   end
 
   # GET /subscriptions/1/edit
   def edit
+    @professions = Profession.all
   end
 
   # POST /subscriptions
@@ -73,6 +75,6 @@ class UserDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_detail_params
-      params.require(:user_detail).permit(:specialization, :presentation, :availability, :visibility)
+      params.require(:user_detail).permit(:profession_id, :presentation, :availability, :visibility, :employment_type, :facebook_link, :twitter_link, :linkedin_link, :gplus_link)
     end
 end

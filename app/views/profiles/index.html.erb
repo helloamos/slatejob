@@ -27,13 +27,16 @@
 										<div class="user_name">
 											<%= link_to "#{freelance.user_name}" , show_profile_path(freelance) %>
 										</div>
+
+										<div class="user_profession">
+											<%= profession_title(user_details_profession(freelance.id)) %> 
+										</div>
+
 										<div class="user_meta">
 											<span class="user_location">
-												<%= user_contacts_city(freelance.id) %>, 
-												<%= user_contacts_country(freelance.id) %>
-											</span>
-											<span class="user_member_since">
-												- Membre depuis: <%= freelance.created_at.strftime("%d/%m/%Y") %>
+												<i class="fa fa-globe" aria-hidden="true"></i>
+												<%= user_contacts_address(freelance.id) %>
+												
 											</span>
 										</div>
 

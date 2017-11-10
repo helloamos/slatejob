@@ -1,0 +1,82 @@
+  <% if @project_bids.empty? %>
+              <p>Il n'y a auccune offre pour ce projet</p>
+
+            <% else %>
+        
+              <table class="table table-hover">
+                
+
+                  <tbody>
+                    <% @project_bids.each do |bid| %>
+                      <tr>
+                        <td>
+                          <div class="bid_user_thumb">
+                            
+                            <%= image_tag user(bid.user_id).avatar.url(:thumb) %>
+                          </div>
+                          <div class="bid_user_meta">
+                            <div class="bid_username">
+                              
+                              <h5><%= link_to "#{user(bid.user_id).login }" , show_profile_path(user(bid.user_id)) %></h5>
+                            </div>
+                            <div class="flag">
+                              <%= flag_icon(:ml) %>
+                              
+                            </div>
+                            
+                            <div class="bid_created_at">
+                              <%= t(:posted ) %>
+                              <%= t(:posted_ago) %>
+                              <%= time_ago_in_words(bid.created_at) %>
+                            </div>
+                          </div>
+                          
+                        </td>
+                        <td>
+                          <h5>
+                            <span class="bid_amount">
+                              <%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
+                            </span>
+                            <span class="bid_amount_currency">
+                              <%= currency_symbol(bid.currency_id) %> 
+                            </span>
+                          </h5>
+                        </td>
+                        <td>
+                          
+                          <h5>
+                            <span class="bid_time_limit">
+                              En <%= bid.time_limit %> 
+                            </span>
+                            <span class="bid_time_limit_unity">
+                              <%= time_unity(bid.time_unity_id) %> 
+                            </span>
+                          </h5>
+                        </td>
+
+                        <td>
+                          
+                          <span>
+                          <% if attribute_button?(@project, current_user) %>
+                            <%= link_to "J'attribue", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                            <% else %>
+
+                            <%= link_to "Modifier mon offre", edit_bid_path(bid), :remote => true, class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+
+
+                          <% end %>
+                          </span>
+                        </td>
+                       
+                        
+                      </tr>
+                    <% end %>
+                 </tbody>
+              </table>
+            <% end %>
+
+          <div class="row page_navi">
+          <%= will_paginate @project_bids, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+            
+          </div>
+        </div>

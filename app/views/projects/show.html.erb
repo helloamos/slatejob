@@ -28,98 +28,24 @@
 			
 
 			<!-- Bids list -->
+			<div class="bids_index">
 			<div class="box box-primary">
 				<div class="box-header">
 					<h1 class="box-title"><%= @total_bids %> offre(s) pour ce projet</h1>
 				</div>
 
 
-					<div class="box-body">
-						<% if @project_bids.empty? %>
-							<p>Il n'y a auccune offre pour ce projet</p>
-
-						<% else %>
-				
-							<table class="table table-hover">
-							  
-
-							  	<tbody>
-								    <% @project_bids.each do |bid| %>
-								      <tr>
-								        <td>
-								        	<div class="bid_user_thumb">
-								        		
-								        		<%= image_tag user(bid.user_id).avatar.url(:thumb) %>
-								        	</div>
-								        	<div class="bid_user_meta">
-									        	<div class="bid_username">
-									        		
-									        		<h5><%= link_to "#{user(bid.user_id).login }" , show_profile_path(user(bid.user_id)) %></h5>
-									        	</div>
-									        	<div class="flag">
-									        		<%= flag_icon(:ml) %>
-									        		
-									        	</div>
-									        	
-									        	<div class="bid_created_at">
-									        		<%= t(:posted ) %>
-									        		<%= t(:posted_ago) %>
-									        		<%= time_ago_in_words(bid.created_at) %>
-									        	</div>
-								        	</div>
-								        	
-								        </td>
-								        <td>
-								        	<h5>
-								        		<span class="bid_amount">
-								        			<%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
-								        		</span>
-								        		<span class="bid_amount_currency">
-								        			<%= currency_symbol(bid.currency_id) %> 
-								        		</span>
-								        	</h5>
-								        </td>
-								        <td>
-								        	
-								        	<h5>
-									        	<span class="bid_time_limit">
-									        		En <%= bid.time_limit %> 
-									        	</span>
-									        	<span class="bid_time_limit_unity">
-									        		<%= time_unity(bid.time_unity_id) %> 
-									        	</span>
-								        	</h5>
-								        </td>
-
-								        <td>
-								        	
-								        	<span>
-								        	<% if attribute_button?(@project.user_id, @project.id) %>
-								        		<%= link_to "LUI ATTRIBUER", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => false, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
-								        	<% end %>
-								        	</span>
-								        </td>
-								       
-								        
-								      </tr>
-								    <% end %>
-								 </tbody>
-							</table>
-						<% end %>
-
-					<div class="row page_navi">
-					<%= will_paginate @project_bids, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
-						
-					</div>
-				</div>
-			</div><!-- end box -->
+				<div class="box-body">
+					<%= render ("./bids/index") %>
+				</div><!-- end box -->
+			</div>
 		</div><!-- end col -->
 
 
 
 		<!-- Start col -->
 		<div class="col-md-4">
-			<% if can_post_bid?(current_user.id, @project.id) %>
+			<% if can_post_bid?(current_user, @project) %>
 				<div class="box box-primary">
 					
 					<div class="box-body">
@@ -128,10 +54,12 @@
 						
 					</div>
 				</div>
+
 			<% end %>
 
 
 			<!-- Bids -->
+
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h1 class="box-title">Détails</h1>
@@ -204,4 +132,4 @@
 	</div>
 </div>
 
-<div id="bid-modal" class="modal fade"></div>
+<div id="bid_modal" class="modal fade"></div>

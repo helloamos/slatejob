@@ -4,6 +4,6 @@ $("ul.errors").html("");
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
   <% end %>
 <% else %>
-  $(".certifications-index").html("<%= escape_javascript(render 'index') %>");
-  $("#certifications-modal").modal("hide");
+  $(".certifications_index").html("<%= escape_javascript(render 'index') %>");
+  $("#certifications_modal").modal("hide");
 <% end %>

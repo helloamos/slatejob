@@ -1,23 +1,8 @@
-<%= form_with(model: bid, local: true, remote: true) do |form| %>
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Offre</h4>
-    </div>
+<%= form_with(model: bid, local: false) do |form| %>
 
     <div class="modal-body">
       
 
-            <% if bid.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(bid.errors.count, "error") %> prohibited this bid from being saved:</h2>
-
-                    <ul>
-                    <% bid.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                    <% end %>
-                    </ul>
-                </div>
-            <% end %>
             <div class="form-group">
                 <%= form.hidden_field :project_id, value: params[:project] %>
             </div>
@@ -66,10 +51,10 @@
     </div>
 
     <div class="modal-footer">
-        <%= form.button "SOUMETTRE", class: "btn btn-primary",  data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Soumission..."} %>
+        <%= form.button cu_action_label(form), class: "btn btn-primary",  data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
         <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
-        </div>
+     </div>
        
-    </div>
+ 
  <% end %>
 

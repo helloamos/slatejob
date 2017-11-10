@@ -54,12 +54,11 @@ module ApplicationHelper
 		total_bids = project.bids.count
 	end
 
-	def can_post_bid?(user_id, project_id)
+	def can_post_bid?(user, project)
 
-		user ||= current_user
-		bids = Bid.user_have_bid_on(project_id, user.id)
+		bids = Bid.user_have_bid_on(project.id, user.id)
 
-		if bids.count > 0 
+		if bids.count > 0 || user.id == project.user_id
 			false
 		else
 			true
@@ -101,11 +100,48 @@ module ApplicationHelper
 		user_detail = user.user_detail
 		presentation = user_detail.presentation
 	end
-	def user_contacts_city(user_id)
+	def user_details_profession(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		profession = user_detail.profession_id
+	end
+
+	def user_details_facebook(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		facebook_link = user_detail.facebook_link
+	end
+
+	def user_details_twitter(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		twitter_link = user_detail.twitter_link
+	end
+
+	def user_details_gplus(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		gplus_link = user_detail.gplus_link
+	end
+
+	def user_details_linkedin(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		linkedin_link = user_detail.linkedin_link
+	end
+
+
+	def profession_title(profession_id)
+		profession = Profession.find(profession_id)
+		profession.title
+	end
+
+	def user_contacts_address(user_id)
 		user = User.find(user_id)
 		user_contact = user.user_contact
-		city = user_contact.city
+		city = user_contact.address
 	end
+
 	def user_contacts_country(user_id)
 		user = User.find(user_id)
 		user_contact = user.user_contact
@@ -116,19 +152,30 @@ module ApplicationHelper
 		user_detail = user.user_detail
 		occupation = user_detail.specialization
 	end
-	def user_details_availability(user_id)
+	def user_details_employment_type(user_id)
+		user = User.find(user_id)
+		user_detail = user.user_detail
+		employment_type = user_detail.employment_type
+	end
+	def is_available?(user_id)
 		user = User.find(user_id)
 		user_detail = user.user_detail
 		availability = user_detail.availability
+
+		if availability
+			return true
+		else
+			return false
+		end
 	end
 
-	def attribute_button?(project_user_id, project_id)
-		attributed = AttributeProject.find_by_project(project_id)
+	def attribute_button?(project, user)
+		attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
 
-		if current_user.id == project_user_id && attributed.blank?
-			return true
-		else 
+		if user.id == project.user_id && !attributed.blank?
 			return false
+		else 
+			return true
 		end
 
 	end
@@ -159,5 +206,9 @@ module ApplicationHelper
 	end
 
 
+	def skill_title(skill_id)
+		skill = Skill.find(skill_id)
+		skill.title
+	end
 	
 end

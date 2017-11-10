@@ -9,28 +9,30 @@ class User < ApplicationRecord
 
 	# User profile type
 	PROFILE_TYPE = [["Freelance"],["Employeur"]]
-	VISIBILITY = [["Oui"],["Non"]]
-	AVAILABILITY = [["Plein temps"],["Temps partiel"]]
+	EMPLOYMENT_TYPE = [["Plein temps"],["Temps partiel"], ["Contrat"]]
 
 	# Date validation
-	validates :login, presence: true, uniqueness: true
+	validates :login, presence: true, uniqueness: true, if: 'login.present?'
 	validates :profile_type, presence: true
-	validates :company_name, uniqueness: true, if: 'company_name.present?'
+	#validates :company_name, uniqueness: true, if: 'company_name.present?'
 	validates :slug,  uniqueness: true
-	validates :email, uniqueness: true
+	validates :email, uniqueness: true, if: 'email.present?'
 
 	# Relationships
 	has_one :user_detail
 	has_one :user_contact
-	has_many :projects
-	has_many :bids
-	has_many :experiences
-	has_many :educations
-	has_many :certifications
-	has_many :awards
+	has_many :projects, dependent: :destroy
+	has_many :bids, dependent: :destroy
+	has_many :experiences, dependent: :destroy
+	has_many :educations, dependent: :destroy
+	has_many :certifications, dependent: :destroy
+	has_many :awards, dependent: :destroy
+	has_many :user_languages, dependent: :destroy
 
 	has_many :user_skills
-  	has_many :skills, :through => :user_skills
+  	has_many :skills, :through => :user_skills, dependent: :destroy
+
+  	has_many :notifications, :foreign_key =>  :sender_id, class_name:  'Notification', :dependent => :destroy
 	
 
 	# Paperclip usage

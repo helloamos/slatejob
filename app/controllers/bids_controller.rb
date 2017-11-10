@@ -24,6 +24,8 @@ class BidsController < ApplicationController
 
   # GET /bids/1/edit
   def edit
+    @currency = Currency.all
+    @time_unity = TimeUnity.all
   end
 
   # POST /bids
@@ -56,6 +58,8 @@ class BidsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @bid.errors, status: :unprocessable_entity }
+          format.js
+
       end
     end
   end
@@ -67,9 +71,11 @@ class BidsController < ApplicationController
       if @bid.update(bid_params)
         format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
         format.json { render :show, status: :ok, location: @bid }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @bid.errors, status: :unprocessable_entity }
+          format.js
       end
     end
   end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
  resources :projects
   resources :domains
-  resources :user_skills
+ 
   resources :profession_skills
   resources :professions
   #resources :experiences
@@ -56,6 +56,9 @@ Rails.application.routes.draw do
 
         get 'delete'
     end
+     resources :user_skills do 
+        get 'delete'
+     end
     resources :awards do 
         get 'delete'
     end

@@ -15,8 +15,6 @@
 		                <li><a href="#user-details" data-toggle="tab">Détails</a></li>
 		                <li><a href="#user-contacts" data-toggle="tab">Coordonnées</a></li>
 		                <li><a href="#user-cancel-account" data-toggle="tab">Supprimer mon compte</a></li>
-
-
 		            </ul>
 		        </div>
 		        <div class="col-md-9">
@@ -29,81 +27,8 @@
 		              		</div>
 
 		              		<div class="box-body"> 
-
-							<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-							  <%= devise_error_messages! %>
-
-							<div class="row">
-								<div class="col-sm-8">
-									<div class="form-group">
-									    <%= f.label t(:user_name) %><br />
-									    <%= f.text_field :user_name, autofocus: true, class: "form-control", placeholder: "Nom complet" , required: true %>
-								  </div>	
-
-								  <div class="form-group">
-									    <%= f.label t(:login) %><br />
-									    <%= f.text_field :login, autofocus: true, class: "form-control" , placeholder: "Login" , required: true %>
-									 </div>
-							<div class="form-group">
-							    <%= f.label :email %><br />
-							    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse email" , required: true %>
-							  </div>
-								</div>
-
-								<div class="col-sm-4">
-									<div class="form-group">
-						                <div class="thumbnail-preview">
-						                    <%= image_tag current_user.avatar.url(:medium) %>
-						                </div>
-						               
-						                    
-						                    <%= f.file_field :avatar, class: "filestyle","data-input" => false, "data-icon"=>false,
-						                     "data-buttonText" =>"Insérer une image", "data-buttonName" => "btn-primary" %>
-
-						               
-						            </div>
-								</div>
-								
-							</div>
-
-
-
-
-							  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-							    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-							  <% end %>
-
-							  <div class="form-group">
-							    <%= f.label :password %> <i>(<%= t(:leave_blank_password) %>)</i><br />
-							    <%= f.password_field :password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe"  %>
-							    <% if @minimum_password_length %>
-							      <br />
-							      <em><%= @minimum_password_length %> characters minimum</em>
-							    <% end %>
-							  </div>
-
-							  <div class="form-group">
-							    <%= f.label :password_confirmation %><br />
-							    <%= f.password_field :password_confirmation, autocomplete: "off",  class: "form-control", placeholder: "Confirmation du mot de passe"  %>
-							  </div>
-
-							  <div class="form-group">
-							    <%= f.label :current_password %> <i>(<%= t(:type_current_password) %>)</i><br />
-							    <%= f.password_field :current_password, autocomplete: "off",  class: "form-control", placeholder: "Mot de passe actuel" , required: true %>
-							  </div>
-
-							  <div class="actions">
-							    <%= f.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
-							  </div>
-
-
-							  </div>
-							<% end %>
-
-							
-
-							
-
+		              			<%= render("profiles/basic_infos") %>
+		              		</div>	
 		                </div>
 
 		                <div class="tab-pane" id="user-details">
@@ -113,47 +38,7 @@
 
 		                	<div class="box-body"> 
 		                	
-			                	<%= form_for(@user_detail) do |form| %>
-			                		<div class="row">
-										<div class="col-sm-4">
-					                		<div class="form-group">
-					                			<%= form.label t(:specialization) %>
-					                			<%= form.text_field :specialization,  class: "form-control", placeholder: "Spécialisation", required: true %>
-					                		</div>
-				                		</div>
-
-				                		<div class="col-sm-4">
-
-					                		<div class="form-group">
-					                			<%= form.label t(:availability) %>
-					                			<%= form.select :availability,  User::AVAILABILITY, {prompt: t(:visibility)}, class: "form-control", placeholder: "Disponibilité", required: true %>
-					                		</div>
-				                		</div>
-				                		<div class="col-sm-4">
-					                		<div class="form-group">
-					                			<%= form.label t(:visibility) %>
-					                			<%= form.select :visibility, User::VISIBILITY, {prompt: t(:visibility)}, class: "form-control", placeholder: "Visibilité" , required: true%>
-					                		</div>
-				                		</div>
-			                		</div>
-									
-									<div class="row">
-										<div class="col-sm-12">
-					                		<div class="form-group">
-					                			<%= form.label t(:presentation) %>
-					                			<%= form.text_area :presentation, rows: 12, class: "form-control", placeholder: "Présentation", required: true %>
-					                		</div>
-				                		</div>
-			                		</div>
-									<div class="row">
-										<div class="col-sm-12">
-										<div class="form-group">
-										    <%= form.button "Enregistrer les modifications", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
-										</div>
-										</div>
-									</div>
-
-			                	<% end %>
+			                	<%= render("profiles/user_details") %>
 		                	</div>
 		                </div>
 		                <div class="tab-pane" id="user-contacts">
@@ -162,42 +47,7 @@
 		              		</div>
 
 		                	<div class="box-body"> 
-		                	<%= form_for(@user_contact) do |form| %>
-		                		<!-- Row -->
-		                		<div class="row">
-		                			
-		                		</div>
-		                		<!-- end row -->
-
-		                			<!-- Row -->
-		                		<div class="row">
-		                			<div class="col-sm-6">
-		                				<div class="form-group">
-					                		<%= form.label t(:city) %>
-					                		<%= form.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
-
-				                		</div>
-			                			
-			                		</div>
-			                		<div class="col-sm-6">
-			                			<div class="form-group">
-					                		<%= form.label t(:phone) %>
-					                		<%= form.text_field :phone, class: "form-control", placeholder: "Téléphone", required: true %>
-				                		</div>
-			                			
-			                		</div>
-		                		</div>
-		                		<!-- end row -->
-		                		<div class="row">
-		                			<div class="col-md-12">
-			                			<div class="form-group">
-			                				<%= form.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
-			                			</div>
-		                			</div>
-		                		</div>
-
-
-		                	<% end %>
+								<%= render("profiles/user_contacts") %>
 		                	</div>
 		                </div>
 		          

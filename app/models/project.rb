@@ -4,12 +4,12 @@ class Project < ApplicationRecord
   	friendly_id :title, use: :slugged
 
   	belongs_to :user
-  	has_many :bids
+  	has_many :bids, dependent: :destroy
   	belongs_to :currency
   	belongs_to :profession
 
   	has_many :project_skills
-  	has_many :skills, :through => :project_skills
+  	has_many :skills, :through => :project_skills, dependent: :destroy
 
   	# Date validation
 	validates_presence_of :title, :content, :profession_id, :budget, :currency_id, :status

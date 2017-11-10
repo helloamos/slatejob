@@ -1,0 +1,93 @@
+<%= form_for(@user_detail) do |form| %>
+			                		<div class="row">
+										<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:profession) %>
+					                			<%= form.collection_select :profession_id,  @professions, :id, :title, {prompt: "Sélectioner une profession"}, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:employment_type) %>
+					                			<%= form.select :employment_type,  User::EMPLOYMENT_TYPE,  {prompt: "Sélectioner une profession"}, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                	</div>
+				                	<div class="row">
+
+				                		<div class="col-sm-2">
+
+					                		<div class="form-group">
+					                			   <%= form.check_box :availability %>
+                									<%= form.label t(:availability) %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-2">
+					                		<div class="form-group">
+					                			 <%= form.check_box :visibility %>
+                									<%= form.label t(:visibility)  %>
+					                		</div>
+				                		</div>
+			                		</div>
+									
+									<div class="row">
+										<div class="col-sm-12">
+					                		<div class="form-group">
+					                			<%= form.label t(:presentation) %>
+					                			<%= form.text_area :presentation, rows: 5,  class: "form-control", placeholder: "Présentation", required: true %>
+					                		</div>
+				                		</div>
+			                		</div>
+			                		<div class="row">
+			                			<div class="col-sm-6">
+			                				<div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-facebook" aria-hidden="true"></i>
+											      </div>
+											   <%= form.text_field :facebook_link, class: "form-control", placeholder: "Facebook" %>
+											    </div>
+											  </div>
+
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-twitter" aria-hidden="true"></i>
+											      </div>
+											     <%= form.text_field :twitter_link, class: "form-control", placeholder: "Twitter" %>
+											     
+											    </div>
+											  </div>
+			                			</div>
+			                			<div class="col-sm-6">
+			                				<div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      <i class="fa fa-google-plus" aria-hidden="true"></i>
+											      </div>
+											      <%= form.text_field :gplus_link, class: "form-control", placeholder: "Google+" %>
+											     
+											    </div>
+											  </div>
+
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-linkedin" aria-hidden="true"></i>
+											      </div>
+											      <%= form.text_field :linkedin_link, class: "form-control", placeholder: "LinkedIn" %>
+											     
+											    </div>
+											  </div>
+			                			</div>
+
+			                		</div>
+									<div class="row">
+										<div class="col-sm-12">
+										<div class="form-group">
+										    <%= form.button "Enregistrer les modifications", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+										</div>
+										</div>
+									</div>
+
+			                	<% end %>

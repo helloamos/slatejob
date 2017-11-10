@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
 			@user_contact = current_user.user_contact
 		end
 
-	
+		@professions = Profession.all
 		# Render layout.
 		render layout: "dashboard"
 	end

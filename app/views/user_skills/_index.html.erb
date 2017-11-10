@@ -1,27 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<h1>User Skills</h1>
+<% if @user_skills.nil? %>
+                <h5><i>Rien à afficher pour cette section!</i></h5>
+              <% else %>
+              <% @user_skills.each do |user_skill| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                  <ul>
+                    <li class="resume_section-content_item" data-role="item" id="employment-4741">
+                      <div class="resume_section-content_title">
+                        <%= skill_title(user_skill.skill_id) %>
+                      </div>
+                      <div class="resume_section-content_range">
+                        <span class=start_period>
+                        <span><%= user_skill.grade %></span>
+                          
+                          
+                        </span>
+              
+                        
 
-  <tbody>
-    <% @user_skills.each do |user_skill| %>
-      <tr>
-        <td><%= user_skill.title %></td>
-        <td><%= link_to 'Show', user_skill %></td>
-        <td><%= link_to 'Edit', edit_user_skill_path(user_skill) %></td>
-        <td><%= link_to 'Destroy', user_skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                      </div>
+                      <div class="muted">
+                        
+                        
+                      </div>
+                    </li>
+                    
+                    
+                    <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_user_skill_path(user_skill), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+                    <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), user_skill_delete_path(user_skill),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
 
-<br>
-
-<%= link_to 'New User Skill', new_user_skill_path %>
+                  
+                  </ul>
+                <% end %>
+                <% end %>

@@ -5,7 +5,11 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Work Sans', sans-serif;
 font-family: 'Rubik', sans-serif; */
 
-body{
+.iti-flag {
+    background-image: url("flags.png") !important;
+}
+
+body, h1, h2, h3, h4, h5, h6{
     font-family: 'Open sans' !important;
 }
 
@@ -663,4 +667,9 @@ ul.nav.nav-tabs li a {
     border-radius: 0;
     box-shadow: none;
     border-color: #d2d6de;
+}
+.user_profession{
+    font-size: 1.6em;
+    margin-bottom: 5px;
+    color: #a9a9a9;
 }

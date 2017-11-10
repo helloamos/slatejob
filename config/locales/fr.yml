@@ -83,6 +83,11 @@ fr:
   conferring_organization: "Organisation conférante"
   awards: "Prix ou distinctions"
   looking_for_profession: "J'ai besoin d'un(e)"
+  profession: "Profession"
+  employment_type: "Type d'emploi"
+  grade: "Niveau"
+  skill: "Compétence"
+  skills: "Compétences"
 
   
   

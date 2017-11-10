@@ -24,13 +24,13 @@
 							</div>
 							
 							<div class="user_meta">
-								<div class="user_occupation">
-									<%= user_details_occupation(@user.id) %>
+								<div class="user_profession">
+									<%= profession_title(user_details_profession(@user.id)) %> 
 								</div>
 								<div class="user_location">
 									<i class="fa fa-globe" aria-hidden="true"></i>
-									<%= user_contacts_city(@user.id) %>, 
-									<%= user_contacts_country(@user.id) %>
+									<%= user_contacts_address(@user.id) %>
+									
 								</div>
 								<div class="user_member_since">
 									<i class="fa fa-calendar" aria-hidden="true"></i>
@@ -38,14 +38,14 @@
 								</div>
 								<div class="user_availability">
 									<i class="fa fa-history" aria-hidden="true"></i>
-									<%= user_details_availability(@user.id) %>
+									<%= user_details_employment_type(@user.id) %>
 								</div>
 
 							</div>
 							<div class="action_buttons">
-								<%= link_to "CONTACTER", root_path, class: "btn btn-primary" %>
-								<%= link_to "RECOMMANDER", root_path, class: "btn btn-primary" %>
-								<%= link_to "EMBAUCHER", root_path, class: "btn btn-danger" %>
+								<% if is_available?(@user.id) %>
+								<%= link_to "Je suis disponible, contactez-moi", root_path, class: "btn btn-primary" %>
+								<% end %>
 							</div>
 						</div>
 					</div><!-- end -->
@@ -76,35 +76,19 @@
 				<div class="box-body">
 					<div class="social-links">
 					 
-		                <a class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-		                <a class="btn btn-social-icon btn-google"><i class="fa fa-google-plus"></i></a>
-		                <a class="btn btn-social-icon btn-linkedin"><i class="fa fa-linkedin"></i></a>
-		                <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+		                <a href="<%= user_details_facebook(@user.id) %>" class="btn btn-social-icon btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+
+		                <a href="<%= user_details_gplus(@user.id) %>" class="btn btn-social-icon btn-google" target="_blank"><i class="fa fa-google-plus"></i></a>
+
+		                <a href="<%= user_details_linkedin(@user.id) %>" class="btn btn-social-icon btn-linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+		                <a href="<%= user_details_twitter(@user.id) %>" class="btn btn-social-icon btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
 
 					</div>
 				</div>
 			</div>
 
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<span>
-								
-								<h4 class="box-title pull-left">Compétences </h4>
-							</span>
-							<span class="add_button pull-right">
-								<% if is_current_user?(@user) %>
-									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i>'), new_experience_path, remote: true, class: "btn btn-primary" %>
-								<% end %>
-							</span>
-				</div>
-				<div class="box-body">
-					<div class="social-links">
-					 
-		                
 
-					</div>
-				</div>
-			</div>
 
 			<div class="box box-primary">
 				<div class="box-header with-border">

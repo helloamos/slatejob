@@ -21,6 +21,8 @@
 //= require toastr
 //= require chosen-jquery
 // require select2
+//= require intlTelInput
+// require utils
 
 //= require_tree .
 
@@ -38,3 +40,19 @@ $(document).on('turbolinks:load', function() {
 
 	});
 });
+ 
+ /* $(document).on('turbolinks:load', function(){
+	 $("#phone").intlTelInput();
+});*/
+ $(document).on('turbolinks:load', function(){
+  $("#phone").intlTelInput({
+    formatOnInit: true,
+    separateDialCode: true,
+    
+    // initial country
+initialCountry: "Mali",
+
+
+    utilsScript: "/libphonenumber/utils.js"
+});
+  });

@@ -1,10 +1,11 @@
 class UserLanguagesController < ApplicationController
+   before_action :authenticate_user!
   before_action :set_user_language, only: [:show, :edit, :update, :destroy]
 
   # GET /user_languages
   # GET /user_languages.json
   def index
-    @user_languages = UserLanguage.all
+    @user_languages = current_user.user_languages.all
   end
 
   # GET /user_languages/1
@@ -24,6 +25,8 @@ class UserLanguagesController < ApplicationController
   # POST /user_languages
   # POST /user_languages.json
   def create
+
+     @user_languages = current_user.user_languages.all
     @user_language = UserLanguage.new(user_language_params)
 
     respond_to do |format|
@@ -40,6 +43,7 @@ class UserLanguagesController < ApplicationController
   # PATCH/PUT /user_languages/1
   # PATCH/PUT /user_languages/1.json
   def update
+    @user_languages = current_user.user_languages.all
     respond_to do |format|
       if @user_language.update(user_language_params)
         format.html { redirect_to @user_language, notice: 'User language was successfully updated.' }
@@ -54,11 +58,17 @@ class UserLanguagesController < ApplicationController
   # DELETE /user_languages/1
   # DELETE /user_languages/1.json
   def destroy
+    @user_languages = current_user.user_languages.all
     @user_language.destroy
     respond_to do |format|
       format.html { redirect_to user_languages_url, notice: 'User language was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+   def delete
+      @user_languages = UserLanguage.find(params[:user_language_id])
+
   end
 
   private
