@@ -6,6 +6,4 @@ class Bid < ApplicationRecord
 	 	where("project_id = ? and user_id = ?", project_id, user_id)
 	end
 
-	
-
 end

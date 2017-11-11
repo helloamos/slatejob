@@ -59,9 +59,9 @@ module ApplicationHelper
 		bids = Bid.user_have_bid_on(project.id, user.id)
 
 		if bids.count > 0 || user.id == project.user_id
-			false
+			return false
 		else
-			true
+			return true
 		end
 
 	end
@@ -170,12 +170,18 @@ module ApplicationHelper
 	end
 
 	def attribute_button?(project, user)
-		attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
+		#attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
+		project = Project.find(project.id)
+		has_attributed = project.attribute_project
 
-		if user.id == project.user_id && !attributed.blank?
+		if has_attributed.nil?
+
+			if user.id == project.id
+				return true
+			end
+		else
 			return false
-		else 
-			return true
+
 		end
 
 	end

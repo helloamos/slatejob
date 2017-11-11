@@ -17,11 +17,15 @@
                <span><%= l(education.end_date, format: '%Y') %></span>
             </span>
           </div>
-        </li>
-
+        
+        
+        <div class="actions_buttons">
         <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_education_path(education), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
-        <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), education_delete_path(education),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+        <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), education_delete_path(education),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+      </div>
+      <%= do_separator(education, @educations) %>
+</li>
+        </ul> 
 
-        </ul>
     <% end %>
     <% end %>

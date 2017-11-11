@@ -11,6 +11,8 @@ class Project < ApplicationRecord
   	has_many :project_skills
   	has_many :skills, :through => :project_skills, dependent: :destroy
 
+  	has_one :attribute_project, :dependent => :destroy
+
   	# Date validation
 	validates_presence_of :title, :content, :profession_id, :budget, :currency_id, :status
 

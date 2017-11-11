@@ -19,7 +19,7 @@ class User < ApplicationRecord
 	validates :email, uniqueness: true, if: 'email.present?'
 
 	# Relationships
-	has_one :user_detail
+	has_one :user_detail, :dependent => :destroy
 	has_one :user_contact
 	has_many :projects, dependent: :destroy
 	has_many :bids, dependent: :destroy

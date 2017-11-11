@@ -58,13 +58,16 @@
                           
                           <span>
                           <% if attribute_button?(@project, current_user) %>
-                            <%= link_to "J'attribue", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
-                            <% else %>
 
-                            <%= link_to "Modifier mon offre", edit_bid_path(bid), :remote => true, class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                              <% if current_user.id == @project.user_id %>
+                                  <%= link_to "J'attribue", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                                  <% else %>
+
+                                  <%= link_to "Modifier mon offre", edit_bid_path(bid), :remote => true, class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
 
 
-                          <% end %>
+                                <% end %>
+                            <% end %>
                           </span>
                         </td>
                        

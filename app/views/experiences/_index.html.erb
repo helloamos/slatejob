@@ -1,40 +1,47 @@
 <div class="resume_section-content">
 
-								<% if @experiences.nil? %>
-									<h5><i>Rien à afficher pour cette section!</i></h5>
-								<% else %>
+	<% if @experiences.nil? %>
+		<h5><i>Rien à afficher pour cette section!</i></h5>
+	<% else %>
 
-								<% @experiences.each do |experience| %>
+	<% @experiences.each do |experience| %>
 
-									<ul>
-										<li class="resume_section-content_item" data-role="item" id="employment-4741">
-											<div class="resume_section-content_title">
-												<%= experience.position %> - <%= experience.company %>
-											</div>
-											<div class="resume_section-content_range">
-												<span class=start_period>
-													<span><%= l(experience.start_date, format: '%m/%Y') %></span> à 
-												
-													
-												</span>
-							
-												<span class= "end_period">
-													<span><%= l(experience.end_date, format: '%m/%Y') %></span>
-													
-												</span>
+		<ul>
+			<li class="resume_section-content_item" data-role="item" id="employment-4741">
+				<div class="resume_section-content_title">
+					<%= experience.position %> - <%= experience.company %>
+				</div>
+				<div class="resume_section-content_range">
+					<span class=start_period>
+						<span><%= l(experience.start_date, format: '%m/%Y') %></span> à 
+		
+						
+					</span>
 
-											</div>
-											<div class="muted">
-												
-												<%= experience.task %>
-											</div>
-										</li>
-										
-										<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_experience_path(experience), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
-										<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), experience_delete_path(experience),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
-									
-									</ul>
-								<% end %>
+					<span class= "end_period">
+						<span><%= l(experience.end_date, format: '%m/%Y') %></span>
+						
+					</span>
 
-								<% end %>
-							</div>
+				</div>
+				<div class="muted">
+					
+					<%= experience.task %>
+				</div>
+
+				<div class="actions_buttons">
+					<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_experience_path(experience), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), experience_delete_path(experience),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+				</div>
+			</li>
+			
+			
+		</ul>
+
+
+			<%= do_separator(experience, @experiences) %>
+	<% end %>
+
+
+	<% end %>
+</div>

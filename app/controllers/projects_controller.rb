@@ -39,7 +39,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project_bids = @project.bids.order(created_at: :desc).paginate(:page => params[:page], :per_page => 6)
+
     @total_bids = @project.bids.count
+    
     @bid = Bid.new
 
 

@@ -23,13 +23,14 @@
                         <%= certification.description %> -
                          <%= certification.description %>
                       </div>
-                    </li>
+                   
                     
-                    
+                    <div class="actions_buttons">
                     <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_certification_path(certification), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
-                    <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), certification_delete_path(certification),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
-
-                  
+                    <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), certification_delete_path(certification),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+                    </div> </li>
+                  <%= do_separator(certification, @certifications) %>
                   </ul>
+                   
                 <% end %>
                 <% end %>
