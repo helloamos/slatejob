@@ -115,6 +115,8 @@ GEM
       railties (>= 3.2, < 5.2)
     erubi (1.6.1)
     execjs (2.7.0)
+    faker (1.8.4)
+      i18n (~> 0.5)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -312,6 +314,7 @@ DEPENDENCIES
   devise (~> 4.3)
   devise-i18n
   dotenv-rails
+  faker (~> 1.8, >= 1.8.4)
   flag-icons-rails
   font-awesome-rails (~> 4.7, >= 4.7.0.2)
   friendly_id (~> 5.2, >= 5.2.1)
@@ -338,4 +341,4 @@ DEPENDENCIES
   will_paginate-bootstrap (~> 1.0, >= 1.0.1)
 
 BUNDLED WITH
-   1.14.6
+   1.16.0

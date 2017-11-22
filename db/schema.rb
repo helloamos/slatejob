@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   create_table "bids", force: :cascade do |t|
     t.text "content"
     t.decimal "amount"
+    t.datetime "time_limit"
     t.bigint "project_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "time_limit"
     t.integer "currency_id"
     t.integer "time_unity_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
@@ -214,6 +214,8 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_skills_on_category_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -254,6 +256,7 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "fame"
     t.index ["profession_id"], name: "index_user_details_on_profession_id"
     t.index ["user_id"], name: "index_user_details_on_user_id"
   end

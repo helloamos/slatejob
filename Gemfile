@@ -75,6 +75,7 @@ gem 'flag-icons-rails'
 gem 'geocoder', '~> 1.4', '>= 1.4.4'
 gem 'geocomplete_rails', '~> 1.7'
 gem 'chosen-rails'
+gem 'faker', '~> 1.8', '>= 1.8.4'
 #gem "select2-rails"
 gem 'client_side_validations'
 gem 'intl-tel-input-rails'
