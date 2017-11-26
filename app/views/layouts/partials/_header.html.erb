@@ -10,8 +10,16 @@
       </button>
 
       <!-- <a class="navbar-brand" href="#">Imofy</a> -->
-      <%= link_to root_url, class: "navbar-brand" do %>
-        <%= image_tag "logo/logo.png" %> 
+      <% if user_signed_in? %>
+            <%= link_to dashboard_path, class: "navbar-brand" do %>
+          <%= image_tag "logo/logo.png" %> 
+        <% end %>
+
+        <% else %>
+
+        <%= link_to root_url, class: "navbar-brand" do %>
+          <%= image_tag "logo/logo.png" %> 
+        <% end %>
       <% end %>
    
     </div>

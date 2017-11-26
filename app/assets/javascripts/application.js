@@ -28,6 +28,7 @@
 
 $(document).on('turbolinks:load', function(){
 	$("#geocomplete").geocomplete();  // Option 1: Call on element.
+	$().alert('close')
 })
 
 

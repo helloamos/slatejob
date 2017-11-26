@@ -9,9 +9,17 @@
         <span class="icon-bar"></span>
       </button>
 
-      <!-- <a class="navbar-brand" href="#">Imofy</a> -->
-      <%= link_to root_url, class: "navbar-brand" do %>
-        <%= image_tag "logo/logo.png" %> 
+       <!-- <a class="navbar-brand" href="#">Imofy</a> -->
+      <% if user_signed_in? %>
+            <%= link_to dashboard_path, class: "navbar-brand" do %>
+          <%= image_tag "logo/logo.png" %> 
+        <% end %>
+
+        <% else %>
+
+        <%= link_to root_url, class: "navbar-brand" do %>
+          <%= image_tag "logo/logo.png" %> 
+        <% end %>
       <% end %>
    
     </div>
@@ -37,7 +45,7 @@
            
           </ul>
         </li>
-
+        <!--
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aide <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -48,6 +56,7 @@
            
           </ul>
         </li>
+      -->
 
 
 
@@ -56,9 +65,9 @@
       
       <ul class="nav navbar-nav navbar-right">
 
-                <!-- Messages: style can be found in dropdown.less-->
+          <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu"> 
-            <%= render('layouts/partials/messages') %>
+           
           </li> 
           <!-- /.messages-menu -->
 
@@ -114,7 +123,7 @@
 
                  <li>
 
-                 <%= link_to 'Paramètres', edit_profile_path(current_user) %>
+                
 
                  </li>
 

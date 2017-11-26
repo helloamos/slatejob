@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   
   
   
- resources :projects
-  resources :domains
+    #resources :projects
+    resources :domains
  
-  resources :profession_skills
-  resources :professions
-  #resources :experiences
+    resources :profession_skills
+    resources :professions
+    #resources :experiences
     resources :categories
     resources :skills
     resources :currencies
@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     get "/freelances" => "profiles#index", as: :freelances
     get "/attribute-project/" => "attribute_projects#attribute", as: :attribute
     #get "/dashboard/projects" => "projects#index", as: :projects
+    get "/about" => "pages#about", as: :about
+    get "/terms" => "pages#terms", as: :terms
+    get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy
    
     
     # Example Devise routes
@@ -80,7 +83,7 @@ Rails.application.routes.draw do
         confirmation: 'verification', 
         unlock: 'unblock', 
         registration: 'register', 
-        sign_up: 'cmon_let_me_in' 
+        sign_up: '' 
 
     }
 

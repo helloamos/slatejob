@@ -12,11 +12,11 @@ class User < ApplicationRecord
 	EMPLOYMENT_TYPE = [["Plein temps"],["Temps partiel"], ["Contrat"]]
 
 	# Date validation
-	validates :login, presence: true, uniqueness: true, if: 'login.present?'
+	validates :login, presence: true, uniqueness: true
 	validates :profile_type, presence: true
 	#validates :company_name, uniqueness: true, if: 'company_name.present?'
 	validates :slug,  uniqueness: true
-	validates :email, uniqueness: true, if: 'email.present?'
+	validates :email, uniqueness: true
 
 	# Relationships
 	has_one :user_detail, :dependent => :destroy

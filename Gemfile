@@ -44,6 +44,12 @@ group :development, :test do
 end
 
 group :development do
+	# For deployment
+	gem 'capistrano', '~> 3.10'
+	gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+	#gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.3'
+	gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+	gem 'capistrano-rvm', '~> 0.1.2'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
@@ -86,3 +92,5 @@ gem 'ratyrate'
 gem 'activerecord-session_store', '~> 1.0'
 gem 'devise-i18n'
 gem 'dotenv-rails', groups: [:development, :test, :production]
+
+

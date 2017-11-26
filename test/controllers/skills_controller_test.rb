@@ -17,7 +17,7 @@ class SkillsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create skill" do
     assert_difference('Skill.count') do
-      post skills_url, params: { skill: { : @skill. } }
+      post skills_url, params: { skill: { @skill. } }
     end
 
     assert_redirected_to skill_url(Skill.last)

@@ -9,6 +9,22 @@
 require 'faker'
 include Faker
 
+#Users
+
+#5000.times do
+	#User.create do |user|
+		#user.user_name = Faker::Name.name
+		#user.company_name = Faker::Company.name
+		#user.login = Faker::Internet.user_name
+		#user.profile_type = "Freelance"
+		#user.email = Faker::Internet.email
+		#user.password = "AMOSXZIBITDE88"
+		#user.password_confirmation = "AMOSXZIBITDE88"
+		#user.email = Faker::Internet.email
+		
+	#end
+#end
+
 # Domains
 Domain.create([
 	{ title: 'Audiovisuel, Cinéma & Multimedia' }, 
@@ -119,73 +135,68 @@ Profession.create(title: 'Commercial(e)', domain_id: 9)
 Profession.create(title: "Community Manager", domain_id: 9)
 
 # Skills
-skills = [
-"Adobe after effects",
-"Adobe dreamweaver",
-"Adobe fireworks",
-"Adobe illustrator",
-"Adobe indesign",
-"Adobe photoshop",
-"Adobe premiere",
-"Agile",
-"Android",
-"Anglais",
-"Angulasjs",
-"Apache",
-"Apex",
-"API REST",
-"Architecture logicielle",
-"Asp.net",
-"C/C++",
-"C#/VB.NET",
-"Cisco",
-"CMS",
-"CSS",
-"CSS3",
-"SASS",
-"Développement iOS",
-"Django",
-"Python",
-"Drupal",
-"Eclipse",
-"Gestion de projet",
-"HTML/HTML5",
-"iOS",
-"J2ee",
-"Java",
-"Java ee",
-"Java server framework",
-"JQuery",
-"Javascript",
-"Unix/Linux",
-"Microsoft .net",
-"Microsoft Access",
-"Microsoft SQL server",
-"Microsoft windows server",
-"MVC",
-"Mysql",
-"Node.js",
-"Nosql",
-"Oracle",
-"Oracle database",
-"Oracle ebusiness suite",
-"PHP",
-"PL/SQL",
-"Postgresql",
-"Responsive design",
-"SAP finance",
-"Scrum",
-"Spring",
-"SQL",
-"SQL server",
-"UML",
-"Visual Basic",
-"Vmware"
-]
+Skill.create(title: "Adobe after effects")
+Skill.create(title: "Adobe dreamweaver")
+Skill.create(title: "Adobe fireworks")
+Skill.create(title: "Adobe illustrator")
+Skill.create(title: "Adobe indesign")
+Skill.create(title: "Adobe photoshop")
+Skill.create(title: "Adobe premiere")
+Skill.create(title: "Agile")
+Skill.create(title: "Android")
+Skill.create(title: "Anglais")
+Skill.create(title: "Angulasjs")
+Skill.create(title: "Apache")
+Skill.create(title: "Apex")
+Skill.create(title: "API REST")
+Skill.create(title: "Architecture logicielle")
+Skill.create(title: "Asp.net")
+Skill.create(title: "C/C++")
+Skill.create(title: "C#/VB.NET")
+Skill.create(title: "Cisco")
+Skill.create(title: "CMS")
+Skill.create(title: "CSS")
+Skill.create(title: "CSS3")
+Skill.create(title: "SASS")
+Skill.create(title: "Développement iOS")
+Skill.create(title: "Django")
+Skill.create(title: "Python")
+Skill.create(title: "Drupal")
+Skill.create(title: "Eclipse")
+Skill.create(title: "Gestion de projet")
+Skill.create(title: "HTML/HTML5")
+Skill.create(title: "iOS")
+Skill.create(title: "J2ee")
+Skill.create(title: "Java")
+Skill.create(title: "Java ee")
+Skill.create(title: "Java server framework")
+Skill.create(title: "JQuery")
+Skill.create(title: "Javascript")
+Skill.create(title: "Unix/Linux")
+Skill.create(title: "Microsoft .net")
+Skill.create(title: "Microsoft Access")
+Skill.create(title: "Microsoft SQL server")
+Skill.create(title: "Microsoft windows server")
+Skill.create(title: "MVC")
+Skill.create(title: "Mysql")
+Skill.create(title: "Node.js")
+Skill.create(title: "Nosql")
+Skill.create(title: "Oracle")
+Skill.create(title: "Oracle database")
+Skill.create(title: "Oracle ebusiness suite")
+Skill.create(title: "PHP")
+Skill.create(title: "PL/SQL")
+Skill.create(title: "Postgresql")
+Skill.create(title: "Responsive design")
+Skill.create(title: "SAP finance")
+Skill.create(title: "Scrum")
+Skill.create(title: "Spring")
+Skill.create(title: "SQL")
+Skill.create(title: "SQL server")
+Skill.create(title: "UML")
+Skill.create(title: "Visual Basic")
+Skill.create(title: "Vmware")
 
-skills.each do |skill|
-	Skill.create(title: skill)
-end
 
 # Currency
 Currency.create(currency_symbol: 'F CFA', iso_code: 'XOF')

@@ -1,3 +1,4 @@
+
 module ApplicationHelper
 	def resource_name
 	    :user
@@ -98,12 +99,17 @@ module ApplicationHelper
 	def user_details_presentation(user_id)
 		user = User.find(user_id)
 		user_detail = user.user_detail
-		presentation = user_detail.presentation
+		if user_detail.present?
+			presentation = user_detail.presentation
+		end
 	end
+
 	def user_details_profession(user_id)
 		user = User.find(user_id)
 		user_detail = user.user_detail
-		profession = user_detail.profession_id
+		if user_detail.present?
+			profession = user_detail.profession_id
+		end
 	end
 
 	def user_details_facebook(user_id)
@@ -132,14 +138,18 @@ module ApplicationHelper
 
 
 	def profession_title(profession_id)
-		profession = Profession.find(profession_id)
-		profession.title
+		if profession_id.present?
+			profession = Profession.find(profession_id)
+			profession.title
+		end
 	end
 
 	def user_contacts_address(user_id)
 		user = User.find(user_id)
 		user_contact = user.user_contact
-		city = user_contact.address
+		if user_contact.present?
+			city = user_contact.address
+		end
 	end
 
 	def user_contacts_country(user_id)
@@ -215,6 +225,17 @@ module ApplicationHelper
 	def skill_title(skill_id)
 		skill = Skill.find(skill_id)
 		skill.title
+	end
+
+	def uncomplete_profile?
+		user = User.find(current_user.id)
+		user_detail = user.user_detail
+		if user.user_name.present? && user_detail.profession_id.present? && user_detail.presentation.present?
+			return false
+		else
+			return true
+		end
+
 	end
 	
 end

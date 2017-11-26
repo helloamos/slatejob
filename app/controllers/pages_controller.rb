@@ -41,35 +41,35 @@ class PagesController < ApplicationController
 	end
 
 	def privacy_policy
-		render :layout => "application"
+		render :layout => "frontend"
 	end
 
-	def cgu
-		render :layout => "application"
+	def terms
+		render :layout => "frontend"
 	end
 
 	def blog
-		render :layout => "application"
+		render :layout => "frontend"
 	end
 
 	def faq
-		render :layout => "application"
+		render :layout => "fronted"
 	end
 
-	def services
-		render :layout => "application"
+	def about
+		render :layout => "frontend"
 	end
 
 	def partenaires
-		render :layout => "application"
+		render :layout => "frontend"
 	end
 
 	def advertise
-		render :layout => "application"
+		render :layout => "frontend"
 	end
 
 	def contact
-		render :layout => "application"
+		render :layout => "frontend"
 	end
 
 	private

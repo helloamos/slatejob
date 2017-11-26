@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slatejob</title>
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+   
+
+
+  </head>
+
+  <body class="pages">
+  	<%= render('layouts/partials/header') %>
+     <%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
+
+    <%= yield %>
+
+      <%= render('layouts/partials/footer') %>
+  </body>
+</html>

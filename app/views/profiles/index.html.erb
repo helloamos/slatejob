@@ -41,7 +41,7 @@
 										</div>
 
 										<div class="user_short_presentation">
-											<%= user_details_presentation(freelance.id).truncate_words(30, omission: '...').html_safe %>
+											<%= user_details_presentation(freelance.id).truncate_words(30, omission: '...').html_safe if user_details_presentation(freelance.id).present? %>
 										</div>
 										<div class="user_skills">
 											
