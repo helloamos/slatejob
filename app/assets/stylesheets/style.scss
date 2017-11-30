@@ -684,6 +684,10 @@ a.red_text{
 .alert-wraper .alert{
     margin-top: 15px;
     /*margin-bottom: -15px !important;*/
-    margin-left: 15px;
-    margin-right: 15px;
+    /*margin-left: 15px !important;*/
+    /*margin-right: 15px !important;*/
+}
+.about-content, .terms-content, .privacy-policy-content{
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

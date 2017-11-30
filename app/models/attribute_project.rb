@@ -8,6 +8,10 @@ class AttributeProject < ApplicationRecord
 	 where("project_id= ? AND sender_id= ? ", "#{project_id}","#{user_id}")
 	end
 
+	def self.attributed(project_id) 
+	 where("project_id= ?", "#{project_id}")
+	end
+
 	
 
 end

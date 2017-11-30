@@ -55,11 +55,12 @@ module ApplicationHelper
 		total_bids = project.bids.count
 	end
 
-	def can_post_bid?(user, project)
+	def can_post_bid?(user_id, project_id)
 
-		bids = Bid.user_have_bid_on(project.id, user.id)
+		bids = Bid.can_post_bid(user_id, project_id)
+		project = Project.find(project_id)
 
-		if bids.count > 0 || user.id == project.user_id
+		if bids.count > 0 || user_id == project.user_id
 			return false
 		else
 			return true
@@ -179,22 +180,35 @@ module ApplicationHelper
 		end
 	end
 
-	def attribute_button?(project, user)
+
+	# Check if the project is attributed?
+	def attributed?(project_id)
 		#attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
-		project = Project.find(project.id)
-		has_attributed = project.attribute_project
+		project = AttributeProject.attributed(project_id)
 
-		if has_attributed.nil?
+		if project.empty?
 
-			if user.id == project.id
-				return true
-			end
-		else
 			return false
+			
+		else
+			return true
 
 		end
 
 	end
+
+	# Check if the current project is th mine.
+	def my_project?(project_id, user_id)
+		#user = User.find(user_id)
+		project = Project.my_project(project_id, user_id)
+
+		if project.nil?
+			return false
+		else
+			return true
+		end
+	end
+
 
 	def bid_project_title(bid_id)
 		bid = Bid.find(bid_id)
@@ -237,5 +251,9 @@ module ApplicationHelper
 		end
 
 	end
+
+	
+
+	
 	
 end

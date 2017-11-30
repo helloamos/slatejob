@@ -92,7 +92,7 @@
 
         <% else %>
 
-
+ 
 
 
         <li class="dropdown user user-menu">
@@ -135,6 +135,11 @@
                  <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %>
                  </li>
                  </ul>
+        </li>
+          <li >
+             <p class="navbar-btn">
+          <%= link_to "POSTER UN PROJET", new_project_path, class: "btn btn-warning" %>
+        </p>
         </li>
         <% end %>
       </ul>

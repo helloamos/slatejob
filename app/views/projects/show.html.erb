@@ -45,7 +45,7 @@
 
 		<!-- Start col -->
 		<div class="col-md-4">
-			<% if can_post_bid?(current_user, @project) %>
+			<% if !can_post_bid?(@project.id, current_user.id)   %>
 				<div class="box box-primary">
 					
 					<div class="box-body">
