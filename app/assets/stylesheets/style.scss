@@ -589,14 +589,25 @@ ul.nav.nav-tabs li a {
     font-size: 100px;
     text-align: center;
 }
-.shape {
+/*.shape {
    margin: auto;
     width: 70px;
     height: 70px;
     border-radius: 50%;
     font-size: 46px;
     text-align: center;
-    /*background: -webkit-linear-gradient(top, #4387fd, #4683ea) !important;*/
+    border: 3px solid #4285f4 !important;
+    color: #4285f4 !important;
+}*/
+
+.shape {
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 46px;
+    text-align: center;
+    background: -webkit-linear-gradient(top, #4387fd, #4683ea) !important;
     border: 3px solid #4285f4 !important;
     color: #4285f4 !important;
 }
@@ -726,4 +737,8 @@ footer {
 }
 .bg-dark {
     background-color: #212529 !important;
+}
+.step-icon-box img{
+    max-width: 80px;
+    margin-top: 15px;
 }
