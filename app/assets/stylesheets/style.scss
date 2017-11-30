@@ -91,7 +91,7 @@ label {
 }
 
 .hero-wrapper{
-	background-image: url("hero.jpg");
+	background-image: url("hero/hero.jpg");
 	padding: 51px 0;
     background-size: cover;
     padding: 127px 0 102px;
@@ -121,9 +121,12 @@ label {
 
 
 
-.steps-section {
-    border-bottom: 1px solid #f2f2f2;
-    padding: 70px 0 50px;
+.section {
+    /*border-bottom: 1px solid #f2f2f2;*/
+    padding: 40px 0 40px;
+}
+.steps{
+    
 }
 .step-box{
 	padding: 6px;
@@ -690,4 +693,37 @@ a.red_text{
 .about-content, .terms-content, .privacy-policy-content{
     margin-top: 30px;
     margin-bottom: 30px;
+}
+.section-title {
+    position: relative;
+    font-weight: 400;
+    margin-bottom: 30px;
+
+}
+.both-padding-3{
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+
+.section-title::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: #007bff;
+    position: absolute;
+    left: 50%;
+    /*margin-left: -15px;*/
+    bottom: -20px;
+}
+.padding-top-30{
+    margin-top: 40px;
+}
+footer {
+    margin-top: 3em;
+    background: #f5f8fa;
+    border-top: 4px solid #e5e9ee;
+    padding-bottom: 1em;
+}
+.bg-dark {
+    background-color: #212529 !important;
 }
