@@ -58,11 +58,16 @@ module ApplicationHelper
 	def can_post_bid?(user_id, project_id)
 
 		bids = Bid.can_post_bid(user_id, project_id)
+
 		project = Project.find(project_id)
 
-		if bids.count > 0 || user_id == project.user_id
+		# Show post bid button
+		if  user_id == project.user_id
+			return false
+		elsif bids.count > 0
 			return false
 		else
+			# Hide post bid button
 			return true
 		end
 

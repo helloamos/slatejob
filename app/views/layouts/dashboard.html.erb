@@ -14,7 +14,7 @@
   	<%= render('layouts/partials/dheader') %>
 
   
-    <%= component :alert, type: "danger", message: "Attention! Votre profil est incomplet, veuillez compléter votre profil pour augmenter vos chances d'embauche. " , link: raw(link_to('Compléter mon profil', edit_profile_path(current_user), class: "alert-link")) if uncomplete_profile? %>
+    <%= component :alert, type: "danger", message: "Attention! Votre profil est incomplet, veuillez compléter votre profil pour augmenter vos chances. " , link: raw(link_to('Compléter mon profil', edit_profile_path(current_user), class: "alert-link")) if uncomplete_profile? %>
     <%= render :partial => 'layouts/partials/flash_messages', :flash => flash %>
 
     <%= yield %>

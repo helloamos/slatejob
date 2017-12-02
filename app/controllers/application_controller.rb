@@ -21,5 +21,7 @@ class ApplicationController < ActionController::Base
 		edit_user_registration_path
 	end
 
+	
+
 
 end
