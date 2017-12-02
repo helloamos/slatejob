@@ -244,7 +244,7 @@ module ApplicationHelper
 	def uncomplete_profile?
 		user = User.find(current_user.id)
 		user_detail = user.user_detail
-		if user.user_name.present? && user_detail.profession_id.present? && user_detail.presentation.present?
+		if user.user_name.nil? && user_detail.profession_id.nil? && user_detail.presentation.nil?
 			return false
 		else
 			return true
