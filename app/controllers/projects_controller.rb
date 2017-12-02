@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   def show
     @project_bids = @project.bids.order(created_at: :desc).paginate(:page => params[:page], :per_page => 6)
 
-    @total_bids = @project.bids.count
+    @total_bids = @project.bids.count unless @project_bids.nil?
     
     @bid = Bid.new
 
@@ -131,7 +131,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.friendly.find(params[:id]) if params[:id].present?
+      @project = Project.friendly.find(params[:slug]) if params[:slug].present?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

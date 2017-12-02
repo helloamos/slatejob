@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get "/profile/edit/:slug" => "profiles#edit" , as: :edit_profile
     get "/profile/show/:slug" => "profiles#show" , as: :show_profile
     get "/projects/recent" => "projects#recent_projects", as: :recent_projects
-    get "/projects/show/:id" => "projects#show", as: :project_show
+    get "/projects/show/:slug" => "projects#show", as: :project_show
     get "/projects/show/:category/" => "projects#projects_by_category", as: :project_by_category
     
     get 'projects/update_skills', :as => 'update_skills'

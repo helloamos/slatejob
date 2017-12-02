@@ -186,7 +186,7 @@ module ApplicationHelper
 		#attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
 		project = AttributeProject.attributed(project_id)
 
-		if project.empty?
+		if project.nil?
 
 			return false
 			
@@ -213,7 +213,7 @@ module ApplicationHelper
 	def bid_project_title(bid_id)
 		bid = Bid.find(bid_id)
 		project = Project.find(bid.project_id)
-		project.title
+		project.title unless project.nil?
 	end
 
 	def project_instead(project_id)
@@ -237,17 +237,20 @@ module ApplicationHelper
 
 
 	def skill_title(skill_id)
-		skill = Skill.find(skill_id)
-		skill.title
+		skill = Skill.find(skill_id) 
+		skill.title unless skill.nil?
 	end
 
 	def uncomplete_profile?
 		user = User.find(current_user.id)
 		user_detail = user.user_detail
-		if user.user_name.nil? && user_detail.profession_id.nil? && user_detail.presentation.nil?
-			return false
-		else
+		if user_detail.nil?
 			return true
+		elsif user.user_name.blank? || user_detail.profession_id.nil? || user_detail.presentation.blank?
+			return true
+		else
+			return false
+		
 		end
 
 	end
