@@ -61,7 +61,9 @@ class ProfilesController < ApplicationController
 	end
 
 	def index
-		@freelances = User.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+		#@users = User.joins(:user_detail)
+		@freelances =  User.joins(:user_detail).where.not(user_details: {id: nil}).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+		#@freelances = User.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
 		render layout: 'dashboard'
 	end
 

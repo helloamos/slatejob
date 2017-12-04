@@ -187,7 +187,7 @@ module ApplicationHelper
 
 
 	# Check if the project is attributed?
-	def attributed?(project_id)
+	def attributed?(project_id, user_id)
 		#attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
 		project = AttributeProject.attributed(project_id)
 
@@ -249,9 +249,10 @@ module ApplicationHelper
 	def uncomplete_profile?
 		user = User.find(current_user.id)
 		user_detail = user.user_detail
-		if user_detail.nil?
+		user_contact = user.user_contact
+		if user_detail.nil? || user_contact.nil?
 			return true
-		elsif user.user_name.blank? || user_detail.profession_id.nil? || user_detail.presentation.blank?
+		elsif user.user_name.blank? || user_detail.profession_id.nil? || user_detail.presentation.blank? || user_contact.address.blank?
 			return true
 		else
 			return false

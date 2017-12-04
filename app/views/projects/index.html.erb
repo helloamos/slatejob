@@ -1,94 +1,57 @@
-<div class="container"><div class="project-wrapper">
+<div class="container">
+    <div class="project-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="pull-left">
+                     <h1>Mes projets et offres</h1>
+            </div> 
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#my_projects" aria-controls="home" role="tab" data-toggle="tab">Mes projets</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#active_bids" aria-controls="profile" role="tab" data-toggle="tab">Offres actives</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#current_works" aria-controls="messages" role="tab" data-toggle="tab">Travaux encours</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#older_works" aria-controls="settings" role="tab" data-toggle="tab">Travaux passés</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="my_projects">
+                                <%= render('myprojects') %>
+                            </div>
 
 
+                            <div role="tabpanel" class="tab-pane" id="active_bids">
+                                <%= render('activebids') %>
+                            </div>
 
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-         <div class="pull-left">
-             <h1>Mes projets et offres</h1>
-        <!-- <small>Liste des propriétés</small> -->
-         </div> 
-
-         
-          
-
-
-</section>
-
-<!-- Main content -->
-<section class="content">
-
-    <div class="row">
-        <div class="col-sm-12">
-    
-        </div>
+                            <div role="tabpanel" class="tab-pane" id="current_works">
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="older_works">
+                            </div>
+                        </div>
+                    </div><!-- box-body -->
+                </div>
+            </div>
+        </section>
     </div>
-
-    <div class="row">
-        <div class="box">
-
-
-
-          <div class="box-body">
-              <div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#my_projects" aria-controls="home" role="tab" data-toggle="tab">Mes projets</a></li>
-    <li role="presentation"><a href="#active_bids" aria-controls="profile" role="tab" data-toggle="tab">Offres actives</a></li>
-    <li role="presentation"><a href="#current_works" aria-controls="messages" role="tab" data-toggle="tab">Travaux encours</a></li>
-    <li role="presentation"><a href="#older_works" aria-controls="settings" role="tab" data-toggle="tab">Travaux passés</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="my_projects">
-        <%= render('myprojects') %>
-    </div>
-
-
-    <div role="tabpanel" class="tab-pane" id="active_bids">
-      <%= render('activebids') %>
-    </div>
-
-    <div role="tabpanel" class="tab-pane" id="current_works">
-    </div>
-    <div role="tabpanel" class="tab-pane" id="older_works">
-      
-    </div>
-  </div>
-
 </div>
-          </div>
-
-          
-          
-        
-        </div>
-    </div>
-
-    
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</div>
+<div id="Projects_modal"  class="modal fade"></div>                 

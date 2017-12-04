@@ -71,11 +71,24 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    # Get all currency
     @currency = Currency.all
+
+
     @time_unity = TimeUnity.all
+
+    # Get all Skill
     @all_skills = Skill.all
+
+    # Get all Profession.
     @professions = Profession.all
-    @selected_skills = @project.project_skills if !@project.project_skills.empty?
+
+
+    project_skills = @project.project_skills 
+
+    @selected_skills = project_skills unless project_skills.nil?
+
+    # Render Dashboard layout
     render layout: 'dashboard'
   end
 
@@ -88,7 +101,7 @@ class ProjectsController < ApplicationController
 
     # Create ProjectSkill
     params[:skills][:id].each do |skill|
-      if !skill.empty?
+      unless skill.empty?
         @project.project_skills.build(skill_id: skill)
       end
     end
@@ -127,11 +140,15 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def delete
+      @project = Project.friendly.find(params[:project_id])
+    
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.friendly.find(params[:slug]) if params[:slug].present?
+      @project = Project.friendly.find(params[:id]) if params[:id].present?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
