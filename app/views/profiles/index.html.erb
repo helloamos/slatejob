@@ -34,11 +34,13 @@
 										</div>
 
 										<div class="user_meta">
-											<span class="user_location">
-												<i class="fa fa-globe" aria-hidden="true"></i>
-												<%= user_contacts_address(freelance.id) %>
-												
-											</span>
+											<% unless user_contacts_address(freelance.id).blank? %>
+												<span class="user_location">
+													<i class="fa fa-globe" aria-hidden="true"></i>
+													<%= user_contacts_address(freelance.id) %>
+													
+												</span>
+											<% end %>
 										</div>
 
 										<div class="user_short_presentation">

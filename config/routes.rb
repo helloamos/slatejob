@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get "/attribute-project/" => "attribute_projects#attribute", as: :attribute
     #get "/dashboard/projects" => "projects#index", as: :projects
     get "/about" => "pages#about", as: :about
-    get "/terms" => "pages#terms", as: :terms
+    get "/terms-of-service" => "pages#terms", as: :terms
     get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy
    
     
