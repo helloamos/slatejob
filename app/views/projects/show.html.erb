@@ -29,14 +29,17 @@
 
 			<!-- Bids list -->
 			<div class="bids_index">
-			<div class="box box-primary">
-				<div class="box-header">
-					<h1 class="box-title"><%= @total_bids %> offre(s)</h1>
-				</div>
+				<div class="box box-primary">
+					<div class="box-header">
+						<h1 class="box-title"><%= @total_bids %> offre(s)</h1>
+					</div>
 
 
-				<div class="box-body">
-					<%= render ("./bids/index") %>
+					<div class="box-body">
+						<%= render './bids/index' %>
+					</div>
+						 
+	        
 				</div><!-- end box -->
 			</div>
 		</div><!-- end col -->

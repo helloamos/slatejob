@@ -70,7 +70,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'paperclip', '~> 5.0.0'
 
 #gem 'trix', '~> 0.11.0'
-gem 'bootsy', '~> 2.4'
+#gem 'bootsy', '~> 2.4'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'

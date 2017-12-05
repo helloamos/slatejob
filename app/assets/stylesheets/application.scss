@@ -16,10 +16,12 @@
  */
 
 @import "style";
-@import "font-awesome";
+@import "media-queries";
+
 @import "social-share-button";
-/*@import "bootstrap-sprockets";*/
+@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import "flag-icon";
 @import "toastr";
 @import "chosen";

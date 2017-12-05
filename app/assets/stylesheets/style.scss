@@ -5,6 +5,8 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Work Sans', sans-serif;
 font-family: 'Rubik', sans-serif; */
 
+
+
 .iti-flag {
     background-image: url("flags.png") !important;
 }
@@ -470,6 +472,7 @@ ul.nav.nav-tabs li a {
 .user_thumbnail img{
     min-width: 200px;
     width: 100%;
+    height: 200px;
 }
 .user_name{
     color: #3863a0;
@@ -526,7 +529,8 @@ ul.nav.nav-tabs li a {
 
 .user_thumb  img {
    
-    width: 100%;
+    width: 200px;
+    height: 200px;
 }
 
 .profile_header{
@@ -628,8 +632,8 @@ ul.nav.nav-tabs li a {
 .navbar-default .navbar-nav > li > a {
     /*color: #777;*/
     color: #9E9E9E !important;
-    font-size: 11pt !important;
-    font-weight: 600 !important;
+    /*font-size: 11pt !important;*/
+    /*font-weight: 600 !important;*/
 }
 .navbar-default .navbar-nav > li > a:hover {
    color: #4285f4 !important
@@ -649,8 +653,8 @@ ul.nav.nav-tabs li a {
 }
 .fa {
     
-    font-size: 11pt !important;
-    font-weight: 600 !important;
+    /*font-size: 11pt !important;*/
+    /*font-weight: 600 !important;*/
 }
 .login-box-body, .register-box-body {
     background: #fff;
@@ -756,4 +760,48 @@ footer {
     width: 860px;
     margin-left: auto;
     margin-right: auto;
+}
+.notifications{
+    background-color: #dd4b39 !important;
+}
+.remaining-bids{
+    font-size: 5em;
+    font-weight: bold;
+}
+.navbar-nav > li a i {
+    display: block;
+    font-size: 18px;
+}
+.more-dropdown > a i {
+    margin: 0 auto;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    font-size: 20px !important;
+}
+.popover{
+    margin-top: 0px !important;
+    border-radius: 0px !important;
+    width: 160px !important;
+}
+.popover-content ul{
+    list-style-type: none;
+    padding: 0px;
+}
+.popover  li  a {
+    color: #777 !important;
+}
+.popover  li  a:hover {
+    color: #4285f4 !important;
+}
+.user-menu    img{
+   
+width: 25px;
+height: 25px;
+border-radius: 50%;
+margin-right: 10px;
+margin-top: -2px;
+}
+span.alert{
+    font-size: 20px;
 }

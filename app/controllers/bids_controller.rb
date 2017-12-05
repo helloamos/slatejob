@@ -7,8 +7,7 @@ class BidsController < ApplicationController
   def index
     @bids = Bid.all
 
-   
-   
+
   end
 
   # GET /bids/1

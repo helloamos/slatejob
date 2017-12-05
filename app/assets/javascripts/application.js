@@ -31,6 +31,31 @@ $(document).on('turbolinks:load', function(){
 	$().alert('close')
 })
 
+$(document).on('turbolinks:load', function () {
+ $(".freelances").popover({ html : true, trigger: 'focus'})
+ $(".projects").popover({ html : true , trigger: 'focus'})
+ $(".user-menu").popover({ html : true, trigger: 'focus'})
+
+});
+
+$(document).on('turbolinks:load', function () {
+	$( "a.freelances " ).click(function( event ) {
+	  event.preventDefault()
+	  // Do something
+	});
+
+	$( "a.projects" ).click(function( event ) {
+	  event.preventDefault()
+	  // Do something
+	});
+
+	$( "a.user-menu" ).click(function( event ) {
+	  event.preventDefault()
+	  // Do something
+	});
+
+})
+
 
 // Enable chosen js for turbolinks
 $(document).on('turbolinks:load', function() {
