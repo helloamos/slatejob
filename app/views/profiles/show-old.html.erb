@@ -1,0 +1,148 @@
+<!-- Profile  header -->
+<div class="profile_header">
+	<!-- Profile cover -->
+	<div class="profile_cover">
+		<div class="container">
+			<div class="profile_wrapper">
+
+				<div class="row">
+					<!-- User thumb -->
+					<div class="col-md-3">
+						<div class="user_thumb clearfix">
+							<%= image_tag @user.avatar.url(:medium) %>
+							
+						</div><!-- end thumb -->	
+					</div><!-- end col -->
+
+					<!-- User description -->
+					<div class="col-md-9">
+						
+						<div class="user_details">
+						
+							<div class="user_name">
+								<%= @user.user_name  %>
+							</div>
+							
+							<div class="user_meta">
+								<div class="user_profession">
+									<%= profession_title(user_details_profession(@user.id)) %> 
+								</div>
+								<div class="user_location">
+									<i class="fa fa-globe" aria-hidden="true"></i>
+									<%= user_contacts_address(@user.id) %>
+									
+								</div>
+								<div class="user_member_since">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+									<%= @user.created_at.strftime("%d/%m/%Y") %>
+								</div>
+								<div class="user_availability">
+									<i class="fa fa-history" aria-hidden="true"></i>
+									<%= user_details_employment_type(@user.id) %>
+								</div>
+
+							</div>
+							<div class="action_buttons">
+								<% if is_available?(@user.id) %>
+								<%= link_to "Contactez-moi", root_path, class: "btn btn-primary" %>
+								<% end %>
+							</div>
+						</div>
+					</div><!-- end -->
+				</div>
+			</div>
+		</div><!-- end col -->
+	</div><!-- end row-->
+</div><!-- end header -->
+
+
+		
+<div class="profile_content">
+	<div class="container">
+		<!-- Profile content -->
+		<div class="row">
+			
+			<div class="col-md-3">
+					<!-- Sidebar -->
+			<div class="sidebar">
+
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h4 class=box-title>
+						Suivez-moi
+						
+					</h4>
+				</div>
+				<div class="box-body">
+					<div class="social-links">
+					 
+		                <a href="<%= user_details_facebook(@user.id) %>" class="btn btn-social-icon btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+
+		                <a href="<%= user_details_gplus(@user.id) %>" class="btn btn-social-icon btn-google" target="_blank"><i class="fa fa-google-plus"></i></a>
+
+		                <a href="<%= user_details_linkedin(@user.id) %>" class="btn btn-social-icon btn-linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+		                <a href="<%= user_details_twitter(@user.id) %>" class="btn btn-social-icon btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<span>
+								
+								<h4 class="box-title pull-left">Langues </h4>
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i>'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+				</div>
+				<div class="box-body">
+					<div class="social-links">
+					 
+		                
+
+					</div>
+				</div>
+			</div>
+
+	
+				</div>
+			</div><!-- end sidebar -->
+
+			<!-- content -->
+			<div class="col-md-9">
+
+				<div class="resume">
+					<%= render("resume") %>
+				</div>
+			</div>
+	
+		</div><!-- end profile content -->
+
+		<!-- Profile footer -->
+		<div class="profile_footer">
+			
+		</div><!-- end -->
+
+	</div><!-- end -->
+
+	
+</div>
+</div>
+
+<!-- Modal dialog section -->
+<div id="experiences_modal"  class="modal fade"></div>
+<div id="educations_modal"  class="modal fade"></div>
+<div id="certifications_modal"  class="modal fade"></div>
+<div id="awards_modal"  class="modal fade"></div>
+<div id="user_skills_modal"  class="modal fade"></div>
+<div id="publigations_modal"  class="modal fade"></div>
+<div id="portfolios_modal"  class="modal fade" ></div>
+
+	

@@ -35,6 +35,8 @@ $(document).on('turbolinks:load', function () {
  $(".freelances").popover({ html : true, trigger: 'focus'})
  $(".projects").popover({ html : true , trigger: 'focus'})
  $(".user-menu").popover({ html : true, trigger: 'focus'})
+ $(".companies").popover({ html : true, trigger: 'focus'})
+ $(".more").popover({ html : true, trigger: 'focus'})
 
 });
 
@@ -53,6 +55,14 @@ $(document).on('turbolinks:load', function () {
 	  event.preventDefault()
 	  // Do something
 	});
+	$( "a.companies" ).click(function( event ) {
+	  event.preventDefault()
+	  // Do something
+	});
+	$( "a.more" ).click(function( event ) {
+	  event.preventDefault()
+	  // Do something
+	})
 
 })
 

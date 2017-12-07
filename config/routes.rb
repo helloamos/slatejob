@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get "/subscription" => "pages#subscription", as: :subscription
     get "/dashboard" => "dashboard#index" , as: :dashboard
     get "/profile/edit/:slug" => "profiles#edit" , as: :edit_profile
-    get "/profile/show/:slug" => "profiles#show" , as: :show_profile
+    get "/profile/:slug" => "profiles#show" , as: :show_profile
     get "/projects/recent" => "projects#recent_projects", as: :recent_projects
     get "/projects/show/:id" => "projects#show", as: :project_show
     get "/projects/show/:category/" => "projects#projects_by_category", as: :project_by_category
@@ -76,16 +76,29 @@ Rails.application.routes.draw do
         get 'delete'
     end
 
-    devise_for :users, path: 'user', path_names: { 
-        sign_in: 'login', 
-        sign_out: 'logout', 
-        password: 'secret', 
-        confirmation: 'verification', 
-        unlock: 'unblock', 
-        registration: 'register', 
-        sign_up: '' 
+    #devise_for :users, path: 'user', path_names: { 
+        #sign_in: 'login', 
+        #sign_out: 'logout', 
+        #password: 'secret', 
+        #confirmation: 'verification', 
+        #unlock: 'unblock', 
+        #registration: 'register', 
+        #sign_up: '' 
 
-    }
+    #}
+    devise_for :users, controllers: { 
+            registrations: "registrations",
+            passwords: "passwords"
+        }, 
+        path_names: {
+            sign_in: 'login', 
+            sign_out: 'logout', 
+            password: 'secret', 
+            confirmation: 'verification', 
+            unlock: 'unblock', 
+            registration: 'register', 
+            sign_up: '' 
+        }
 
 
     # Bootsy edito routes.

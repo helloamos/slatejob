@@ -1,5 +1,8 @@
 <div class="dashboard-wrapper">
 	<div class="container">
+		<div class="col-md-4">
+			<%= render("./dashboard/shared/left_sidebar") %>	
+		</div>
 		<div class="col-md-8">
 			<% if @projects.empty? %>
 				<div class="box box-primary">
@@ -77,7 +80,7 @@
 									
 									<!-- Description -->
 									<div class="project_description">
-										<%= project.content.truncate_words(50, omission: '...').html_safe %>
+										<%= project.content.truncate_words(30, omission: '...').html_safe %>
 									</div>
 									<div class="project_skills">
 										<% project_skills(project.id) %>
@@ -104,8 +107,8 @@
 		</div>
 
 		<!-- Sidebar -->
-		<div class="col-md-4">
-			<%= render("./dashboard/shared/sidebar") %>	
+		<div class="col-mdx-31">
+			
 		</div>
 	</div>
 </div>

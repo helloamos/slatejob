@@ -14,12 +14,7 @@ class ApplicationController < ActionController::Base
 	
 	end
 
-	def after_sign_up_path_for(resource)
-		#after_registration_path(:personal)
-		#wizard_path(:personal_info)
-		#redirect_to dashboard_path
-		edit_user_registration_path
-	end
+	
 
 	
 

@@ -28,6 +28,10 @@ body, h1, h2, h3, h4, h5, h6{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.main-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 /*
 .btn-primary {
@@ -478,7 +482,7 @@ ul.nav.nav-tabs li a {
 .user_name{
     color: #3863a0;
     /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
-    font-size: 34px;
+    font-size: 2.1em;
     font-weight: 400;
     letter-spacing: .2px;
     line-height: 42px;
@@ -805,4 +809,114 @@ margin-top: -2px;
 }
 span.alert{
     font-size: 20px;
+}
+.user-profile-image img{
+    vertical-align: middle;
+    width: 150px;
+    border-radius: 50%;
+}
+.edit-profil{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.profile-info-list::after {
+    clear: both !important;
+}
+
+.profile-info-list::before, .profile-info-list::after {
+    content: '';
+    display: table;
+}
+.profile-info-list > li:first-child::before {
+    position: absolute;
+    content: '';
+    right: 14px;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid #e6ecf0;
+}
+
+.profile-card {
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.card-cover {
+    height: 70px;
+    background: #ee0979;
+    background: -webkit-linear-gradient(left, #ff6a00, #ee0979);
+    background: -o-linear-gradient(left, #ff6a00, #ee0979);
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+}
+.profile-pic {
+    position: relative;
+}
+
+.profile-card-info {
+    padding: 15px;
+}
+.profile-user-info {
+    overflow: hidden;
+    text-align: left;
+}
+.profile-pic figure img {
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+}
+.profile-pic figure {
+    display: inline-block;
+    width: 74px;
+    float: left;
+    margin-top: -24px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.profile-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.profile-info-list {
+    list-style: none;
+}
+.profile-info-list > li a small {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+.profile-info-list > li {
+    display: inline-block;
+    float: left;
+    vertical-align: bottom;
+    width: 50%;
+    position: relative;
+}
+.p-connections, .p-views {
+    display: block;
+    color: #f95877;
+    font-size: 18px;
+    padding: 0;
+    font-weight: 600;
+}
+.profile-info-list > li a {
+    display: block;
+    color: #657786;
+    padding: 0;
+}
+
+
+.profile-card-head h4 {
+    font-size: 1.1em;
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+.profile-user-info h4 a {
+    color: #14171a;
+}
+.profile-user-info p {
+    color: #66757f;
 }
