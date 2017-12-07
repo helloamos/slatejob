@@ -52,6 +52,9 @@ label {
     border-color: #e7e7e7 !important;
   
     border-radius: 0px !important;
+
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.08),0 2px 4px 0 rgba(0,0,0,.12);
+
 }
 .btn-primary {
     color: #fff;
@@ -293,7 +296,7 @@ footer ul li{
 	font-size: 1.5em;
 }
 .project_content{
-	margin: 15px;
+	/*margin: 15px;*/
 }
 .project_meta{
 	margin-bottom: 5px;
@@ -712,10 +715,7 @@ a.red_text{
     /*margin-left: 15px !important;*/
     /*margin-right: 15px !important;*/
 }
-.about-content, .terms-content, .privacy-policy-content{
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
+
 .section-title {
     position: relative;
     font-weight: 400;
@@ -761,8 +761,8 @@ footer {
     width: 100%;
 }
 .terms-wrapper, .terms-header{
-   margin: 30px 0px 30px 0px;
-    width: 860px;
+    margin: 30px 0px 30px 0px;
+    max-width: 860px;
     margin-left: auto;
     margin-right: auto;
 }

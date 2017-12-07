@@ -33,3 +33,6 @@ en:
   hello: "Hello world"
   subscription_successfull: "Vous êtes abonné avec succès!"
   subscription_exist: "Cette adresse email existe déjà dans nos base donées!"
+  recaptcha:
+    errors:
+      verification_failed: 'Fail'

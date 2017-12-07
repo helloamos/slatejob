@@ -9,9 +9,7 @@
 					</figure>
 					<div class="profile-user-info">
 						<h4>
-							<a href="/profiles/203-amos-kernel">
-								<b>Amos KERNEL</b>
-							</a>              
+							<%= link_to "#{current_user.user_name}" , show_profile_path(current_user) %>
 						</h4>
 						<p>Membre débutant(e)</p>
 					</div>
