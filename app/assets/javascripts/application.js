@@ -23,13 +23,18 @@
 // require select2
 //= require intlTelInput
 // require utils
+//= require jquery.raty
+//= require ratyrate
 
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
 	$("#geocomplete").geocomplete();  // Option 1: Call on element.
 	$().alert('close')
-})
+});
+
+
+
 
 $(document).on('turbolinks:load', function () {
  $(".freelances").popover({ html : true, trigger: 'focus'})

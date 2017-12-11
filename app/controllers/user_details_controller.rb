@@ -1,4 +1,6 @@
 class UserDetailsController < ApplicationController
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   before_action :authenticate_user!
   before_action :set_user_detail, only: [:show, :edit, :update, :destroy]
 

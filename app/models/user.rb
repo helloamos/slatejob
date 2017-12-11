@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 	# For FriendlyID
 	extend FriendlyId
+
 	friendly_id :login, use: :slugged
 
 	# Include default devise modules. Others available are:
@@ -8,7 +9,7 @@ class User < ApplicationRecord
 	 :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable, :omniauthable,  omniauth_providers: [:facebook, :google_oauth2]
 
 	# User profile type
-	PROFILE_TYPE = [["Freelance"],["Employeur"]]
+	#PROFILE_TYPE = [["Freelance"],["Employeur"]]
 	EMPLOYMENT_TYPE = [["Plein temps"],["Temps partiel"], ["Contrat"]]
 
 	# Date validation
@@ -18,28 +19,38 @@ class User < ApplicationRecord
 	validates :slug,  uniqueness: true
 	validates :email, uniqueness: true
 
-	# Relationships
-	has_one :user_detail, :dependent => :destroy
-	has_one :user_contact
+
+	has_one :profile, dependent: :destroy
+
 	has_many :projects, dependent: :destroy
+
 	has_many :bids, dependent: :destroy
+
 	has_many :experiences, dependent: :destroy
+
 	has_many :educations, dependent: :destroy
+
 	has_many :certifications, dependent: :destroy
+
 	has_many :awards, dependent: :destroy
+
 	has_many :user_languages, dependent: :destroy
 
 	has_many :user_skills
+
   	has_many :skills, :through => :user_skills, dependent: :destroy
 
   	has_many :notifications, :foreign_key =>  :sender_id, class_name:  'Notification', :dependent => :destroy
-	
-
+		
 	# Paperclip usage
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "200x200>" }, default_url: "/images/avatar/:style/missing.png",  validate_media_type: false
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
 	validates_attachment :avatar,  :file_dimensions
+
+	def self.location(country)
+		where("country = ? ", "#{country}")
+	end
 
 
 	# Image dimensions validation
@@ -49,9 +60,10 @@ class User < ApplicationRecord
 		self.height = dimensions.height
 
 		if dimensions.width < 200 && dimensions.height < 200
-			errors.add(:file,'Width or height must be at least 50px')
+			#errors.add(:file,'Width or height must be at least 50px')
 		end
 	end
+	
 
 
 end

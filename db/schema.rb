@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105024713) do
+ActiveRecord::Schema.define(version: 20171208205907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attribute_projects", force: :cascade do |t|
+  create_table "attributions", force: :cascade do |t|
     t.bigint "sender_id"
     t.bigint "receiver_id"
     t.bigint "project_id"
+    t.bigint "bid_id"
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_attribute_projects_on_project_id"
-    t.index ["receiver_id"], name: "index_attribute_projects_on_receiver_id"
-    t.index ["sender_id"], name: "index_attribute_projects_on_sender_id"
+    t.index ["bid_id"], name: "index_attributions_on_bid_id"
+    t.index ["project_id"], name: "index_attributions_on_project_id"
+    t.index ["receiver_id"], name: "index_attributions_on_receiver_id"
+    t.index ["sender_id"], name: "index_attributions_on_sender_id"
   end
 
   create_table "awards", force: :cascade do |t|
@@ -39,17 +41,22 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   end
 
   create_table "bids", force: :cascade do |t|
-    t.text "content"
+    t.text "content", null: false
     t.decimal "amount"
-    t.datetime "time_limit"
-    t.bigint "project_id"
-    t.bigint "user_id"
+    t.string "time_limit"
+    t.bigint "currency_id"
+    t.bigint "time_unity_id"
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "currency_id"
-    t.integer "time_unity_id"
+    t.index ["currency_id"], name: "index_bids_on_currency_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
+    t.index ["time_unity_id"], name: "index_bids_on_time_unity_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
   end
 
   create_table "categories", force: :cascade do |t|
@@ -178,6 +185,31 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.index ["domain_id"], name: "index_professions_on_domain_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "full_name"
+    t.string "company_name"
+    t.bigint "profession_id"
+    t.text "presentation"
+    t.boolean "availability"
+    t.boolean "visibility"
+    t.string "employment_type"
+    t.string "facebook_link"
+    t.string "twitter_link"
+    t.string "linkedin_link"
+    t.string "gplus_link"
+    t.string "address"
+    t.string "phone"
+    t.string "country"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profession_id"], name: "index_profiles_on_profession_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "project_skills", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
@@ -214,8 +246,6 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_skills_on_category_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -228,37 +258,6 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_contacts", force: :cascade do |t|
-    t.string "country"
-    t.string "city"
-    t.string "address"
-    t.string "phone"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
-    t.index ["user_id"], name: "index_user_contacts_on_user_id"
-  end
-
-  create_table "user_details", force: :cascade do |t|
-    t.bigint "profession_id"
-    t.text "presentation"
-    t.boolean "availability"
-    t.boolean "visibility"
-    t.string "employment_type"
-    t.string "facebook_link"
-    t.string "twitter_link"
-    t.string "linkedin_link"
-    t.string "gplus_link"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "fame"
-    t.index ["profession_id"], name: "index_user_details_on_profession_id"
-    t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 
   create_table "user_friends", force: :cascade do |t|
@@ -290,6 +289,16 @@ ActiveRecord::Schema.define(version: 20171105024713) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "login"
+    t.string "profile_type", null: false
+    t.string "slug"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.boolean "superadmin_role", default: false
+    t.boolean "supervisor_role", default: false
+    t.boolean "user_role", default: true
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -309,18 +318,6 @@ ActiveRecord::Schema.define(version: 20171105024713) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name"
-    t.string "login"
-    t.string "profile_type"
-    t.string "company_name"
-    t.string "slug"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.boolean "superadmin_role", default: false
-    t.boolean "supervisor_role", default: false
-    t.boolean "user_role", default: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

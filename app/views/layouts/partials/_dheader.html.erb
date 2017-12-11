@@ -89,7 +89,7 @@
 
         <li class="false">
         <%= link_to recent_projects_path, class: "text-center user-menu",  rel: "popover", :"data-placement" => "bottom", :"data-content" => "#{render './layouts/partials/popovers/popover_user' }" do  %>
-        <%= image_tag current_user.avatar.url(:medium) ,  alt: "User Image" %>
+       <%= image_tag current_user.avatar.url(:medium) ,  alt: "User Image" %>
         <div>Moi</div>
         <% end %>
         </li>

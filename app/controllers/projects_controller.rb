@@ -26,6 +26,13 @@ class ProjectsController < ApplicationController
     render layout: 'dashboard'
   end
 
+  def projects_nearby
+    city = current_user.profile.city
+    country = current_user.profile.country
+    @projects = Project.location(country, city).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+    render layout: 'dashboard'
+  end
+
 
 
     def update_skills
@@ -65,6 +72,7 @@ class ProjectsController < ApplicationController
     @time_unity = TimeUnity.all
     @all_skills = Skill.all
     @professions = Profession.all
+    @budgets = Budget.all
 
     render layout: 'dashboard'
   end

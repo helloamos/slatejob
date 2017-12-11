@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 
+  #resources :profiles
   
   
-  
+  post '/rate' => 'rater#create', :as => 'rate'
     #resources :projects
     resources :domains
  
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
     get "/projects/recent" => "projects#recent_projects", as: :recent_projects
     get "/projects/show/:id" => "projects#show", as: :project_show
     get "/projects/show/:category/" => "projects#projects_by_category", as: :project_by_category
+    get "/projects/nearby" => "projects#projects_nearby", as: :projects_nearby
     
     get 'projects/update_skills', :as => 'update_skills'
     get 'read_notification' => 'notifications#show'
@@ -45,8 +47,7 @@ Rails.application.routes.draw do
     #sessions: 'users/sessions'
     #}
     resources :subscriptions
-    resources :user_details
-    resources :user_contacts
+   
    
       resources :projects do
           get 'delete'
@@ -72,6 +73,10 @@ Rails.application.routes.draw do
     get 'delete'
     end
 
+    resources :profiles do 
+    get 'delete'
+    end
+
       resources :user_languages do 
         get 'delete'
     end
@@ -86,7 +91,7 @@ Rails.application.routes.draw do
         #sign_up: '' 
 
     #}
-    devise_for :users, controllers: { 
+    devise_for :users, path: '', controllers: { 
             registrations: "registrations",
             passwords: "passwords"
         }, 
@@ -96,7 +101,7 @@ Rails.application.routes.draw do
             password: 'secret', 
             confirmation: 'verification', 
             unlock: 'unblock', 
-            registration: 'register', 
+            registration: 'signup', 
             sign_up: '' 
         }
 

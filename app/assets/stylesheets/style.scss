@@ -787,7 +787,7 @@ footer {
 .popover{
     margin-top: 0px !important;
     border-radius: 0px !important;
-    width: 160px !important;
+    width: 200px !important;
 }
 .popover-content ul{
     list-style-type: none;
@@ -919,4 +919,20 @@ span.alert{
 }
 .profile-user-info p {
     color: #66757f;
+}
+.btn-group .btn-primary{
+    color: #3276b1 !important;
+    background: #fff !important;
+}
+.btn-group .btn-primary.active{
+    color: white !important;
+    background: -webkit-linear-gradient(top, #4387fd, #4683ea) !important
+}
+
+.login-box, .register-box {
+   max-width: 450px !important;
+    
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 40px !important;
 }

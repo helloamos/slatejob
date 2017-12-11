@@ -5,11 +5,11 @@
 				<div class="card-cover"></div>
 				<div class="profile-pic">
 					<figure>
-						<%= image_tag current_user.avatar.url(:medium) %>           
+						 <%= image_tag current_user.avatar.url(:medium) %>   
 					</figure>
 					<div class="profile-user-info">
 						<h4>
-							<%= link_to "#{current_user.user_name}" , show_profile_path(current_user) %>
+							<%= link_to "#{current_user.profile.full_name}" , show_profile_path(current_user) %>
 						</h4>
 						<p>Membre débutant(e)</p>
 					</div>

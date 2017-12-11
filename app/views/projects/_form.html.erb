@@ -3,7 +3,7 @@
 	
 	<div class="form-group">
 		<%= form.label t(:looking_for_profession) %>*
-		<%= form.collection_select(:profession_id, @professions,  :id, :title , {prompt: "Catégorie de projet"}, class: "form-control") %>
+		<%= form.collection_select(:profession_id, @professions,  :id, :title , {prompt: "Catégorie de projet"}, class: "form-control", required: true) %>
 		
 	</div>
 
@@ -23,7 +23,7 @@
 		<div class="col-md-9">
 			<div class="form-group">
 				<%= form.label t("budget") %>
-				<%= form.select :budget,  Project::BUDGET, {prompt: "Votre budget"}, class: "form-control", required: true %>
+				<%= form.collection_select(:budget_id, @budgets,  :id, :title , {prompt: "Votre budget"}, class: "form-control", required: true) %>
 										
 			</div>
 		</div>

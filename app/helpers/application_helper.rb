@@ -242,17 +242,18 @@ module ApplicationHelper
 
 
 	def skill_title(skill_id)
-		skill = Skill.find(skill_id) 
-		skill.title unless skill.nil?
+		#skill = Skill.find(skill_id) 
+		#skill.title unless skill.nil?
 	end
 
 	def uncomplete_profile?
-		user = User.find(current_user.id)
-		user_detail = user.user_detail
-		user_contact = user.user_contact
-		if user_detail.nil? || user_contact.nil?
+		#user = User.find(current_user.id)
+		profile = current_user.profile
+		#user_detail = user.user_detail
+		#user_contact = user.user_contact
+		if profile.nil? 
 			return true
-		elsif user.user_name.blank? || user_detail.profession_id.nil? || user_detail.presentation.blank? || user_contact.address.blank?
+		elsif  profile.profession_id.nil? || profile.presentation.blank? || profile.address.blank?
 			return true
 		else
 			return false

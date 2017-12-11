@@ -1,4 +1,19 @@
-<%= form_for(@user_detail) do |form| %>
+<%= form_for(@profile) do |form| %>
+<div class="row">
+										<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:user_name) %>
+					                			<%= form.text_field :full_name, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:company) %>
+					                			<%= form.text_field :company_name,   class: "form-control" %>
+					                		</div>
+				                		</div>
+				                	</div>
+
 			                		<div class="row">
 										<div class="col-sm-6">
 					                		<div class="form-group">
@@ -38,6 +53,27 @@
 					                		</div>
 				                		</div>
 			                		</div>
+
+			                		<!-- Row -->
+		                		<div class="row">
+		                			<div class="col-sm-6">
+		                				<div class="form-group">
+					                		<%= form.label t(:address) %>
+					                		<%= form.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
+
+				                		</div>
+			                			
+			                		</div>
+			                		<div class="col-sm-6">
+			                			<div class="form-group">
+					                		<%= form.label t(:phone) %> <br />
+					                		<%= form.text_field :phone, class: "form-control", :id => "phone",  required: true %>
+				                		</div>
+			                			
+			                		</div>
+		                		</div>
+		                		<!-- end row -->
+
 			                		<div class="row">
 			                			<div class="col-sm-6">
 			                				<div class="form-group">

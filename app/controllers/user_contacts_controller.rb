@@ -1,4 +1,4 @@
-class UserContactsController < ApplicationController
+class ProfilesController < ApplicationController
    require 'openssl'
    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   before_action :authenticate_user!

@@ -3,8 +3,9 @@
     <%= render('./shared/logo') %>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Connectez-vous pour commencer votre session!</p>
+  <div class="box box-primary">
+  <div class="box-body">
+    <p class="login-box-msg">Connectez-vous!</p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group has-feedback">
@@ -52,6 +53,8 @@
       
   </div>
   <!-- /.login-box-body -->
+
+  </div>
 </div>
 <!-- /.login-box -->
 

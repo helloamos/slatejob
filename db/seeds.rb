@@ -11,7 +11,7 @@ include Faker
 
 #Users
 
-#5000.times do
+#2.times do
 	#User.create do |user|
 		#user.user_name = Faker::Name.name
 		#user.company_name = Faker::Company.name
@@ -24,6 +24,13 @@ include Faker
 		
 	#end
 #end
+
+User.create(login: "KERNEL", 
+	profile_type: "Freelance", 
+	email: "salut.amos@gmail.com",
+	 password: "AMOSXZIBITDE88",
+	  password_confirmation: "AMOSXZIBITDE88")
+
 
 # Domains
 Domain.create([
@@ -207,6 +214,19 @@ Currency.create(currency_symbol: '$', iso_code: 'USD')
 TimeUnity.create(title: 'Heure(s)')
 TimeUnity.create(title: 'Jours')
 TimeUnity.create(title: 'Mois')
+
+Budget.create(title: "Moins de 5 000")
+Budget.create(title: "15 000 - 30 000")
+Budget.create(title: "35 000 - 45 000")
+Budget.create(title: "50 000 - 75 000")
+Budget.create(title: "75 000 - 100 000")
+Budget.create(title: "100 000 - 200 000")
+Budget.create(title: "200 000 - 250 000")
+Budget.create(title: "300 000 - 500 000")
+Budget.create(title: "600 000 - 800 000")
+Budget.create(title: "1 000 000 - 1 500 000")
+Budget.create(title: "2 000 000 - 4 000 000")
+Budget.create(title: "Plus de 5 000 000")
 
 
 
