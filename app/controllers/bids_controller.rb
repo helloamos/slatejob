@@ -76,7 +76,7 @@ class BidsController < ApplicationController
 
     respond_to do |format|
       if bid.update_attributes(bid_params)
-        format.html { redirect_to project_show_path(project), notice: 'Bid was successfully updated.' }
+        format.html { redirect_to project_show_path(project), notice: t(:bid_update_successfully) }
         format.json { render :show, status: :ok, location: @bid }
         format.js
       else

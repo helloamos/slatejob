@@ -8,11 +8,12 @@
 						 <%= image_tag current_user.avatar.url(:medium) %>   
 					</figure>
 					<div class="profile-user-info">
+						
 						<h4>
-							<%= link_to "#{current_user.profile.full_name}" , show_worker_profile_path(current_user) %>
+							<b><%= link_to "#{current_user.profile.full_name}" , show_worker_profile_path(current_user) %></b>
 						</h4>
 						<p>
-							<%= link_to "Membre débutant(e)", root_path %>
+							<%= link_to "Mettez à jour votre profil ", show_worker_profile_path(current_user) %>
 						</p>
 					</div>
 				</div>
@@ -43,7 +44,7 @@
 							</a>        
 						</div>
 					</li>
-					
+
 					
 				</ul>
 			</div>

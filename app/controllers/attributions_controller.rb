@@ -8,7 +8,7 @@ class AttributionsController < ApplicationController
 		sender = project.user_id
 
 		attribution = Attribution.new(bid_id: bid.id, sender_id: sender, recipient_id: recipient, project_id: project.id, accepted: false)
-	
+		respond_to do |format|
 			if attribution.save
 
 				# Update project status
@@ -27,13 +27,16 @@ class AttributionsController < ApplicationController
 				AttributedMailer.attributed_email(project.user_id, current_user.id, project.id).deliver_now
 				
 				flash[:notice] = 'Le projet a été attrubé avec succès.' 
-				redirect_to project_show_path(project) 
+				
 	        	
-	        	
+	        	format.html { redirect_to project_show_path(project), notice: t(:bid_create_successfully) }
+        		format.json { render :show, status: :created, location: @bid }
+        		
 			else
 				 flash[:alert] = 'Error.'
 				 redirect_to project_show_path(project)
 			end
+		end
 		
 	end
 	

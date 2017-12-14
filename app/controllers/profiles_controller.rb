@@ -75,7 +75,7 @@ class ProfilesController < ApplicationController
 			@profile.update_attributes(country: country, city: city)
 		end
 
-        format.html { redirect_to edit_profile_path(current_user), notice: 'Subscription was successfully updated.' }
+        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_detail_successfull) }
         format.json { render :show, status: :ok, location: edit_profile_path }
       else
         format.html { redirect_to edit_profile_path(current_user) }
