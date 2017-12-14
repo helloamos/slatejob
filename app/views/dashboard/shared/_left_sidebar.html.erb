@@ -11,28 +11,39 @@
 						<h4>
 							<%= link_to "#{current_user.profile.full_name}" , show_worker_profile_path(current_user) %>
 						</h4>
-						<p>Membre débutant(e)</p>
+						<p>
+							<%= link_to "Membre débutant(e)", root_path %>
+						</p>
 					</div>
 				</div>
 			</div>
 			<div class="profile-card-info">
 				<ul class="profile-info-list">
+					
+					<li>
+						<div class="profile-views">
+							<a href="/profiles/203-amos-kernel">
+								<small>Vues</small>
+								<span class="p-views">
+									<% if current_user.view_number.nil? %>
+									0
+									<% else %>
+										<%= current_user.view_number %>
+									<% end %>
+										
+								</span>
+							</a>              
+						</div>
+					</li>
 					<li>
 						<div class="profile-connections">
 							<a href="/my-network">
-								<small>Votes</small>
+								<small>Relations</small>
 								<span class="p-connections">0</span>
 							</a>        
 						</div>
 					</li>
-					<li>
-						<div class="profile-views">
-							<a href="/profiles/203-amos-kernel">
-								<small>Vue(s)</small>
-								<span class="p-views">0</span>
-							</a>              
-						</div>
-					</li>
+					
 					
 				</ul>
 			</div>

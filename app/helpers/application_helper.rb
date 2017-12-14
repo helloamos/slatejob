@@ -38,10 +38,10 @@ module ApplicationHelper
 		end
 	end
 
-	def currency_symbol(id)
-		currency = Currency.find(id)
-		currency.currency_symbol unless currency.blank?
-	end
+	#def currency_symbol(id)
+		#currency = Currency.find(id)
+		#currency.currency_symbol unless currency.blank?
+	#end
 	def time_unity(id)
 		unity = TimeUnity.find(id)
 		unity.title

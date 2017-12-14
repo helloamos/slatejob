@@ -18,6 +18,12 @@ class WorkersController < ApplicationController
 		@user_skills = @user.user_skills
 
 
+		# Update view number
+    	view_number = @user.view_number.to_i + 1 unless @user.blank?
+    
+    	@user.update_attributes(:view_number => view_number)
+
+
 		# User all experiences
 		#@user_all_experiences = user.experiences
 		# User all experiences
@@ -29,18 +35,15 @@ class WorkersController < ApplicationController
 		# User all experiences
 		#@user_all_portfolios = user.portfolios
 
-	
-
-		render layout: 'dashboard'
 	end
 
  	def workers_nearby
-    #city = current_user.profile.city
-    country = current_user.profile.country
-    #@freelance = Project.location(country, city).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
-    @freelances =  User.joins(:profile).where.not(profiles: {id: nil}).location(country).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+	    #city = current_user.profile.city
+	    country = current_user.profile.country
+	    #@freelance = Project.location(country, city).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+	    @freelances =  User.joins(:profile).where.not(profiles: {id: nil}).location(country).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
 
-    render layout: 'dashboard'
+	   
   end
 	
 

@@ -303,6 +303,7 @@ footer ul li{
 	font-weight: bold;
     color: rgba(66, 65, 65, 0.81);
     margin: 15px;
+    font-size: 0.9em;
 }
 .project_meta .meta_date, .meta_budget, .meta_user {
 	margin-right: 5px;
@@ -388,6 +389,12 @@ a.post_bid{
 .project_skills{
     margin: 15px;
 }
+.project_skills .btn{
+    border-radius: 1px !important;
+    margin: 3px !important;
+    color: #3c8dbc !important;
+}
+
 .project_skills_title{
     font-size: 15pt;
     font-style: italic;

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
     get "/employers" => "employers#index", as: :employers
     get "/employers" => "employers#near_by", as: :employers_nearby
+    get "/employers/profile/:slug" => "employers#show", as: :show_employer_profile
     
     get 'projects/update_skills', :as => 'update_skills'
     get 'read_notification' => 'notifications#show'
