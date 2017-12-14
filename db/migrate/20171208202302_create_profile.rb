@@ -5,7 +5,7 @@ class CreateProfile < ActiveRecord::Migration[5.1]
     	# Basic infos
     	t.string               :full_name
     	t.string               :company_name
-    	t.references		   :profession
+    	t.references		   :profession, index: true
   		t.text   		       :presentation
   		t.boolean 		       :availability
   		t.boolean 		       :visibility
@@ -27,7 +27,7 @@ class CreateProfile < ActiveRecord::Migration[5.1]
         t.float                 :latitude
         t.float                 :longitude 
 
-  		t.references      	:user
+  		t.references      	:user, index: true, null: false
   		t.timestamps 
   	end    
   end

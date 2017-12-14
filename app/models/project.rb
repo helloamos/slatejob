@@ -14,13 +14,13 @@ class Project < ApplicationRecord
   	has_many :bids, dependent: :destroy
 
   	# Association with Currency
-  	belongs_to :currency
+  	#belongs_to :currency
 
   	# Association with Profession
   	belongs_to :profession
 
   	# Association with Bugdet
-  	belongs_to :budget
+  	#belongs_to :budget
 
   	# Association with Skill through ProjectSkill
   	has_many :project_skills
@@ -31,7 +31,7 @@ class Project < ApplicationRecord
   	has_one :attribution, :dependent => :destroy
 
   	# Date validation
-	validates_presence_of :title, :content, :profession_id, :budget, :currency_id, :status
+	validates_presence_of :title, :content, :profession_id, :budget, :currency, :status
 
 	validates :slug, uniqueness: true 
 

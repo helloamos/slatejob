@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(version: 20171208205907) do
   enable_extension "plpgsql"
 
   create_table "attributions", force: :cascade do |t|
-    t.bigint "sender_id"
-    t.bigint "receiver_id"
-    t.bigint "project_id"
-    t.bigint "bid_id"
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "bid_id", null: false
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bid_id"], name: "index_attributions_on_bid_id"
     t.index ["project_id"], name: "index_attributions_on_project_id"
-    t.index ["receiver_id"], name: "index_attributions_on_receiver_id"
+    t.index ["recipient_id"], name: "index_attributions_on_recipient_id"
     t.index ["sender_id"], name: "index_attributions_on_sender_id"
   end
 
@@ -43,20 +43,19 @@ ActiveRecord::Schema.define(version: 20171208205907) do
   create_table "bids", force: :cascade do |t|
     t.text "content", null: false
     t.decimal "amount"
-    t.string "time_limit"
-    t.bigint "currency_id"
-    t.bigint "time_unity_id"
-    t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "time_limit"
+    t.string "currency"
+    t.string "time_unity"
+    t.bigint "project_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["currency_id"], name: "index_bids_on_currency_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
-    t.index ["time_unity_id"], name: "index_bids_on_time_unity_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "budgets", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -130,7 +129,7 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.string "country", null: false
     t.boolean "currently_working", default: false, null: false
     t.text "task", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_experiences_on_user_id"
@@ -203,7 +202,7 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.string "city"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profession_id"], name: "index_profiles_on_profession_id"
@@ -224,21 +223,20 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.text "content"
     t.bigint "profession_id"
     t.string "budget"
-    t.bigint "currency_id"
+    t.string "currency"
     t.string "status"
-    t.string "priority_id"
+    t.string "priority"
     t.boolean "published"
     t.string "time_limit"
-    t.bigint "time_unity_id_id"
+    t.string "time_unity"
     t.datetime "expire_at"
     t.integer "view_number"
     t.bigint "user_id"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["currency_id"], name: "index_projects_on_currency_id"
     t.index ["profession_id"], name: "index_projects_on_profession_id"
-    t.index ["time_unity_id_id"], name: "index_projects_on_time_unity_id_id"
+    t.index ["time_unity"], name: "index_projects_on_time_unity"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

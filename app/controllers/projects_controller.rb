@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  layout 'dashboard'
 
 
   def recent_projects
@@ -9,28 +9,28 @@ class ProjectsController < ApplicationController
         @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
         @domains = Domain.all
    
-    render layout: 'dashboard'
+    
   end
 
   def projects_by_category
     @projects = Project.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
     @domains = Domain.all
 
-    render layout: 'dashboard'
+   
   end
   # GET /projects
   # GET /projects.json
   def index
     @projects = current_user.projects.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
     @bids = current_user.bids.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
-    render layout: 'dashboard'
+   
   end
 
   def projects_nearby
     city = current_user.profile.city
     country = current_user.profile.country
     @projects = Project.location(country, city).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
-    render layout: 'dashboard'
+    
   end
 
 
@@ -60,8 +60,7 @@ class ProjectsController < ApplicationController
     
     @project.update_attributes(:view_number => view_number)
 
-    # render
-    render layout: 'dashboard'
+   
 
   end
 
@@ -74,7 +73,7 @@ class ProjectsController < ApplicationController
     @professions = Profession.all
     @budgets = Budget.all
 
-    render layout: 'dashboard'
+    
   end
 
   # GET /projects/1/edit
@@ -90,14 +89,15 @@ class ProjectsController < ApplicationController
 
     # Get all Profession.
     @professions = Profession.all
+     @budgets = Budget.all
+
 
 
     project_skills = @project.project_skills 
 
     @selected_skills = project_skills unless project_skills.nil?
 
-    # Render Dashboard layout
-    render layout: 'dashboard'
+  
   end
 
   # POST /projects
@@ -105,6 +105,10 @@ class ProjectsController < ApplicationController
   def create
     @currency = Currency.all
     @time_unity = TimeUnity.all
+    @all_skills = Skill.all
+    @professions = Profession.all
+    @budgets = Budget.all
+
     @project = current_user.projects.build(project_params)
 
     # Create ProjectSkill
@@ -161,6 +165,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :content, :profession_id, :budget, :currency_id,  :expire_at)
+      params.require(:project).permit(:title, :content, :profession_id, :budget, :currency,  :expire_at)
     end
 end

@@ -1,6 +1,6 @@
 class Budget < ApplicationRecord
 	# Association with user
-	has_many :projects
+	#has_many :projects
 
 	
 

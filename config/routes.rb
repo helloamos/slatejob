@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
 
-  #resources :profiles
-  
-  
-  post '/rate' => 'rater#create', :as => 'rate'
+    #resources :profiles
     #resources :projects
     resources :domains
  
@@ -20,23 +17,35 @@ Rails.application.routes.draw do
 
     # Homepage.
     root to: "home#index"
+
     #root to: "pages#subscription"
     #root to: "home#landing"
     #get "/home" => "home#index"
     get "/subscription" => "pages#subscription", as: :subscription
     get "/dashboard" => "dashboard#index" , as: :dashboard
+
+
+    # Profiles
     get "/profile/edit/:slug" => "profiles#edit" , as: :edit_profile
-    get "/profile/:slug" => "profiles#show" , as: :show_profile
+    #get "/profile/:slug" => "profiles#show" , as: :show_profile
+
+    # Projects
+    get "/projects/my-projects" => "projects#index", as: :my_projects
     get "/projects/recent" => "projects#recent_projects", as: :recent_projects
     get "/projects/show/:id" => "projects#show", as: :project_show
-    get "/projects/show/:category/" => "projects#projects_by_category", as: :project_by_category
     get "/projects/nearby" => "projects#projects_nearby", as: :projects_nearby
+    
+    get "/workers" => "workers#index", as: :workers
+    get "/workers/profile/:slug" => "workers#show", as: :show_worker_profile
+    get "/workers/nearby" => "projects#projects_nearby", as: :workers_nearby
+
+    get "/employers" => "employers#index", as: :employers
+    get "/employers" => "employers#near_by", as: :employers_nearby
     
     get 'projects/update_skills', :as => 'update_skills'
     get 'read_notification' => 'notifications#show'
-    get "/freelances" => "profiles#index", as: :freelances
-    get "/attribute-project/" => "attribute_projects#attribute", as: :attribute
-    #get "/dashboard/projects" => "projects#index", as: :projects
+    
+    get "/attributions" => "attributions#new", as: :attributions
     get "/about" => "pages#about", as: :about
     get "/terms-of-service" => "pages#terms", as: :terms
     get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy

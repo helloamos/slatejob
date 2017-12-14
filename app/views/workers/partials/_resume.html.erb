@@ -1,0 +1,167 @@
+	<!-- PRESENTATION -->
+	<section class="presentation">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<span>
+						<h4 class="box-title">A propos de moi</h4>
+					</span>
+					
+				
+			</div>
+			<div class="box-body">
+				<div class="freelance_short_presentation">
+					<%= @user.profile.presentation.html_safe %>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<!-- VOUS EN QUELQUES MOTS -->
+				<section class="experiences">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span>
+								
+								<h4 class="box-title pull-left">Expériences </h4>
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_experience_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+
+							<div class="experiences_index">
+								<%= render ("./experiences/index") %>
+							</div>
+
+
+							
+
+						</div>
+					</div>
+					
+				</section>
+
+				<!-- EXPÉRIENCES -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+
+							<span class="section_title">
+							
+							<h4 class="box-title pull-left">Educations</h4>
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_education_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							
+
+							<div class="educations_index">
+								<%= render ("./educations/index") %>
+							</div>
+							
+						</div>
+					</div>
+
+				</section>
+
+				<!-- FORMATIONS & CERTIFICATIONS -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span class="section_title">
+							
+								<h4 class="box-title pull-left">Certifications </h4>
+						
+								
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_certification_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							
+							<div class="certifications_index">
+								<%= render ("./certifications/index") %>
+							</div>
+
+						</div>
+					</div>
+
+				</section>
+
+				<!-- Trophés -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span class="section_title">
+								<h4 class="box-title pull-left">Prix & Distinctions </h4>
+								
+								
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_award_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							<div class="awards_index">
+								<%= render ("./awards/index") %>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+				<!-- Trophés -->
+				<section class="description">
+
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<span class="section_title">
+								<h4 class="box-title pull-left">Compétences </h4>
+								
+								
+							</span>
+							<span class="add_button pull-right">
+								<% if is_current_user?(@user) %>
+									<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Ajouter'), new_user_skill_path, remote: true, class: "btn btn-primary" %>
+								<% end %>
+							</span>
+						</div>
+						<div class="box-body">
+							<div class="user_skills_index">
+								<%= render ("./user_skills/index") %>
+							</div>
+						</div>
+					</div>
+
+				</section>
+
+
+
+
+
+
+
+					
+
+			
+
+					
+
+					
+				

@@ -39,7 +39,7 @@
                               <%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
                             </span>
                             <span class="bid_amount_currency">
-                              <%= currency_symbol(bid.currency_id) %> 
+                              <%= bid.currency %> 
                             </span>
                           </h5>
                         </td>
@@ -50,7 +50,7 @@
                               En <%= bid.time_limit %> 
                             </span>
                             <span class="bid_time_limit_unity">
-                              <%= time_unity(bid.time_unity_id) %> 
+                              <%= bid.time_unity %> 
                             </span>
                           </h5>
                         </td>
@@ -58,11 +58,11 @@
                         <td>
                           
                           <span>
-                          <% if attributed?(@project.id, current_user.id) %>
+                          <% if my_project?(@project.id, current_user.id) && !attributed?(@project.id) %>
 
 
-                                  <%= link_to "J'attribue", attribute_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
-                                  <% else %>
+                                  <%= link_to "J'attribue", attributions_path(project: @project.id, freelance: bid.user_id, bid: bid.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+                                  <% elsif !attributed?(@project.id) %>
 
                                   <%= link_to "Modifier mon offre", edit_bid_path(bid), :remote => true, class: "btn btn-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
 

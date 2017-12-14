@@ -1,0 +1,92 @@
+<div class="container main-container">
+
+	<div class="col-md-9">
+		<div class="row">
+			<div class="box box-primary">
+				<div class="box-body">
+					
+					
+
+					<div class="col-md-3 user-profile-image">
+						<%= image_tag @user.avatar.url(:medium) %>
+					</div>
+
+					<div class="col-md-9 user-details">
+						<!--
+						<button type="button" class="btn btn-default btn-circle btn-xl pull-right">
+							1<br>Views
+						</button>
+					-->
+
+							<div class="user_name">
+								<%= @user.profile.full_name  %>
+							</div>
+							<div class="user_meta">
+								<div class="user_profession">
+									<%= profession_title(@user.profile.profession_id) %> 
+								</div>
+								<div class="user_location">
+									Adresse:
+									<%= @user.profile.address %>
+									
+								</div>
+								<div class="user_member_since">
+									Membre depuis:
+									<%= @user.created_at.strftime("%d/%m/%Y") %>
+								</div>
+								<div class="user_availability">
+									Type de travail:
+									<%= @user.profile.employment_type %>
+								</div>
+								<% if is_available?(@user.id) %>
+								<div class="user_availability">
+									Disponible: Oui
+								</div>
+								<% end %>
+
+							</div>
+							<div class="action_buttons">
+								<% if is_available?(@user.id) %>
+									<%= link_to "Contactez-moi", root_path, class: "btn btn-primary" %>
+								<% end %>
+							</div>
+
+							<% if is_current_user?(@user) %>
+								<div class="edit-profil pull-right">
+									<%= link_to raw('<i class="fa fa-pencil " aria-hidden="true"></i>'), edit_profile_path(current_user), class: 'btn btn-default' %>
+								</div>
+							<% end %>
+
+			
+					</div>
+				</div>
+			</div>
+		</div><!-- end row -->
+
+		<div class="row">
+
+
+			<div class="resume">
+					<%= render("./profiles/partials/resume") %>
+				</div>
+		
+
+		</div>
+	</div><!-- end col -->
+
+
+	<!-- Sidebar -->
+	<div class="col-md-3">
+		
+
+	</div>
+
+</div>     
+<!-- Modal dialog section -->
+<div id="experiences_modal"  class="modal fade"></div>
+<div id="educations_modal"  class="modal fade"></div>
+<div id="certifications_modal"  class="modal fade"></div>
+<div id="awards_modal"  class="modal fade"></div>
+<div id="user_skills_modal"  class="modal fade"></div>
+<div id="publigations_modal"  class="modal fade"></div>
+<div id="portfolios_modal"  class="modal fade" ></div>

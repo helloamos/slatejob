@@ -100,7 +100,7 @@
 							<%= number_with_precision(@project.budget, delimiter: " ", separator: "", precision: 0) %>	
 						</span>
 						<span>
-							<%= currency_symbol(@project.currency_id) %>
+							<%= @project.currency %>
 						</span>
 					</div>
 

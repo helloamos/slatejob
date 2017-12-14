@@ -215,6 +215,7 @@ TimeUnity.create(title: 'Heure(s)')
 TimeUnity.create(title: 'Jours')
 TimeUnity.create(title: 'Mois')
 
+# Budget
 Budget.create(title: "Moins de 5 000")
 Budget.create(title: "15 000 - 30 000")
 Budget.create(title: "35 000 - 45 000")

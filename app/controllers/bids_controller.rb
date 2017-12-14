@@ -1,6 +1,8 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
+
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
+
 
   # GET /bids
   # GET /bids.json
@@ -33,7 +35,6 @@ class BidsController < ApplicationController
   # POST /bids.json
   def create
     @bid = current_user.bids.build(bid_params)
-
     project = Project.friendly.find(@bid.project_id)
     respond_to do |format|
       if @bid.save
@@ -68,13 +69,18 @@ class BidsController < ApplicationController
   # PATCH/PUT /bids/1
   # PATCH/PUT /bids/1.json
   def update
+    #@bid = current_user.bids.update_attributes(bid_params)
+    project = Project.friendly.find(@bid.project_id)
+    user = current_user
+    bid = user.bids.find(params[:id])
+
     respond_to do |format|
-      if @bid.update(bid_params)
-        format.html { redirect_to @bid, notice: 'Bid was successfully updated.' }
+      if bid.update_attributes(bid_params)
+        format.html { redirect_to project_show_path(project), notice: 'Bid was successfully updated.' }
         format.json { render :show, status: :ok, location: @bid }
         format.js
       else
-        format.html { render :edit }
+        format.html { redirect_to project_show_path(project),  alert: 'Error.'}
         format.json { render json: @bid.errors, status: :unprocessable_entity }
           format.js
       end
@@ -92,6 +98,8 @@ class BidsController < ApplicationController
   end
 
   private
+
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_bid
       @bid = Bid.find(params[:id])
@@ -99,6 +107,6 @@ class BidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params
-      params.require(:bid).permit(:content, :amount, :time_limit, :project_id, :currency_id, :time_unity_id)
+      params.require(:bid).permit(:content, :amount, :time_limit, :project_id, :currency, :time_unity)
     end
 end

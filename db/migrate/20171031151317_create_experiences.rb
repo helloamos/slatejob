@@ -8,7 +8,7 @@ class CreateExperiences < ActiveRecord::Migration[5.1]
       t.string    :country, null: false
     	t.boolean		:currently_working, default: false, null: false	# If currently working here (Y/N)
     	t.text			:task, null: false
-    	t.references	:user # User_id
+    	t.references	:user , index: true, null: false
     	t.timestamps	null: false
 
       t.timestamps

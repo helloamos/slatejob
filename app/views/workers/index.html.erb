@@ -1,0 +1,76 @@
+<div class="dashboard-wrapper">
+	<div class="container">
+		<div class="col-md-8">
+			<% if @workers.empty? %>
+				<div class="box box-primary">
+					<div class="box-body">
+						<p>
+							Pas de freelances pour cette recheche!
+						</p>
+					</div>
+				</div>
+
+			<% else %>
+
+				<% @workers.each do |worker|  %>
+					<div class="box box-primary">
+						<div class="box-body">
+							
+
+								<div class="user_content">
+									
+									<div class="col-md-4">
+										<div class="user_thumbnail">
+											<%= image_tag worker.avatar.url(:medium) %>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="user_name">
+											<%= link_to "#{worker.profile.full_name}" , show_worker_profile_path(worker) %>
+										</div>
+
+										<div class="user_profession">
+											<%= profession_title(worker.profile.profession_id) %> 
+										</div>
+
+										<div class="user_meta">
+											<% unless worker.profile.address.blank? %>
+												<span class="user_location">
+													<i class="fa fa-globe" aria-hidden="true"></i>
+													<%= worker.profile.address %>
+													
+												</span>
+											<% end %>
+										</div>
+
+										<div class="user_short_presentation">
+											<%= worker.profile.presentation.truncate_words(30, omission: '...').html_safe if worker.profile.presentation.present? %>
+										</div>
+										<div class="user_skills">
+											
+										</div>
+
+									</div>
+
+
+
+								</div>
+							
+							
+						</div><!-- end box-body -->
+					</div><!-- end box-primary -->
+				<% end %>
+			<% end %>
+
+			<div class="row page_navi">
+						<%= will_paginate @workers, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+							
+					</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div class="col-md-4">
+			
+		</div>
+	</div>
+</div>

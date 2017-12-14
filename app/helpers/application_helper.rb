@@ -40,7 +40,7 @@ module ApplicationHelper
 
 	def currency_symbol(id)
 		currency = Currency.find(id)
-		currency.currency_symbol
+		currency.currency_symbol unless currency.blank?
 	end
 	def time_unity(id)
 		unity = TimeUnity.find(id)
@@ -75,7 +75,7 @@ module ApplicationHelper
 
 	def skill_title(skill_id)
 		skill = Skill.find(skill_id)
-		skill.title
+		skill = skill.title unless skill.title.nil?
 	end
 
 	def project_skills(project_id)
@@ -175,8 +175,7 @@ module ApplicationHelper
 	end
 	def is_available?(user_id)
 		user = User.find(user_id)
-		user_detail = user.user_detail
-		availability = user_detail.availability
+		availability = user.profile.availability
 
 		if availability
 			return true
@@ -187,11 +186,11 @@ module ApplicationHelper
 
 
 	# Check if the project is attributed?
-	def attributed?(project_id, user_id)
+	def attributed?(project_id)
 		#attributed = AttributeProject.find_by_project_and_user(project.id, user.id)
-		project = AttributeProject.attributed(project_id)
+		project = Attribution.attributed(project_id)
 
-		if project.nil?
+		if project.blank?
 
 			return false
 			
@@ -207,7 +206,7 @@ module ApplicationHelper
 		#user = User.find(user_id)
 		project = Project.my_project(project_id, user_id)
 
-		if project.nil?
+		if project.blank?
 			return false
 		else
 			return true
@@ -241,10 +240,7 @@ module ApplicationHelper
 	end
 
 
-	def skill_title(skill_id)
-		#skill = Skill.find(skill_id) 
-		#skill.title unless skill.nil?
-	end
+	
 
 	def uncomplete_profile?
 		#user = User.find(current_user.id)

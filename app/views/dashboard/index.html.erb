@@ -32,8 +32,12 @@
 									<div class="project_meta">
 
 										<span class="meta_date">
-											<span class="meta_icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-											<span><%= project.created_at.strftime("%d/%m/%Y") %></span>
+											<span class="meta_icon">
+												<i class="fa fa-calendar" aria-hidden="true"></i>
+											</span>
+											<span>
+												<%= project.created_at.strftime("%d/%m/%Y") %>	
+											</span>
 										</span><!-- end meta date -->
 										<span class="separator"></span>
 										<span class="meta_total_bids">
@@ -53,7 +57,7 @@
 												<%= number_with_precision(project.budget, delimiter: " ", separator: "", precision: 0) %>	
 											</span>
 											<span>	
-												<%= currency_symbol(project.currency_id) %>	
+												<%= project.currency %>	
 											</span>
 										</span><!-- en meta budget -->
 										<span class="separator"></span>
@@ -82,10 +86,13 @@
 									<div class="project_description">
 										<%= project.content.truncate_words(30, omission: '...').html_safe %>
 									</div>
+
 									<div class="project_skills">
 										<% project_skills(project.id) %>
 										<% @project_skills.each do |ps| %>
-											<span class="btn btn-default"><%= skill_title(ps.skill_id) %></span>
+											<span class="btn btn-default">
+												<%= skill_title(ps.skill_id) %>	
+											</span>
 										<% end %>
 									</div>
 									

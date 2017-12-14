@@ -52,6 +52,10 @@ class User < ApplicationRecord
 		where("country = ? ", "#{country}")
 	end
 
+	def self.by_profile(profile_type)
+		where("profile_type = ? ", "#{profile_type}")
+	end
+
 
 	# Image dimensions validation
 	def file_dimensions

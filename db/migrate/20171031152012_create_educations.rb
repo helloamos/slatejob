@@ -6,7 +6,7 @@ class CreateEducations < ActiveRecord::Migration[5.1]
 	  t.date 		:start_date, null: false
 	  t.date 		:end_date, null: false
 	  t.string 		:country, null: false
-      t.references 	:user, null: false # User_ID
+      t.references 	:user, index: true, null: false # User_ID
     	
       t.timestamps
     end
