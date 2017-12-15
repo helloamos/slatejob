@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   def show
     @project_bids = @project.bids.order(created_at: :desc).paginate(:page => params[:page], :per_page => 6)
 
-    @total_bids = @project.bids.count unless @project_bids.nil?
+    @total_bids = @project.bids.count unless @project_bids.blank?
     
     @bid = Bid.new
 
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @currency = Currency.all
+    @currencies = Currency.all
     @time_unity = TimeUnity.all
     @all_skills = Skill.all
     @professions = Profession.all
@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     # Get all currency
-    @currency = Currency.all
+    @currencies = Currency.all
 
 
     @time_unity = TimeUnity.all
@@ -95,7 +95,7 @@ class ProjectsController < ApplicationController
 
     project_skills = @project.project_skills 
 
-    @selected_skills = project_skills unless project_skills.nil?
+    @selected_skills = project_skills unless project_skills.blank?
 
   
   end
@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @currency = Currency.all
+    @currencies = Currency.all
     @time_unity = TimeUnity.all
     @all_skills = Skill.all
     @professions = Profession.all
