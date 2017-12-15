@@ -65,7 +65,7 @@
 									
 									<!-- Description -->
 									<div class="project_description">
-										<%= project.content.truncate_words(50, omission: '...').html_safe %>
+										<%= project.content.truncate_words(45, omission: '...').html_safe %>
 									</div>
 									<div class="project_skills">
 										<% project_skills(project.id) %>

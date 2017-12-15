@@ -23,8 +23,7 @@
 // require select2
 //= require intlTelInput
 // require utils
-//= require jquery.raty
-//= require ratyrate
+
 
 //= require_tree .
 

@@ -31,7 +31,7 @@ class Project < ApplicationRecord
   	has_one :attribution, :dependent => :destroy
 
   	# Date validation
-	validates_presence_of :title, :content, :profession_id, :budget, :currency, :status
+	validates_presence_of :title, :content, :profession_id, :budget, :currency_id, :status
 
 	validates :slug, uniqueness: true 
 
