@@ -35,7 +35,7 @@
                 <%= number_with_precision(bid.amount, delimiter: " ", separator: "", precision: 0) %> 
               </span>
               <span>
-                   <%= currency_symbol(project_instead(bid.project_id).currency_id)    %>    
+                   <%= project_instead(bid.project_id).currency_id    %>    
               </span>
         </td>
                               

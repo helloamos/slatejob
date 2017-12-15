@@ -20,14 +20,14 @@ class BidsController < ApplicationController
   # GET /bids/new
   def new
     @bid = Bid.new
-    @currency = Currency.all
+    @currencies = Currency.all
     @time_unity = TimeUnity.all
     render layout: "dashboard"
   end
 
   # GET /bids/1/edit
   def edit
-    @currency = Currency.all
+    @currencies = Currency.all
     @time_unity = TimeUnity.all
   end
 
@@ -107,6 +107,6 @@ class BidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params
-      params.require(:bid).permit(:content, :amount, :time_limit, :project_id, :currency, :time_unity)
+      params.require(:bid).permit(:content, :amount, :time_limit, :project_id, :currency_id, :time_unity)
     end
 end

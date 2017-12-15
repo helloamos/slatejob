@@ -22,7 +22,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <%= form.label t("currency_id") %>
-                    <%= form.collection_select :currency, @currency, :currency_symbol, :currency_symbol, {prompt: t("currency_id")}, class: "form-control" %>
+                    <%= form.collection_select :currency_id, @currencies, :currency_symbol, :currency_symbol, {prompt: t("currency_id")}, class: "form-control" %>
                                 
                 </div>
             </div>
