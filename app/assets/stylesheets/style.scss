@@ -302,7 +302,7 @@ footer ul li{
 	margin-bottom: 5px;
 	font-weight: bold;
     color: rgba(66, 65, 65, 0.81);
-    margin: 15px;
+    /*margin: 15px;*/
     font-size: 0.9em;
 }
 .project_meta .meta_date, .meta_budget, .meta_user {
@@ -387,7 +387,7 @@ a.post_bid{
     border-radius: 50%;
 }
 .project_skills{
-    margin: 15px;
+    margin-top: 10px;
 }
 .project_skills .btn{
     border-radius: 1px !important;
@@ -401,13 +401,13 @@ a.post_bid{
     margin-bottom: 6px;
 }
 .project_title{
-    margin: 15px;
+    /*margin: 15px;*/
 }
 .project_description{
     margin: 15px;
 }
 .last_projects_wrapper .box{
-    margin-bottom: 10px;
+   /* margin-bottom: 10px;*/
 }
 .project_by_category{
     font-size: 1.6em;

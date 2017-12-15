@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.text "content", null: false
     t.decimal "amount"
     t.integer "time_limit"
-    t.string "currency"
+    t.string "currency_id"
     t.string "time_unity"
     t.bigint "project_id"
     t.bigint "user_id"
