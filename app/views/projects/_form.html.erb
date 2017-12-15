@@ -30,7 +30,7 @@
 		<div class="col-md-3">
 			<div class="form-group">
 				<%= form.label t("currency_id") %>
-				<%= form.collection_select :currency, @currency, :currency_symbol, :currency_symbol, {prompt: t("currency_id")}, class: "form-control", required: true %>							
+				<%= form.collection_select :currency_id, @currency, :currency_symbol, :currency_symbol, {prompt: t("currency_id")}, class: "form-control", required: true %>							
 			</div>
 		</div>
 	</div>

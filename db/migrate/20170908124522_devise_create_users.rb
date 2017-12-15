@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :profile_type, null: false
       t.string :slug, unique: true
       t.attachment            :avatar
+      t.bigint :view_number
         
       # Roles
       t.boolean :superadmin_role, default: false

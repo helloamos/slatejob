@@ -29,7 +29,7 @@ class AttributionsController < ApplicationController
 				flash[:notice] = 'Le projet a été attrubé avec succès.' 
 				
 	        	
-	        	format.html { redirect_to project_show_path(project), notice: t(:bid_create_successfully) }
+	        	format.html { redirect_to project_show_path(project), notice: t(:project_attributed_succefull) }
         		format.json { render :show, status: :created, location: @bid }
         		
 			else

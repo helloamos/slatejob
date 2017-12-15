@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214182814) do
+ActiveRecord::Schema.define(version: 20171208205907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,9 +223,9 @@ ActiveRecord::Schema.define(version: 20171214182814) do
     t.text "content"
     t.bigint "profession_id"
     t.string "budget"
-    t.string "currency"
+    t.string "currency_id"
     t.string "status"
-    t.string "priority"
+    t.string "priority_id"
     t.boolean "published"
     t.string "time_limit"
     t.string "time_unity"
@@ -236,7 +236,6 @@ ActiveRecord::Schema.define(version: 20171214182814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profession_id"], name: "index_projects_on_profession_id"
-    t.index ["time_unity"], name: "index_projects_on_time_unity"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -294,6 +293,7 @@ ActiveRecord::Schema.define(version: 20171214182814) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.bigint "view_number"
     t.boolean "superadmin_role", default: false
     t.boolean "supervisor_role", default: false
     t.boolean "user_role", default: true
@@ -316,7 +316,6 @@ ActiveRecord::Schema.define(version: 20171214182814) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "view_number"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

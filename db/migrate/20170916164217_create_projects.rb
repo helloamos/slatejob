@@ -5,12 +5,12 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.text :content
       t.references :profession, index: true
       t.string :budget
-      t.string :currency
+      t.string :currency_id
       t.string :status
-      t.string :priority
+      t.string :priority_id
       t.boolean :published
       t.string :time_limit
-      t.string :time_unity, index: true
+      t.string :time_unity
       t.datetime :expire_at
       t.integer :view_number
       t.references :user, index: true
