@@ -85,8 +85,8 @@ module ApplicationHelper
 
 	# Count current user unread notification
 	def unread_notification
-	  @notifications = Notification.unread_notification(current_user).order(:created_at => "DESC")
-	  notification = Notification.unread_notification(current_user).count
+	  @notifications = Notification.unread_notification(current_user.id).order(:created_at => "DESC")
+	  notification = Notification.unread_notification(current_user.id).count
 
 	  if notification.nil? 
 	  	notification  = 0
@@ -99,8 +99,8 @@ module ApplicationHelper
 
 	#User unread message
 	def unread_message
-	  @messages = Message.unread_message(current_user).order(:created_at => "DESC")
-	  message_count = Message.unread_message(current_user).count
+	  @messages = Message.unread_message(current_user.id).order(:created_at => "DESC")
+	  message_count = Message.unread_message(current_user.id).count
 	  if message_count.nil?
 	  	message_count = 0
 	  else
