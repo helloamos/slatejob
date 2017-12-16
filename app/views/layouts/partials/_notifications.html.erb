@@ -18,7 +18,7 @@
         <div class="slimScrollDiv">
             <ul class="menu">
 
-                <% unless @notification.blank? %>
+                <% unless @notifications.nil? %>
                     <% @notification.each do |n| %>
                         <li class="new"><!-- start notification -->
                             <%= link_to(read_notification_path(id: n.id)) do %>
