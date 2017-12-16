@@ -5,8 +5,6 @@
 			<div class="box box-primary">
 				<div class="box-body">
 					
-					
-
 					<div class="col-md-3 user-profile-image">
 						<%= image_tag @user.avatar.url(:medium) %>
 					</div>
@@ -46,8 +44,9 @@
 
 							</div>
 							<div class="action_buttons">
-								<% if is_available?(@user.id) %>
-									<%= link_to "Contactez-moi", root_path, class: "btn btn-primary" %>
+								<% if is_available?(@user.id)  %>
+									<%= link_to "Contactez-moi", new_message_path(to: @user.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
+
 								<% end %>
 							</div>
 
@@ -90,3 +89,5 @@
 <div id="user_skills_modal"  class="modal fade"></div>
 <div id="publigations_modal"  class="modal fade"></div>
 <div id="portfolios_modal"  class="modal fade" ></div>
+<div id="message-modal"  class="modal fade" ></div>
+

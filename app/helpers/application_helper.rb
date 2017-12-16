@@ -87,61 +87,28 @@ module ApplicationHelper
 	def unread_notification
 	  @notification = Notification.unread_notification(current_user).order(:created_at => "DESC")
 	  notification = Notification.unread_notification(current_user).count
+
+	  if notification.nil? 
+	  	notification  = 0
+	  else
+	  	notification 
+	  end
 	end
 
 
 
 	#User unread message
-	def unread_messages
-	  conversation = Conversation.get_conversation(current_user)
-	  if conversation.present?
-	      message = Message.where(:conversation_id => conversation).count
-	    
-	    else
-	      message = 0
+	def unread_message
+	  @messages = Message.unread_message(current_user).order(:created_at => "DESC")
+	  message_count = Message.unread_message(current_user).count
+	  if message_count.nil?
+	  	message_count = 0
+	  else
+	  	message_count
 	  end
 	end
 
-	def user_details_presentation(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		if user_detail.present?
-			presentation = user_detail.presentation
-		end
-	end
-
-	def user_details_profession(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		if user_detail.present?
-			profession = user_detail.profession_id
-		end
-	end
-
-	def user_details_facebook(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		facebook_link = user_detail.facebook_link
-	end
-
-	def user_details_twitter(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		twitter_link = user_detail.twitter_link
-	end
-
-	def user_details_gplus(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		gplus_link = user_detail.gplus_link
-	end
-
-	def user_details_linkedin(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		linkedin_link = user_detail.linkedin_link
-	end
-
+	
 
 	def profession_title(profession_id)
 		if profession_id.present?
@@ -150,29 +117,10 @@ module ApplicationHelper
 		end
 	end
 
-	def user_contacts_address(user_id)
-		user = User.find(user_id)
-		user_contact = user.user_contact
-		if user_contact.present?
-			city = user_contact.address
-		end
-	end
+	
 
-	def user_contacts_country(user_id)
-		user = User.find(user_id)
-		user_contact = user.user_contact
-		country= user_contact.country
-	end
-	def user_details_occupation(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		occupation = user_detail.specialization
-	end
-	def user_details_employment_type(user_id)
-		user = User.find(user_id)
-		user_detail = user.user_detail
-		employment_type = user_detail.employment_type
-	end
+	
+	
 	def is_available?(user_id)
 		user = User.find(user_id)
 		availability = user.profile.availability

@@ -943,3 +943,35 @@ span.alert{
     margin-right: auto !important;
     margin-top: 40px !important;
 }
+.notifications-menu .label{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.navbar-nav > .notifications-menu > .dropdown-menu, .navbar-nav > .messages-menu > .dropdown-menu, .navbar-nav > .tasks-menu > .dropdown-menu {
+    width: auto !important;
+    padding: 0 0 0 0;
+    margin: 0;
+    top: 100%;
+}
+.slimScrollDiv{
+    /*position: relative; */
+    /*overflow-y: scroll; */
+    width: auto; 
+    height: 230px;
+}
+ul.menu{
+    overflow-y: scroll; 
+    width: 100%; 
+    height: 230px;
+}
+.read-message-wrapper, .read-notification-wrapper{
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.read-message-content, .read-notification-content{
+    margin: 10px 0px 20px 0px;
+}

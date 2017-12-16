@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    
+
+    <p>
+      Salut <strong><%= @recipient.profile.full_name %></strong>,<br/>
+      Vous avez réçu un message de la part  de: <strong><%= @sender.profile.full_name %> </strong> à travers Slatejob<br/>
+      <br />
+      <br />
+      Voici le contenu du message: <br/> 
+      <div class="message_content" style=".message_content{boder: 1px solid blue; background-color: silver;}">
+        <%= @message.content %>
+      </div>
+      
+      <br />
+    </p>
+    <p>
+      Pour se connecter au site, suivez juste ce lien: <%= @url %>.<br>
+    </p>
+    <p>
+    Cordialement <br />
+    L'équipe de Slatejob
+    </p>
+  </body>
+</html>

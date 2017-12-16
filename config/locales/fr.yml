@@ -98,6 +98,9 @@ fr:
   bid_update_successfully: "Offre mise à jour avec succès!"
   bid: "Offre"
   bids: "Offres"
+  your_message: "Votre message!"
+  send: "Envoyer"
+  message_to: "Envoyer un message à "
 
 
   

@@ -154,14 +154,15 @@ ActiveRecord::Schema.define(version: 20171208205907) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "body", null: false
-    t.integer "conversation_id"
+    t.text "content", null: false
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
     t.boolean "read", default: false
-    t.bigint "user_id", null: false
     t.date "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "notifications", force: :cascade do |t|

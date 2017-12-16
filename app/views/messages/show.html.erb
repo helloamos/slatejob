@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="read-message-wrapper">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h4 class="box-title">Message de  <strong><%= user_instead(@message.sender_id).profile.full_name %></strong></h4>
+				<div>
+					<small><i>Envoyé il y'a: <%= time_ago_in_words(@message.created_at) %></i></small>
+				</div>
+			</div>
+			<div class="box-body">
+				<!-- message content -->
+				<div class="read-message-content">
+					<%= @message.content %>
+				</div>
+				<div class="box-footer text-right">
+					<%= link_to "Répondre", new_message_path(to: @message.sender_id), :remote => true, class: "btn btn-primary" %>
+					<%= link_to "Retour", dashboard_path, class: "btn" %>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<div id="message-modal"  class="modal fade" ></div>

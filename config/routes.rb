@@ -44,12 +44,15 @@ Rails.application.routes.draw do
     get "/employers/profile/:slug" => "employers#show", as: :show_employer_profile
     
     get 'projects/update_skills', :as => 'update_skills'
-    get 'read_notification' => 'notifications#show'
+    get 'read_notification' => 'notifications#show', as: :read_notification
+    get 'read-message' => 'messages#show', as: :read_message
     
     get "/attributions" => "attributions#new", as: :attributions
     get "/about" => "pages#about", as: :about
     get "/terms-of-service" => "pages#terms", as: :terms
     get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy
+
+    get "/messages/new" => "messages#new", as: :new_message
    
     
     # Example Devise routes
@@ -60,6 +63,9 @@ Rails.application.routes.draw do
    
    
       resources :projects do
+          get 'delete'
+     end
+     resources :messages do
           get 'delete'
      end
     resources :bids do 

@@ -41,6 +41,7 @@ class User < ApplicationRecord
   	has_many :skills, :through => :user_skills, dependent: :destroy
 
   	has_many :notifications, :foreign_key =>  :sender_id, class_name:  'Notification', :dependent => :destroy
+  	has_many :messages, :foreign_key =>  :sender_id, class_name:  'Message', :dependent => :destroy
 		
 	# Paperclip usage
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "200x200>" }, default_url: "/images/avatar/:style/missing.png",  validate_media_type: false
