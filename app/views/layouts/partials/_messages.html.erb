@@ -25,7 +25,7 @@
                               <%= link_to(read_message_path(id: n.id)) do %>
 
                                   <span>
-                                      <b><%= user_instead(n.sender_id).profile.full_name.capitalize %></b>
+                                      <b><%= user_instead(n.sender_id).login.capitalize %></b>
                                   </span> 
                                   <span>
                                       vous a envoyé un message!     
