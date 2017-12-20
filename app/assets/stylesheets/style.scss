@@ -776,10 +776,7 @@ footer {
 .notifications{
     background-color: #dd4b39 !important;
 }
-.remaining-bids{
-    font-size: 5em;
-    font-weight: bold;
-}
+
 .navbar-nav > li a i {
     display: block;
     font-size: 18px;
@@ -975,3 +972,29 @@ ul.menu{
 .read-message-content, .read-notification-content{
     margin: 10px 0px 20px 0px;
 }
+.user-membership   small {
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+color: #657786;
+padding: 0;
+   
+}
+.user-membership {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.user-membership > li {
+    display: block;
+    color: #657786;
+    padding: 0;
+}
+.p-button .btn{
+    margin-top: 3px;
+}
+
+
+

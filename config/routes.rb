@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :memberships
+  resources :packages
     #resources :profiles
     #resources :projects
     resources :domains
@@ -53,6 +55,8 @@ Rails.application.routes.draw do
     get "/privacy-policy" => "pages#privacy_policy", as: :privacy_policy
 
     get "/messages/new" => "messages#new", as: :new_message
+
+    get "/membership/upgrade" => "memberships#index", as: :membership_upgrade
    
     
     # Example Devise routes

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208205907) do
+ActiveRecord::Schema.define(version: 20171217114208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,20 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.index ["sender_id"], name: "index_like_users_on_sender_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.bigint "total_bid", default: 0
+    t.bigint "remaining_bid", default: 0
+    t.string "status", default: "disable"
+    t.bigint "package_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["package_id"], name: "index_memberships_on_package_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "sender_id", null: false
@@ -175,6 +189,14 @@ ActiveRecord::Schema.define(version: 20171208205907) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_notifications_on_receiver_id"
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.string "title"
+    t.bigint "amount"
+    t.bigint "bid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "professions", force: :cascade do |t|

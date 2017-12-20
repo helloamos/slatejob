@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 	# Include default devise modules. Others available are:
 	devise :database_authenticatable, :registerable,
-	 :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable, :omniauthable,  omniauth_providers: [:facebook, :google_oauth2]
+	 :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable,  :omniauthable,  omniauth_providers: [:facebook, :google_oauth2]
 
 	# User profile type
 	#PROFILE_TYPE = [["Freelance"],["Employeur"]]

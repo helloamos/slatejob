@@ -19,7 +19,7 @@
           <div class="slimScrollDiv">
               <ul class="menu">
 
-                  <% unless @messages.nil? %>
+                  <% unless @messages.blank? %>
                       <% @messages.each do |n| %>
                           <li class="new"><!-- start notification -->
                               <%= link_to(read_message_path(id: n.id)) do %>

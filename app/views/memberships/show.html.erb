@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @membership.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @membership.end_date %>
+</p>
+
+<p>
+  <strong>Package:</strong>
+  <%= @membership.package_id %>
+</p>
+
+<p>
+  <strong>Total bid:</strong>
+  <%= @membership.total_bid %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @membership.status %>
+</p>
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>
