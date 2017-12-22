@@ -4,7 +4,7 @@
 			<%= render("./dashboard/shared/left_sidebar") %>	
 		</div>
 		<div class="col-md-8">
-			<% if @projects.empty? %>
+			<% if @projects.blank? %>
 				<div class="box box-primary">
 					<div class="box-header with-border">
 						<h1 class="box-title">Flux d'actualité</h1>
@@ -71,7 +71,8 @@
 									
 									<!-- Description -->
 									<div class="project_description">
-										<%= project.content.truncate_words(45, omission: '...').html_safe %>
+										
+										<%= Sanitize.fragment( project.content.truncate_words(45, omission: '...')) %>
 									</div>
 
 									<div class="project_skills">

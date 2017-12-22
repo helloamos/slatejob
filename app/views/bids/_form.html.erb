@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <%= form.label t("content") %>
-            <%= form.text_area :content, id: :bid_content, rows: 6, class: "form-control", placeholder: "Details de l'offre", required: true %>
+            <%= form.cktext_area :content, id: :bid_content, rows: 6, class: "form-control", placeholder: "Details de l'offre", ckeditor: {  toolbar: 'mini' }, required: true %>
         </div>
         <div class="row">
             <div class="col-md-8">

@@ -52,7 +52,7 @@
           </li>
 
           <li class="false">
-             <%= link_to raw('<i class="fa fa-suitcase" aria-hidden="true"></i>Projets'), recent_projects_path, class: "text-center freelances", rel: "popover", :"data-placement" => "bottom", :"data-content" => "#{render './layouts/partials/popovers/popover_projects' }" %>
+             <%= link_to raw('<i class="fa fa-suitcase" aria-hidden="true"></i>Emplois'), recent_projects_path, class: "text-center freelances", rel: "popover", :"data-placement" => "bottom", :"data-content" => "#{render './layouts/partials/popovers/popover_projects' }" %>
           </li>
          
 
@@ -68,10 +68,6 @@
           </li> 
 
 
-           <li class="false">
-            <%= link_to raw('<i class="glyphicon glyphicon-th"></i>Plus'), recent_projects_path, class: "text-center more", rel: "popover", :"data-placement" => "bottom", :"data-content" => "#{render './layouts/partials/popovers/popover_more' }" %>
-   
-          </li>
 
 
         <% unless user_signed_in? %>

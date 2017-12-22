@@ -23,7 +23,7 @@
 // require select2
 //= require intlTelInput
 // require utils
-
+//= require ckeditor/init
 
 //= require_tree .
 

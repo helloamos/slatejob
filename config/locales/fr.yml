@@ -101,6 +101,11 @@ fr:
   your_message: "Votre message!"
   send: "Envoyer"
   message_to: "Envoyer un message à "
+  package_basic: "Basique"
+  package_plus: "Plus"
+  package_pro: "Pro"
+  subscribe_package: "Adhérer"
+  month_plan: "MOIS"
 
 
   

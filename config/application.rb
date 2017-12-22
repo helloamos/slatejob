@@ -21,6 +21,7 @@ module Slatejob
 
     #config.assets.paths << "#{Rails}/public/assets/fonts"
     config.assets.precompile += %w(.svg .eot .woff .ttf .woff2)
+    config.assets.initialize_on_precompile = true
     
   end
 end

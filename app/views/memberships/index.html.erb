@@ -31,7 +31,7 @@
                               <!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Basic</span>
+                                    <span><%= t(:package_basic) %></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -44,7 +44,7 @@
                                     <span class="sign">$</span>
                                     <span class="currency">0</span>
                                     <span class="cent">.00</span>
-                                    <span class="month">/MON</span>
+                                    <span class="month">/<%= t(:month_plan) %></span>
                                 </span>
                             </div>
                             <!--//PRICE END-->
@@ -55,18 +55,18 @@
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                           <ul>
-                              <li><span>2GB</span> Bandwidth</li>
-                                <li><span>150GB</span> Storage</li>
-                                <li><span>12</span> Accounts</li>
-                                <li><span>7</span> Host Domain</li>
-                                <li><span>24/7</span> Support</li>
+                              <li><span>5</span> Offres</li>
+                                <li><span>3</span> Compétences</li>
+                                <li>Recheche illimité</li>
+                                <li><span>24h/7</span> Support</li>
+                               
                             </ul>
                         </div>
                         <!--//FEATURE LIST END-->
                         
                         <!--BUTTON START-->
                         <div class="generic_price_btn clearfix">
-                          <a class="" href="">Sign up</a>
+                          <%= link_to t(:subscribe_package) , membership_basic_subscription_path %>
                         </div>
                         <!--//BUTTON END-->
                         
@@ -89,7 +89,7 @@
                               <!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Standard</span>
+                                    <span><%= t(:package_plus) %></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -102,7 +102,7 @@
                                     <span class="sign">$</span>
                                     <span class="currency">9</span>
                                     <span class="cent">.99</span>
-                                    <span class="month">/MON</span>
+                                    <span class="month">/<%= t(:month_plan) %></span>
                                 </span>
                             </div>
                             <!--//PRICE END-->
@@ -113,18 +113,20 @@
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                           <ul>
-                              <li><span>2GB</span> Bandwidth</li>
-                                <li><span>150GB</span> Storage</li>
-                                <li><span>12</span> Accounts</li>
-                                <li><span>7</span> Host Domain</li>
-                                <li><span>24/7</span> Support</li>
+                              <li><span>50</span> Offres</li>
+                                <li><span>50</span> Compétences</li>
+                                <li>Recherche illimité</li>
+                                <li>Emplois à proximité</li>
+                                <li><span>24h/7</span> Support</li>
+                                
                             </ul>
                         </div>
                         <!--//FEATURE LIST END-->
                         
                         <!--BUTTON START-->
                         <div class="generic_price_btn clearfix">
-                          <a class="" href="">Sign up</a>
+              
+                          <%= link_to t(:subscribe_package) ,  membership_plus_subscription_path %>
                         </div>
                         <!--//BUTTON END-->
                         
@@ -146,7 +148,7 @@
                               <!--HEAD START-->
                                 <div class="head_bg"></div>
                                 <div class="head">
-                                    <span>Unlimited</span>
+                                    <span><%= t(:package_pro) %></span>
                                 </div>
                                 <!--//HEAD END-->
                                 
@@ -159,7 +161,7 @@
                                     <span class="sign">$</span>
                                     <span class="currency">15</span>
                                     <span class="cent">.99</span>
-                                    <span class="month">/MON</span>
+                                    <span class="month">/<%= t(:month_plan) %></span>
                                 </span>
                             </div>
                             <!--//PRICE END-->
@@ -170,18 +172,22 @@
                         <!--FEATURE LIST START-->
                         <div class="generic_feature_list">
                           <ul>
-                              <li><span>2GB</span> Bandwidth</li>
-                                <li><span>150GB</span> Storage</li>
-                                <li><span>12</span> Accounts</li>
-                                <li><span>7</span> Host Domain</li>
-                                <li><span>24/7</span> Support</li>
+                              <li><span>100</span> offres par mois</li>
+                                <li>Compétences illimité</li>
+                               <li>Recherche illimité</li>
+                               <li>Emplois à proximité</li>
+                                <li>Emplois à proximité</li>
+                                <li>Freelance à proximité</li>
+                                <li>Profil à la une</li>
+                                 <li>Opportinutés à proximité</li>
+                                 <li><span>24h/7</span> Support</li>
                             </ul>
                         </div>
                         <!--//FEATURE LIST END-->
                         
                         <!--BUTTON START-->
                         <div class="generic_price_btn clearfix">
-                          <a class="" href="">Sign up</a>
+                          <%= link_to t(:subscribe_package) ,  membership_pro_subscription_path %>
                         </div>
                         <!--//BUTTON END-->
                         

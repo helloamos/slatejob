@@ -1,76 +1,45 @@
-<div class="dashboard-wrapper">
-	<div class="container">
-		<div class="col-md-8">
-			<% if @employers.blank? %>
-				<div class="box box-primary">
-					<div class="box-body">
-						<p>
-							Pas d'employeurs pour cette recheche!
-						</p>
-					</div>
-				</div>
+<div class="container main-container">
 
-			<% else %>
+    <div class="clearfix"></div>
+    <% if @employers.empty? %>
+        <div class="box box-primary">
+            <div class="box-body">
+                <p>
+                    Pas d'employeurs pour cette recheche!
+                </p>
+            </div>
+        </div>
 
-				<% @employers.each do |employer|  %>
-					<div class="box box-primary">
-						<div class="box-body">
-							
+    <% else %>
 
-								<div class="user_content">
-									
-									<div class="col-md-4">
-										<div class="user_thumbnail">
-											<%= image_tag employer.avatar.url(:medium) %>
-										</div>
-									</div>
-									<div class="col-md-8">
-										<div class="user_name">
-											<%= link_to "#{employer.profile.full_name}" , show_employer_profile_path(employer) %>
-										</div>
+        <% @employers.each do |employer|  %>
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="profile text-center">
+                               
+                                <%= image_tag employer.avatar.url(:medium), class: "img-circle" %>
 
-										<div class="user_profession">
-											
-										</div>
-
-										<div class="user_meta">
-											<% unless employer.profile.address.blank? %>
-												<span class="user_location">
-													<i class="fa fa-globe" aria-hidden="true"></i>
-													<%= employer.profile.address %>
-													
-												</span>
-											<% end %>
-										</div>
-
-										<div class="user_short_presentation">
-											<%= employer.profile.presentation.truncate_words(30, omission: '...').html_safe if employer.profile.presentation.present? %>
-										</div>
-										<div class="user_skills">
-											
-										</div>
-
-									</div>
-
-
-
-								</div>
-							
-							
-						</div><!-- end box-body -->
-					</div><!-- end box-primary -->
-				<% end %>
-			<% end %>
-
-			<div class="row page_navi">
-						<%= will_paginate @employer, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
-							
-					</div>
-		</div>
-
-		<!-- Sidebar -->
-		<div class="col-md-4">
-			
-		</div>
-	</div>
+                               <div class="user-name">
+                                    <%= link_to "#{employer.profile.full_name}" , show_employer_profile_path(employer) %>   
+                                </div>
+                                <div class="user-profession">
+                                    <%= profession_title(employer.profile.profession_id) %> 
+                                </div> 
+                                <div class="user_location">
+                                    <%= employer.profile.address %>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+    <div class="row page_navi">
+                        <%= will_paginate @employers, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+                            
+                    </div>
 </div>

@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/helloamos/slatejob"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/rails_apps/slatejob"
+set :deploy_to, "/home/deploy/rails_projects/slatejob"
 
 
 # Default value for :format is :airbrussh.
@@ -29,7 +29,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Config for nginx
 set :nginx_config_name, 'slatejob'
-set :nginx_server_name, '137.74.171.9'
+set :nginx_server_name, '165.227.69.28'
 set :puma_workers,1
 
 

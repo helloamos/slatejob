@@ -56,7 +56,10 @@ Rails.application.routes.draw do
 
     get "/messages/new" => "messages#new", as: :new_message
 
-    get "/membership/upgrade" => "memberships#index", as: :membership_upgrade
+    get "/membership/subscription" => "memberships#index", as: :membership_subscription
+    get "/membership/subscription" => "memberships#basic", as: :membership_basic_subscription
+    get "/membership/subscription" => "memberships#plus", as: :membership_plus_subscription
+    get "/membership/subscription" => "memberships#pro", as: :membership_pro_subscription
    
     
     # Example Devise routes
@@ -128,4 +131,5 @@ Rails.application.routes.draw do
 
     # Bootsy edito routes.
     #mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+   # mount Ckeditor::Engine => '/ckeditor'
 end
