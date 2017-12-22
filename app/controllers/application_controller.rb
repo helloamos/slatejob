@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 	helper ComponentsHelper
 	protect_from_forgery with: :exception
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	
 
 	#add_flash_types :success, :danger, :info
 	def configure_permitted_parameters
@@ -13,6 +14,8 @@ class ApplicationController < ActionController::Base
 		dashboard_path
 	
 	end
+
+	
 
 	
 

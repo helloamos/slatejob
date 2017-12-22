@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
 	private
 	def complete_profile
 		if current_user.profile.blank?
-			redirect_to edit_profile_path(current_user)
+			redirect_to complete_profile_path(current_user)
 		end
 	end
 end

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
     # Profiles
     get "/profile/edit/:slug" => "profiles#edit" , as: :edit_profile
+    get "/profile/complete/:slug" => "profiles#complete", as: :complete_profile
     #get "/profile/:slug" => "profiles#show" , as: :show_profile
 
     # Projects
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     get "/employers" => "employers#index", as: :employers
     get "/employers" => "employers#near_by", as: :employers_nearby
     get "/employers/profile/:slug" => "employers#show", as: :show_employer_profile
+
     
     get 'projects/update_skills', :as => 'update_skills'
     get 'read_notification' => 'notifications#show', as: :read_notification

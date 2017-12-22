@@ -53,7 +53,7 @@ label {
   
     border-radius: 0px !important;
 
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.08),0 2px 4px 0 rgba(0,0,0,.12);
+    /*box-shadow: 0 0 4px 0 rgba(0,0,0,.08),0 2px 4px 0 rgba(0,0,0,.12);*/
 
 }
 .btn-primary {
@@ -1035,4 +1035,13 @@ h-search-btns .btn {
     line-height: 44px;
     padding: 0 12px;
     font-size: 18px;
+}
+.profile-complete-wrapper{
+    position: relative;
+    max-width: 800px;
+    margin-top: 30px ;
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+
 }

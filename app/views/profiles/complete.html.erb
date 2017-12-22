@@ -1,0 +1,139 @@
+<div class="container">
+	<div class="profile-complete-wrapper">
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h4 class="box-title">Remplissage de votre profil</h4>
+			</div>
+			<div class="box-body">
+				<%= form_for(@profile) do |form| %>
+				<div class="row">
+										<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:user_name) %>
+					                			<%= form.text_field :full_name, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:company) %>
+					                			<%= form.text_field :company_name,   class: "form-control" %>
+					                		</div>
+				                		</div>
+				                	</div>
+
+			                		<div class="row">
+										<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:profession) %>
+					                			<%= form.collection_select :profession_id,  @professions, :id, :title, {prompt: "Sélectioner une profession"}, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-6">
+					                		<div class="form-group">
+					                			<%= form.label t(:employment_type) %>
+					                			<%= form.select :employment_type,  User::EMPLOYMENT_TYPE,  {prompt: "Sélectioner une profession"}, class: "form-control",  required: true %>
+					                		</div>
+				                		</div>
+				                	</div>
+				                	<div class="row">
+
+				                		<div class="col-sm-2">
+
+					                		<div class="form-group">
+					                			   <%= form.check_box :availability %>
+                									<%= form.label t(:availability) %>
+					                		</div>
+				                		</div>
+				                		<div class="col-sm-2">
+					                		<div class="form-group">
+					                			 <%= form.check_box :visibility %>
+                									<%= form.label t(:visibility)  %>
+					                		</div>
+				                		</div>
+			                		</div>
+									
+									<div class="row">
+										<div class="col-sm-12">
+					                		<div class="form-group">
+					                			<%= form.label t(:presentation) %>
+					                			<%= form.cktext_area :presentation, rows: 5,  class: "form-control", placeholder: "Présentation", ckeditor: { toolbar: 'mini' }, required: true %>
+					                		</div>
+				                		</div>
+			                		</div>
+
+			                		<!-- Row -->
+		                		<div class="row">
+		                			<div class="col-sm-6">
+		                				<div class="form-group">
+					                		<%= form.label t(:address) %>
+					                		<%= form.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
+
+				                		</div>
+			                			
+			                		</div>
+			                		<div class="col-sm-6">
+			                			<div class="form-group">
+					                		<%= form.label t(:phone) %> <br />
+					                		<%= form.text_field :phone, class: "form-control", :id => "phone",  required: true %>
+				                		</div>
+			                			
+			                		</div>
+		                		</div>
+		                		<!-- end row -->
+
+			                		<div class="row">
+			                			<div class="col-sm-6">
+			                				<div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-facebook" aria-hidden="true"></i>
+											      </div>
+											   <%= form.text_field :facebook_link, class: "form-control", placeholder: "Facebook" %>
+											    </div>
+											  </div>
+
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-twitter" aria-hidden="true"></i>
+											      </div>
+											     <%= form.text_field :twitter_link, class: "form-control", placeholder: "Twitter" %>
+											     
+											    </div>
+											  </div>
+			                			</div>
+			                			<div class="col-sm-6">
+			                				<div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      <i class="fa fa-google-plus" aria-hidden="true"></i>
+											      </div>
+											      <%= form.text_field :gplus_link, class: "form-control", placeholder: "Google+" %>
+											     
+											    </div>
+											  </div>
+
+											  <div class="form-group">
+											    <div class="input-group">
+											      <div class="input-group-addon">
+											      	<i class="fa fa-linkedin" aria-hidden="true"></i>
+											      </div>
+											      <%= form.text_field :linkedin_link, class: "form-control", placeholder: "LinkedIn" %>
+											     
+											    </div>
+											  </div>
+			                			</div>
+
+			                		</div>
+									<div class="row">
+										<div class="col-sm-12">
+										<div class="form-group">
+										    <%= form.button "Enregistrer", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+										</div>
+										</div>
+									</div>
+
+			                	<% end %>
+			                	</div>
+			                	</div>
+			                	</div>

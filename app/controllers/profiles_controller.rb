@@ -53,7 +53,7 @@ class ProfilesController < ApplicationController
 			end
 	       
 	        ## Redirection
-	        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_detail_successfull) }
+	        format.html { redirect_to dashboard_path, notice: t(:user_detail_successfull) }
 	        format.json { render :show, status: :created, location: edit_profile_path(current_user) }
 	      else
 	        format.html { redirect_to edit_profile_path(current_user), alert: t(:user_detail_error) }
@@ -75,7 +75,7 @@ class ProfilesController < ApplicationController
 			@profile.update_attributes(country: country, city: city)
 		end
 
-        format.html { redirect_to edit_profile_path(current_user), notice: t(:user_detail_successfull) }
+        format.html { redirect_to dashboard_path, notice: t(:user_detail_successfull) }
         format.json { render :show, status: :ok, location: edit_profile_path }
       else
         format.html { redirect_to edit_profile_path(current_user) }
@@ -111,7 +111,39 @@ class ProfilesController < ApplicationController
 		render layout: 'dashboard'
 	end
 
+	def complete
+		
+
+		# Initialize.
+		
+
+		@resource ||= current_user
+
+		#@user_detail = UserDetail.all
+		#@user_detail = current_user.user_detail
+		@profile = current_user.profile
+		#@user_contact = UserContact.all
+		
+		if @profile.nil?
+			@profile = Profile.new
+		else
+			@profile = current_user.profile
+		end
+
+		#if @user_contact.nil?
+			#@user_contact = UserContact.new
+		#else
+			#@user_contact = current_user.user_contact
+		#end
+
+		@professions = Profession.all
+		# Render layout.
+		render layout: "dashboard"
+	
+	end
+
 	def search
+		
 	end
 
 	def index
