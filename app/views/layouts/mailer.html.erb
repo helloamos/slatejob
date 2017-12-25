@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+    <head>
+        
+        <meta charset="utf-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <%= stylesheet_link_tag 'email', media: 'all' %>
 
-  <body>
-    <%= yield %>
-  </body>
+    </head>
+
+    <body>
+        <div class="email-wrapper">
+            <div class="email-header text-center">
+                <%= email_image_tag "logo.png", :class => "logo" %>
+            </div>
+            <div class="email-body">
+                <%= yield %>
+            </div>
+            <div class="email-footer text-right">
+                <p>
+                    <%= t(:team_cordially) %>
+                </p>
+            </div>
+        </div>
+    </body>
 </html>

@@ -94,5 +94,8 @@ gem 'dotenv-rails', groups: [:development, :test, :production]
 gem "recaptcha", require: "recaptcha/rails"
 gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'sanitize', '~> 4.5'
+gem 'nokogiri', '~> 1.8', '>= 1.8.1'
+gem 'premailer-rails', '~> 1.10', '>= 1.10.1'
+
 
 

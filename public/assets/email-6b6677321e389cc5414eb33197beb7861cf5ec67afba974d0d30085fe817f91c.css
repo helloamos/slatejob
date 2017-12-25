@@ -1,0 +1,43 @@
+/* line 2, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-wrapper {
+  background: #EDEDED;
+  padding-top: 15px;
+  max-width: 760px;
+}
+
+/* line 9, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-wrapper .logo {
+  width: 30px;
+  height: auto;
+}
+
+/* line 13, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-header {
+  background: #D77373;
+  margin: 30px 30px 0px 30px;
+  padding: 5px 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* line 20, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-body {
+  background: white;
+  margin: 0px 30px;
+  margin-bottom: 30px;
+  padding: 10px 30px;
+  padding-bottom: 15px;
+  border: 1px solid #D77373;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* line 33, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-wrapper .text-center {
+  text-align: center;
+}
+
+/* line 36, /home/thkernel/projects/rails/slatejob/app/assets/stylesheets/email.css.scss */
+#email-wrapper .text-right {
+  text-align: right;
+}
