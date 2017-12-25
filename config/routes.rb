@@ -63,6 +63,11 @@ Rails.application.routes.draw do
     get "/membership/subscription" => "memberships#basic", as: :membership_basic_subscription
     get "/membership/subscription" => "memberships#plus", as: :membership_plus_subscription
     get "/membership/subscription" => "memberships#pro", as: :membership_pro_subscription
+
+
+    %w( 404 422 500 ).each do |code|
+      get code, :to => "errors#show", :code => code
+    end
    
     
     # Example Devise routes
