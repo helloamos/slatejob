@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get "/workers" => "workers#index", as: :workers
     get "/workers/profile/:slug" => "workers#show", as: :show_worker_profile
     get "/workers/nearby" => "projects#projects_nearby", as: :workers_nearby
+    get "/workers/search/" => "workers#search", as: :search_workers
 
     get "/employers" => "employers#index", as: :employers
     get "/employers" => "employers#near_by", as: :employers_nearby

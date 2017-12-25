@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <%= f.button "GO", class: "btn btn-primary btn-block",  data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Chercher..."} %>
+                                <%= f.submit "GO", class: "btn btn-primary btn-block" %>
                             </div>
                         </div>
                     <% end %>
@@ -21,11 +21,11 @@
     </div>
 
     <div class="clearfix"></div>
-   <div class="search-result">
+    <div class="search-result">
         <%= render("workers/partials/result") %>
     </div>
     <div class="row page_navi">
-                        <%= will_paginate @workers, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
+        <%= will_paginate @workers, previous_label: "Précédent",next_label: "Suivant",  renderer: BootstrapPagination::Rails %>
                             
-                    </div>
+    </div>
 </div>

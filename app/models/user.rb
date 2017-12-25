@@ -57,6 +57,11 @@ class User < ApplicationRecord
 		where("profile_type = ? ", "#{profile_type}")
 	end
 
+	# Search 
+	def self.search_workers(q)
+		where("users.city = ? OR users.country = ? ", "#{q}", "#{q}")
+	end
+
 
 	# Image dimensions validation
 	def file_dimensions

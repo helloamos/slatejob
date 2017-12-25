@@ -37,6 +37,18 @@ class WorkersController < ApplicationController
 
 	end
 
+	def search
+
+		q = params[:q] unless params[:q].blank?
+		#@workers = User.search_workers(query)
+		@workers = User.joins(:profile).where.not(profiles: {id: nil}).by_profile("Worker").search_workers(q).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+
+		respond_to do |format|
+	        format.js
+	    end
+
+	end
+
  	def workers_nearby
 	    #city = current_user.profile.city
 	    country = current_user.profile.country

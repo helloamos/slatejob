@@ -1,0 +1,37 @@
+<% if @workers.blank? %>
+        <div class="box box-primary">
+            <div class="box-body">
+                <p>
+                    Pas de freelances pour cette recheche!
+                </p>
+            </div>
+        </div>
+
+    <% else %>
+
+        <% @workers.each do |worker|  %>
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="profile text-center">
+                               
+                                <%= image_tag worker.avatar.url(:medium), class: "img-circle" %>
+
+                               <div class="user-name">
+                                    <%= link_to "#{worker.profile.full_name}" , show_worker_profile_path(worker) %>   
+                                </div>
+                                <div class="user-profession">
+                                    <%= profession_title(worker.profile.profession_id) %> 
+                                </div> 
+                                <div class="user_location">
+                                    <%= worker.profile.address %>
+                                        
+                                    </div>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
