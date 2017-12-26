@@ -90,7 +90,8 @@ $(document).on('turbolinks:load', function() {
     separateDialCode: true,
     
     // initial country
-initialCountry: "Mali",
+//initialCountry: "Mali",
+preferredCountries: ['ml'],
 
 
     utilsScript: "/libphonenumber/utils.js"

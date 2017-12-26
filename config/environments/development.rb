@@ -60,10 +60,11 @@ Rails.application.configure do
     user_name:      ENV['SENDMAIL_USERNAME'],
     password:       ENV['SENDMAIL_PASSWORD'],
     domain:         ENV['MAIL_HOST'],
-    address:       'smtp.gmail.com',
-    port:          '587',
+    address:       'mail.planetemail.net',
+    port:          '465',
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    :ssl => true
   }
   
 end

@@ -1,5 +1,5 @@
 class BidMailer < ApplicationMailer
-	default from: 'slatejob.official@gmail.com'
+	default from: 'support@slatejob.com'
  
   def bid_email(user_id, bid_user_id,  project_id)
     @bid_user = User.find(bid_user_id)

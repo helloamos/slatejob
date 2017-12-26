@@ -1,5 +1,5 @@
 class AttributedMailer < ApplicationMailer
-	default from: 'slatejob.official@gmail.com'
+	default from: 'support@slatejob.com'
  
   def attributed_email(user_id, bid_user_id, project_id)
     @bid_user = User.find(bid_user_id)

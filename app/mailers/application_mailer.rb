@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'slatejob.official@gmail.com'
+  default from: 'SlateJob <support@slatejob.com>'
   layout 'mailer'
 end

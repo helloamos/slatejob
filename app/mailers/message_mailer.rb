@@ -1,5 +1,5 @@
 class MessageMailer < ApplicationMailer
-	default from: 'slatejob.official@gmail.com'
+	default from: 'support@slatejob.com'
  
   def message_email(sender, recipient,  message)
     @recipient = User.find(recipient)
