@@ -7,7 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server "slatejob.com", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
+server "staging.slatejob.com", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
 
 
 

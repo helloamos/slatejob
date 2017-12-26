@@ -52,3 +52,12 @@ production:
   host:     localhost
   username: slatejob_admin
   password: root2017
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: slatejob_staging
+  pool: 5
+  host:     localhost
+  username: slatejob_admin
+  password: root2017

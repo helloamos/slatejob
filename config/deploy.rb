@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
 
-set :application, "slatejob.com"
+set :application, "staging.slatejob.com"
 set :repo_url, "https://github.com/helloamos/slatejob"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/rails_apps/slatejob.com"
+set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
 
 
 
@@ -29,8 +29,8 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Config for nginx
-set :nginx_config_name, 'slatejob.com'
-set :nginx_server_name, 'slatejob.com'
+set :nginx_config_name, 'staging.slatejob.com'
+set :nginx_server_name, 'staging.slatejob.com'
 set :puma_workers,1
 
 
