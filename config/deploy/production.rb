@@ -7,7 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-server "165.227.69.28", user: "rails", roles: %w{app db web}, ssh_options: {forward_agent: true}
+server "165.227.69.28", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
 
 
 
