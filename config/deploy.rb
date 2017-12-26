@@ -9,6 +9,7 @@ set :repo_url, "https://github.com/helloamos/slatejob"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/rails_projects/slatejob.com"
+set :use_sudo, true
 
 
 # Default value for :format is :airbrussh.
@@ -28,7 +29,7 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Config for nginx
-set :nginx_config_name, 'slatejob'
+set :nginx_config_name, 'slatejob.com'
 set :nginx_server_name, 'slatejob.com'
 set :puma_workers,1
 
