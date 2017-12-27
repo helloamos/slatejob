@@ -55,6 +55,10 @@ class Project < ApplicationRecord
 	 	where("id = ? AND user_id = ?", "#{project_id}","#{user_id}")
 	end
 
+	def self.check_expiration_date(current_date, status)
+	 	where("expire_at < ? AND status = ?", "#{current_date}","#{status}")
+	end
+
 	#BUDGET = [["Moins de 5 000"],["15 000 - 30 000"], ["35 000 - 45 000"], ["50 000 - 75 000"], ["75 000 - 100 000"], ["100 000 - 200 000"],
  				#["200 000 - 250 000"], ["300 000 - 500 000"],  ["600 000 - 800 000"] , ["1 000 000 - 1 500 000"],  ["2 000 000 - 4 000 000"],
  				 #["Plus de 5 000 000 "]]

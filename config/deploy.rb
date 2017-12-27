@@ -10,6 +10,7 @@ set :repo_url, "https://github.com/helloamos/slatejob"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 
 # Default value for :format is :airbrussh.
