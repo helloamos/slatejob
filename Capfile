@@ -33,7 +33,7 @@ require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "whenever/capistrano"
-require "whenever/bundler"
+#require "whenever/bundler"
 # require "capistrano/passenger"
 
 require 'capistrano/puma'
