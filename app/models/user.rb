@@ -59,7 +59,7 @@ class User < ApplicationRecord
 
 	# Search 
 	def self.search_workers(q)
-		where("users.city = ? OR users.country = ? ", "#{q}", "#{q}")
+		where("city = ? OR country = ? ", "#{q}", "#{q}")
 	end
 
 

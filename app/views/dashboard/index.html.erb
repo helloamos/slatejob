@@ -35,28 +35,28 @@
 												Exp: <%= project.expire_at.strftime("%d/%m/%Y") %>	
 											</span>
 										</span><!-- end meta date -->
-										<span> * </span>
+										<span> - </span>
 										<span class="meta_total_bids">
 											<span>
 												 <%= project_total_bids(project.id) %> offres
 											</span>
 										</span><!-- end meta total bids -->
-										<span> * </span>
+										<span> - </span>
 										<span class="meta_budget">
 											<span>
-												Budget: <%= number_with_precision(project.budget, delimiter: " ", separator: "", precision: 0) %>	
+												Budget: [ <%= project.budget %>	 
 											</span>
 											<span>	
-												<%= project.currency_id %>	
+												<%= project.currency_id %> ]
 											</span>
 										</span><!-- en meta budget -->
-										<span> * </span>
+										<span> - </span>
 										<span class="meta_user">
 											<span>
 												Par: <%= project_user(project.user_id) %>
 											</span>
 										</span><!-- end meta user -->
-										<span> * </span>
+										<span> - </span>
 										<span class="meta_status">
 											<span class="project_status_<%= project.status.parameterize %>">
 												<%= t(project.status) %>

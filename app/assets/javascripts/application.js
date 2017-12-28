@@ -97,3 +97,10 @@ preferredCountries: ['ml'],
     utilsScript: "/libphonenumber/utils.js"
 });
   });
+
+$(document).on('turbolinks:load', function(){
+ $(":file").filestyle({
+  input: false
+
+});
+ });

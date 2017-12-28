@@ -107,8 +107,7 @@ fr:
   subscribe_package: "Adhérer"
   month_plan: "MOIS"
   mail_confirmation_welcome: "Bienvenue"
-  mail_confirmation_body: "Vous avez reçu ce mail suite à votre inscription sur notre plateforme: www.slatejob.com
-  Pour continuer à utiliser nos services, veuillez confirmer votre inscription en cliquant sur le lien ci-dessous:"
+  mail_confirmation_body: "Vous avez reçu ce mail suite à votre inscription sur notre plateforme: www.slatejob.com, pour continuer à utiliser nos services, veuillez confirmer votre inscription en cliquant sur le lien ci-dessous:"
   confirm_my_account: "Confirmer mon compte"
   team_cordially: "Cordialement l'équipe de SlateJob"
   error_404_title: "Oops! La page que vous cherchiez n'existe pas."

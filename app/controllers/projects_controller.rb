@@ -132,6 +132,13 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    @project.project_skills.delete_all
+    # Create ProjectSkill
+    params[:skills][:id].each do |skill|
+      unless skill.empty?
+        @project.project_skills.build(skill_id: skill)
+      end
+    end
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to project_show_path(@project), notice: t(:project_create_successfull) }
