@@ -4,8 +4,8 @@ lock "~> 3.10.0"
 set :stages, %w(production staging)
 set :default_stage, "staging"
 
-require 'capistrano/ext/multistage'
-require 'bundler/capistrano'
+#require 'capistrano/ext/multistage'
+#require 'bundler/capistrano'
 
 #set :application, "staging.slatejob.com"
 set :repo_url, "https://gitlab.com/thekernel/slatejob"
