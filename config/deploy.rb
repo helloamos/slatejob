@@ -1,19 +1,27 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
 
-set :application, "staging.slatejob.com"
+set :stages, %w(production staging)
+set :default_stage, "staging"
+
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
+
+#set :application, "staging.slatejob.com"
 set :repo_url, "https://gitlab.com/thekernel/slatejob"
+set :branch, "master"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
+# define multiple deployments
+
+
+
 # Default deploy_to directory is /var/www/my_app_name
-if :stage == 'staging'
-	set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
-	#set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
-else
-	set :deploy_to, "/home/deploy/rails_apps/slatejob.com"
-end
+
+#set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
+
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
