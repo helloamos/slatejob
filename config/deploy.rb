@@ -8,7 +8,8 @@ set :default_stage, "staging"
 #require 'bundler/capistrano'
 
 #set :application, "staging.slatejob.com"
-set :repo_url, "https://gitlab.com/thekernel/slatejob"
+set :repo_url, "git@gitlab.com:thekernel/slatejob.git"
+
 set :branch, "master"
 
 # Default branch is :master
