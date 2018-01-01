@@ -8,8 +8,12 @@ set :repo_url, "https://gitlab.com/thekernel/slatejob"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
-#set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
+if :stage == 'staging'
+	set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
+	#set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
+else
+	set :deploy_to, "/home/deploy/rails_apps/slatejob.com"
+end
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
