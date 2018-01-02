@@ -47,7 +47,7 @@
 							</div>
 							<div class="action_buttons">
 								<% if is_available?(@user.id) %>
-									<%= link_to "Contactez-moi", root_path, class: "btn btn-primary" %>
+									<%= link_to "Contactez-moi", new_message_path(to: @user.id), :remote => true, class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Encours..."} %>
 								<% end %>
 							</div>
 
