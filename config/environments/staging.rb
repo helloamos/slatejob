@@ -83,12 +83,12 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'http://slatejob.com' }
+  config.action_mailer.default_url_options = { host: 'http://staging.slatejob.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      'support@slatejob.com',
     password:       'AMOSXZIBITDE88',
-    domain:         'slatejob.com',
+    domain:         'staging.slatejob.com',
     address:       'mail.planetemail.net',
     port:          '465',
     authentication: :plain,

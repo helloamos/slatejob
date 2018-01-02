@@ -206,6 +206,12 @@ module ApplicationHelper
 
 	end
 
+	# social auto share
+	def twitter_share(post_title, post_desc)
+		post_image = ""
+		social_share_button_tag(post_title, desc: post_desc)
+	end
+
 	
 
 	
