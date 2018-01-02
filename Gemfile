@@ -97,6 +97,10 @@ gem 'sanitize', '~> 4.5'
 gem 'nokogiri', '~> 1.8', '>= 1.8.1'
 gem 'premailer-rails', '~> 1.10', '>= 1.10.1'
 gem 'whenever', '~> 0.10.0', require: false
+gem 'rails_admin', '~> 1.2'
+gem 'rails_admin_rollincode', '~> 1.2', '>= 1.2.1'
+gem 'remotipart', '~> 1.3', '>= 1.3.1'
+gem 'rails_admin-i18n'
 
 
 

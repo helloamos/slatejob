@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+ENV['RAILS_ADMIN_THEME'] = 'rollincode'
 
 module Slatejob
   class Application < Rails::Application
@@ -22,6 +23,7 @@ module Slatejob
     #config.assets.paths << "#{Rails}/public/assets/fonts"
     config.assets.precompile += %w(.svg .eot .woff .ttf .woff2)
     config.assets.initialize_on_precompile = true
+
     
   end
 end
