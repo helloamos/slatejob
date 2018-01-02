@@ -10,7 +10,7 @@ set :default_stage, "staging"
 #set :application, "staging.slatejob.com"
 set :repo_url, "git@gitlab.com:thekernel/slatejob.git"
 
-set :branch, "master"
+set :branch, "develop"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
