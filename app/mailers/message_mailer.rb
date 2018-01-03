@@ -1,4 +1,9 @@
 class MessageMailer < ApplicationMailer
+  helper :application
+  #default template_path: 'messages/message_mailer'
+  layout 'mailer'
+  add_template_helper EmailHelper
+  add_template_helper ApplicationHelper
 	default from: 'support@slatejob.com'
  
   def message_email(sender, recipient,  message)
