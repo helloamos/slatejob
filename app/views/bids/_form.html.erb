@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <%= form.label t("time_unity_id") %>
-                    <%= form.collection_select :time_unity, @time_unity, :title, :title, {prompt: t("time_unity_id")}, class: "form-control" %>
+                    <%= form.collection_select :time_unity, @time_unity, :title, :title, {prompt: t("time_unity_id")}, class: "form-control" , required: true %>
                                 
                 </div>
             </div>

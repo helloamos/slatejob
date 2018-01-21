@@ -1,4 +1,7 @@
 class AttributedMailer < ApplicationMailer
+  helper :application
+  add_template_helper EmailHelper
+  add_template_helper ApplicationHelper
 	default from: 'support@slatejob.com'
  
   def attributed_email(user_id, bid_user_id, project_id)

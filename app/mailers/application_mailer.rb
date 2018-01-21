@@ -1,4 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'SlateJob <support@slatejob.com>'
-  layout 'mailer'
+	helper :application
+	add_template_helper EmailHelper
+	add_template_helper ApplicationHelper
+	default from: 'SlateJob <support@slatejob.com>'
+	layout 'mailer'
 end

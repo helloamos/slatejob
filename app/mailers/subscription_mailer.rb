@@ -1,4 +1,7 @@
 class SubscriptionMailer < ApplicationMailer
+	helper :application
+  	add_template_helper EmailHelper
+  	add_template_helper ApplicationHelper
 	default from: 'support@slatejob.com'
 
 	def subscription_mail(email)
