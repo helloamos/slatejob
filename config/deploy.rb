@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.0"
+lock "~> 3.11.0"
 
 set :stages, %w(production staging)
 set :default_stage, "staging"
@@ -10,7 +10,7 @@ set :default_stage, "staging"
 #set :application, "staging.slatejob.com"
 set :repo_url, "git@gitlab.com:thekernel/slatejob.git"
 
-set :branch, "develop"
+set :branch, "master"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -21,7 +21,7 @@ set :branch, "develop"
 
 # Default deploy_to directory is /var/www/my_app_name
 
-#set :deploy_to, "/home/deploy/rails_apps/staging.slatejob.com"
+#set :deploy_to, "/home/root/projects/slatejob.com"
 
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
@@ -44,8 +44,8 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Config for nginx
-set :nginx_config_name, 'staging.slatejob.com'
-set :nginx_server_name, 'staging.slatejob.com'
+set :nginx_config_name, 'slatejob.com'
+set :nginx_server_name, 'slatejob.com'
 set :puma_workers,1
 
 

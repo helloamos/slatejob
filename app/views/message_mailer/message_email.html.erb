@@ -1,22 +1,27 @@
 
 
-    <p>
-      Salut <strong><%= @recipient.profile.full_name %></strong>,<br/>
-      Vous avez réçu un message de la part  de: <strong><%= @sender.profile.full_name %> </strong> à travers Slatejob<br/>
-      <br />
-      <br />
-      Voici le contenu du message: <br/> 
-      
-      <i>
+<p>
+    Salut <strong><%= @recipient.profile.full_name %></strong>,<br/>
+    Vous avez réçu un message de la part  de: <strong><%= @sender.profile.full_name %> </strong> à travers Slatejob<br/>
+    <br />
+    <br />
+    Voici le contenu du message: <br/> 
+
+    <i>
         <strong>
-          <%= @message.content %>
+        <%= @message.content %>
         </strong>
-      </i>
-      
-      
-      <br />
-    </p>
+    </i>
+
     <p>
-      Pour se connecter au site, suivez juste ce lien: <%= @url %>.<br>
+     Pour repondre à ce message veuillez cliquer sur le lien ci-dessous: <br />
+     <%= link_to "#{message_url(@message)}", message_url(@message) %>
     </p>
-    
+
+
+    <br />
+</p>
+
+<p>
+Pour se connecter au site, suivez juste ce lien: <%= @url %>.<br>
+</p>

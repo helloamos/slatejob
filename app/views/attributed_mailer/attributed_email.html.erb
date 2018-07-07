@@ -10,7 +10,7 @@
       Salut <%= @bid_user.login %>,<br>
       #<%= @user.login %> vient de vous attribuer le projet suivant:<br>
       <br>
-      Projet: <%= @project.title %><br> 
+      Projet: <%= link_to "#{@project.title}", project_show_url(@project) %><br> 
       
       <br>
     </p>

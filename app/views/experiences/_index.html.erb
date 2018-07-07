@@ -1,6 +1,6 @@
 <div class="resume_section-content">
 
-	<% if @experiences.nil? %>
+	<% if @experiences.blank? %>
 		<h5><i>Rien à afficher pour cette section!</i></h5>
 	<% else %>
 
@@ -29,10 +29,12 @@
 					<%= experience.task %>
 				</div>
 
-				<div class="actions_buttons">
-					<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_experience_path(experience), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
-					<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), experience_delete_path(experience),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
-				</div>
+				<% if is_current_user?(current_user) %>
+					<div class="actions_buttons">
+						<%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_experience_path(experience), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+						<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), experience_delete_path(experience),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+					</div>
+				<% end %>
 			</li>
 			
 			

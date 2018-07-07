@@ -1,0 +1,52 @@
+<div class="box box-primary">
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<%= forms.label t(:user_name) %>
+					<%= forms.text_field :full_name, class: "form-control",  required: true %>
+				</div>
+			</div>
+    		<div class="col-sm-6">
+        		<div class="form-group">
+        			<%= forms.label t(:company) %>
+        			<%= forms.text_field :company_name,   class: "form-control" %>
+        		</div>
+    		</div>
+    	</div>
+
+		
+    	<div class="row">
+
+    		<div class="col-sm-2">
+
+        		<div class="form-group">
+        			   <%= forms.check_box :availability %>
+						<%= forms.label t(:availability) %>
+        		</div>
+    		</div>
+    		<div class="col-sm-2">
+        		<div class="form-group">
+        			 <%= forms.check_box :visibility %>
+						<%= forms.label t(:visibility)  %>
+        		</div>
+    		</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">
+        		<div class="form-group">
+        			<%= forms.label t(:presentation) %>
+        			<%= forms.cktext_area :presentation, rows: 5,  class: "form-control", placeholder: "Présentation", ckeditor: { toolbar: 'mini' }, required: true %>
+        		</div>
+    		</div>
+		</div>
+
+		
+
+		
+	</div>
+</div>
+<ul class="list-inline pull-right">
+	<li><button type="button" class="btn btn-primary">Continue</button></li>
+ </ul>

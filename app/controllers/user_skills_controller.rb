@@ -68,6 +68,7 @@ class UserSkillsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_skills_url, notice: 'User skill was successfully destroyed.' }
       format.json { head :no_content }
+        format.js
     end
   end
 

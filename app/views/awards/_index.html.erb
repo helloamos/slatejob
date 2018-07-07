@@ -26,12 +26,15 @@
               <%= award.conferring_organization %>
             </div>
           </li>
-          <li class="actions_buttons">
+          <% if is_current_user?(current_user) %>
+          <div class="actions_buttons">
           <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'), edit_award_path(award), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
           <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), award_delete_path(award),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
 
+        </div>
+        <% end %>
            <%= do_separator(award, @awards) %>
-        </li>
+       
         </ul>
       <% end %>
       <% end %>

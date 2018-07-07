@@ -1,5 +1,5 @@
 
-<% if @user_skills.nil? %>
+<% if @user_skills.blank? %>
                 <h5><i>Rien à afficher pour cette section!</i></h5>
               <% else %>
               <% @user_skills.each do |user_skill| %>
@@ -25,11 +25,11 @@
                       </div>
                     </li>
                     
-                    
+                    <% if is_current_user?(current_user) %>
                     <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_user_skill_path(user_skill), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
                     <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), user_skill_delete_path(user_skill),:remote => true, class: "red-text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
 
-                  
+                  <% end %>
                   </ul>
                 <% end %>
                 <% end %>

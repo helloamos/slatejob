@@ -6,6 +6,7 @@ class WorkersController < ApplicationController
 	def index
 		@workers = User.joins(:profile).where.not(profiles: {id: nil}).by_profile("Worker").order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
 		#@workers = @workers.by_profile("Work").order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+		@users = User.all
 	end
 	def show	
 		@user = User.friendly.find(params[:slug])
@@ -38,10 +39,10 @@ class WorkersController < ApplicationController
 	end
 
 	def search
-
 		q = params[:q] unless params[:q].blank?
+		v = params[:v] unless params[:v].blank?
 		#@workers = User.search_workers(query)
-		@workers = User.joins(:profile).where.not(profiles: {id: nil}).by_profile("Worker").search_workers(q).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+		@workers = User.joins(:profile).where.not(profiles: {id: nil}).by_profile("Worker").search_workers(q,v).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
 
 		respond_to do |format|
 	        format.js

@@ -33,6 +33,10 @@ class ProfilesController < ApplicationController
 
 	def new
 		@profile = Profile.new
+		@domains = Profession.all
+		#render layout: "dashboard"
+		 @all_skills = Skill.all
+		render :layout => "frontend"
 	end
 
 

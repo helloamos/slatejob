@@ -1,4 +1,4 @@
-<% if @certifications.nil? %>
+<% if @certifications.blank? %>
                 <h5><i>Rien à afficher pour cette section!</i></h5>
               <% else %>
               <% @certifications.each do |certification| %>
@@ -21,14 +21,16 @@
                       <div class="muted">
                         
                         <%= certification.description %> -
-                         <%= certification.description %>
+                         <%= certification.country %>
                       </div>
                    
-                    
-                    <div class="actions_buttons">
-                    <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_certification_path(certification), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
-                    <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), certification_delete_path(certification),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
-                    </div> </li>
+                    <% if is_current_user?(current_user) %>
+                      <div class="actions_buttons">
+                      <%= link_to raw('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'),edit_certification_path(certification), remote: true , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Modifier"%>
+                      <%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>'), certification_delete_path(certification),:remote => true, class: "red_text" , "data-toggle"=>"tooltip", "data-placement"=>"top", title:"Supprimer"%>
+                      </div> 
+                    <% end %>
+                  </li>
                   <%= do_separator(certification, @certifications) %>
                   </ul>
                    

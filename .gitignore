@@ -26,4 +26,5 @@
 config/secrets.yml.key
 
 # Ignore puma config
-/config/puma.rb
+#/config/puma.rb
+/shared

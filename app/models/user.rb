@@ -11,6 +11,7 @@ class User < ApplicationRecord
 	# User profile type
 	#PROFILE_TYPE = [["Freelance"],["Employeur"]]
 	EMPLOYMENT_TYPE = [["Plein temps"],["Temps partiel"], ["Contrat"]]
+	SEARCH_TERMS = {I18n.t(:country) => "country", I18n.t(:city) => "city" }
 
 	# Date validation
 	validates :login, presence: true, uniqueness: true
@@ -58,8 +59,13 @@ class User < ApplicationRecord
 	end
 
 	# Search 
-	def self.search_workers(q)
-		where("city = ? OR country = ? ", "#{q}", "#{q}")
+	def self.search_workers(q, v)
+		where("#{q} LIKE ?", "%#{v}%")
+	end
+
+	# Search 
+	def self.search_employers(q, v)
+		where("#{q} LIKE ?", "%#{v}%")
 	end
 
 
@@ -70,7 +76,7 @@ class User < ApplicationRecord
 		self.height = dimensions.height
 
 		if dimensions.width < 200 && dimensions.height < 200
-			#errors.add(:file,'Width or height must be at least 50px')
+			errors.add(:file,'Width or height must be at least 50px')
 		end
 	end
 	

@@ -212,7 +212,11 @@ module ApplicationHelper
 		social_share_button_tag(post_title, desc: post_desc)
 	end
 
-	
+	def search_query_options
+	    User::SEARCH_TERMS.collect do |k,v| 
+	      [t(k, scope: :q), v]
+	    end
+  	end
 
 	
 	

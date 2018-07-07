@@ -284,6 +284,12 @@ footer ul li{
 }
 .last_projects_wrapper{
 	margin: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 .project_show{
 	margin: 20px;
@@ -319,7 +325,7 @@ footer ul li{
     background: #f5f8fa !important;
 }
 .bid_user_thumb img{
-	width: 70px;
+	width: 50px;
     border-radius: 4px;
 }
 .bid_user_thumb{
@@ -344,6 +350,7 @@ footer ul li{
     /*float: left;*/
     font-style: italic;
     margin-left: 15px;
+    font-size: 8pt;
 }
 .bid_user_meta{
 	float: left;
@@ -1049,4 +1056,29 @@ h-search-btns .btn {
     max-width: 800px !important; 
     margin: auto; 
     padding: 15px;
+}
+.profile-view{
+    width: 960px;
+    margin: auto;
+}
+.create-profile{
+    margin-top : 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 860px;
+}
+
+ul.chosen-choices {
+    /*width: 100% !important;*/
+}
+#skills_id_chosen input{
+    width: 100% !important;
+}
+li.search-field{
+    width: 100% !important;
+}
+.chosen-container, .chosen-container-multi{
+    width: 100% !important;
+
 }

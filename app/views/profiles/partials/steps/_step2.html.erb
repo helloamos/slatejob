@@ -1,0 +1,72 @@
+<div class="box box-primary">
+	<div class="box-body">
+		
+
+
+		<!-- Row -->
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+            		<%= forms.label t(:city) %>
+            		<%= forms.text_field :address, :id => "geocomplete", class: "form-control", placeholder: t(:city), required: true %>
+
+        		</div>
+		
+			</div>
+    		<div class="col-sm-6">
+    			<div class="form-group">
+            		<%= forms.label t(:phone) %> <br />
+            		<%= forms.text_field :phone, class: "form-control", :id => "phone",  required: true %>
+        		</div>
+    			
+    		</div>
+		</div>
+		<!-- end row -->
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <div class="input-group">
+				    	<div class="input-group-addon">
+				      		<i class="fa fa-facebook" aria-hidden="true"></i>
+				    	</div>
+				   		<%= forms.text_field :facebook_link, class: "form-control", placeholder: "Facebook" %>
+				    </div>
+				</div>
+
+				<div class="form-group">
+				    <div class="input-group">
+				    	<div class="input-group-addon">
+				    		<i class="fa fa-twitter" aria-hidden="true"></i>
+				    	</div>
+				     	<%= forms.text_field :twitter_link, class: "form-control", placeholder: "Twitter" %>
+				    </div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+				    <div class="input-group">
+				    	<div class="input-group-addon">
+				    		<i class="fa fa-google-plus" aria-hidden="true"></i>
+				    	</div>
+				    	<%= forms.text_field :gplus_link, class: "form-control", placeholder: "Google+" %>
+				     
+				    </div>
+				</div>
+
+				<div class="form-group">
+			    	<div class="input-group">
+				    	<div class="input-group-addon">
+				      		<i class="fa fa-linkedin" aria-hidden="true"></i>
+				     	</div>
+			      		<%= forms.text_field :linkedin_link, class: "form-control", placeholder: "LinkedIn" %>
+			     
+			    	</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+<ul class="list-inline pull-right">
+	<li><button type="button" class="btn btn-primary">Continue</button></li>
+ </ul>

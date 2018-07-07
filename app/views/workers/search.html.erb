@@ -4,9 +4,14 @@
             <div class="box box-primary">
                 <div class="box-body">
                    <%= form_with url: search_workers_path, method: :get, local: false do |f| %>
-                        <div class="col-md-10">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <%= f.text_field :q, id: :q, class: "form-control", placeholder: "Rechercher par ville, pays ou domaine..." %>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <%= f.text_field :v, id: :v, class: "form-control", placeholder: "Rechercher par ville, pays ou domaine..." %>
                             </div>
                         </div>
                         <div class="col-md-2">

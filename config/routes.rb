@@ -32,10 +32,11 @@ Rails.application.routes.draw do
     get "/profile/edit/:slug" => "profiles#edit" , as: :edit_profile
     get "/profile/complete/:slug" => "profiles#complete", as: :complete_profile
     #get "/profile/:slug" => "profiles#show" , as: :show_profile
+    get "/profile/create" => "profiles#new", as: :create_profile
 
     # Projects
     get "/projects/my-projects" => "projects#index", as: :my_projects
-    get "/projects/recent" => "projects#recent_projects", as: :recent_projects
+    get "/projects/newers" => "projects#recent_projects", as: :recent_projects
     get "/projects/show/:id" => "projects#show", as: :project_show
     get "/projects/nearby" => "projects#projects_nearby", as: :projects_nearby
     
@@ -47,10 +48,11 @@ Rails.application.routes.draw do
     get "/employers" => "employers#index", as: :employers
     get "/employers" => "employers#near_by", as: :employers_nearby
     get "/employers/profile/:slug" => "employers#show", as: :show_employer_profile
+    get "/employers/search/" => "employers#search", as: :search_employers
 
     
     get 'projects/update_skills', :as => 'update_skills'
-    get 'read_notification' => 'notifications#show', as: :read_notification
+    get 'notification/read' => 'notifications#show', as: :read_notification
     get 'read-message' => 'messages#show', as: :read_message
     
     get "/attributions" => "attributions#new", as: :attributions
@@ -125,6 +127,7 @@ Rails.application.routes.draw do
     #}
     devise_for :users, path: '', controllers: { 
             registrations: "registrations",
+            confirmations: 'confirmations',
             passwords: "passwords"
         }, 
         path_names: {

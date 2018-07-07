@@ -4,7 +4,7 @@ class MessageMailer < ApplicationMailer
   layout 'mailer'
   add_template_helper EmailHelper
   add_template_helper ApplicationHelper
-	default from: 'support@slatejob.com'
+	default from: 'SlateJob <support@slatejob.com>'
  
   def message_email(sender, recipient,  message)
     @recipient = User.find(recipient)

@@ -37,4 +37,16 @@ class EmployersController < ApplicationController
 
 	end
 
+	def search
+		q = params[:q] unless params[:q].blank?
+		v = params[:v] unless params[:v].blank?
+		#@workers = User.search_workers(query)
+		@workers = User.joins(:profile).where.not(profiles: {id: nil}).by_profile("Employer").search_employers(q,v).order(created_at: :desc).paginate(:page => params[:page], :per_page => 8)
+
+		respond_to do |format|
+	        format.js
+	    end
+
+	end
+
 end

@@ -1,0 +1,66 @@
+
+<div class="container">
+	<div class="create-profile">
+		<div class="row">
+			<section>
+        	<div class="wizard">
+     
+                <ul class="nav nav-wizard">
+
+                    <li class="active">
+                        <a href="#step1" data-toggle="tab">Infos</a>
+                    </li>
+
+                    <li class="disabled">
+                        <a href="#step2" data-toggle="tab">Adresses</a>
+                    </li>
+
+                    <li class="disabled">
+                        <a href="#step3" data-toggle="tab">Professions & compétences</a>
+                    </li>
+                    
+                     <li class="disabled">
+                        <a href="#step4" data-toggle="tab">Photo de profil</a>
+                    </li>
+                </ul>
+             
+            	<form>
+                	<div class="tab-content">
+                		<%= form_for(@profile) do |form| %>
+                        	<div class="tab-pane active" id="step1">
+                        		<h3>Step 1</h3>
+                        		<%= render :partial => "./profiles/partials/steps/step1",  locals: {:forms => form} %>
+                    		</div>
+                    		<!-- end step 1 -->
+			                <div class="tab-pane" id="step2">
+		                        <h3>Step 2</h3>
+		                        <%= render :partial => "./profiles/partials/steps/step2",  locals: {:forms => form} %>
+		                    </div>
+		                    <div class="tab-pane" id="step3">
+		                        <h3>Step 3</h3>
+		                        <%= render :partial => "./profiles/partials/steps/step3",  locals: {:forms => form} %>
+		                    </div>
+	                    	<div class="tab-pane" id="step4">
+	                        	<h3>Complete</h3>
+	                       		<p>You have successfully completed all steps.</p>
+
+	                       		<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group">
+									    <%= form.button "Enregistrer", class: "btn btn-primary pull-right", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Enregistrement..."} %>
+									</div>
+								</div>
+							</div>
+
+	                    	</div>
+		                    <div class="clearfix"></div>
+							
+                    	<% end %>
+
+                		</div>
+            		</form>
+        		</div>
+    		</section>
+		</div>
+	</div>
+</div>
