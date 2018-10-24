@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.0"
+lock "~> 3.11.0"
 
 set :stages, %w(production staging)
-set :default_stage, "staging"
+set :default_stage, "production"
 
 #require 'capistrano/ext/multistage'
 #require 'bundler/capistrano'
 
 #set :application, "staging.slatejob.com"
-set :repo_url, "git@gitlab.com:thekernel/slatejob.git"
+set :repo_url, "https://github.com/helloamos/slatejob.git"
 
 set :branch, "master"
 
@@ -44,8 +44,8 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Config for nginx
-set :nginx_config_name, 'staging.slatejob.com'
-set :nginx_server_name, 'staging.slatejob.com'
+set :nginx_config_name, 'slatejob.com'
+set :nginx_server_name, 'slatejob.com'
 set :puma_workers,1
 
 
@@ -63,3 +63,11 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: ["publickey"],
+  keys: ["~/projects/rails/slatejob/slatejob.pem"]
+}
+#~/projects/rails/oisepro
