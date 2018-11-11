@@ -101,11 +101,17 @@ label {
 
 .hero-wrapper{
 	background-image: url("hero/hero.jpg");
-	padding: 51px 0;
+	/*padding: 51px 0;*/
     background-size: cover;
-    padding: 127px 0 102px;
+    /*padding: 127px 0 102px;*/
     background-position-x: 0;
-    background-position-y: -150px;
+    /*background-position-y: -150px;*/
+    height: calc(100vh);
+
+    /* Center verticaly */
+    display: flex; /* contexte sur le parent */
+    flex-direction: column; /* direction d'affichage verticale */
+    justify-content: center; /* alignement vertical */
 }
 .hero-content h1.hero-title{
 	font-size: 3.5em;
@@ -1049,4 +1055,53 @@ h-search-btns .btn {
     max-width: 800px !important; 
     margin: auto; 
     padding: 15px;
+}
+
+.categories .section a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    opacity: .8;
+    margin-top: 1rem;
+    flex: 1;
+}
+ .category-icon img{
+    width: 40px !important;
+    text-align: center;
+}
+.categories{
+    background-color: #3863a0 !important
+}
+
+.text-white {
+    color: #fff !important;
+}
+img {
+    vertical-align: middle;
+}
+.home-category-item{
+    display: inline-block;
+    padding: 30px;
+}
+.category-title{
+    margin-top: 5px;
+}
+
+footer {
+    margin-top: 0px !important;
+   
+}
+.how-it-work{
+    background-color: #f9f9f9;
+}
+.how-it-work p{
+    font-size: 14pt;
+}
+.how-it-work img{ 
+    width: 100%;
+}
+.how-it-work h2{ 
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
 }
